@@ -9,3 +9,5 @@ TheKnowDough unites these fields under common creative philosophy and ethics:
 - **Technology should aid a better world, not serve itself.** Whether through advancing knowledge for mindful control of complex systems, or by subjecting itself to a responsible use of resources, computation should be an instrument for improving natural, not artificial, ecosystems.
 
 > Once men turned their thinking over to machines in the hope that this would set them free. But that only permitted other men with machines to enslave them. (Frank Herbert, _Dune_, 1965)
+
+Nature carries an inherent capacity to compute. The work of TheKnowDough is driven by a fascination with the natural intelligence found in biological, chemical and physical systems. This serves both as an inspiration (translating natural principles to form and function) and as an object of study (applying computational modelling to understand nature better).
