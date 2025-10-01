@@ -349,7 +349,7 @@ function shiftedTanh(startVal, endVal, t, t_offset = 10.)
 function draw()
 {
     // Grow particle radii
-    maxRadScale = shiftedTanh(1., 3., frameCt * 0.025, 1.5);
+    maxRadScale = shiftedTanh(1., 3., frameCt * 0.025, 2.5);
     for (let i = 0; i < nParticles; i++) {
         let scaleGrad = 1.0 + (maxRadScale - 1.0) * (Math.cos(2 * Math.PI * i / (nParticles-1)) * 0.5 + 0.5);
         pSystem.particles[i].radius = pSystem.baseRad * scaleGrad;
