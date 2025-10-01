@@ -4,8 +4,7 @@ var ctx = canvas.getContext("2d");
 
 class Particle {
     static color = "rgba(255, 0, 0, 0.5)";
-    static initNoise = 0.01;
-    constructor(x, y, radius, mass = 1, dragCoeff = 0.1)
+    constructor(x, y, radius, mass = 1, dragCoeff = 0.1, initNoise = 0.01)
     {
         this.x = x;
         this.y = y;
@@ -13,8 +12,8 @@ class Particle {
         this.mass = mass;
         this.dragCoeff = dragCoeff;
         
-        this.vx = (Math.random() * 2 - 1) * Particle.initNoise;
-        this.vy = (Math.random() * 2 - 1) * Particle.initNoise;
+        this.vx = (Math.random() * 2 - 1) * initNoise;
+        this.vy = (Math.random() * 2 - 1) * initNoise;
 
         this.fx = 0; // force accumulator
         this.fy = 0;
@@ -204,7 +203,10 @@ class ParticleSystem {
             let p = new Particle(
                 bndry.midX + bndry.rad * Math.cos(angle) - (i == 0 ? this.bndry.rad*0.125 : 0),
                 bndry.midY + bndry.rad * Math.sin(angle),
-                this.baseRad
+                this.baseRad,
+                1,
+                0.1,
+                this.bndry.rad * 0.001
             );
             this.particles.push(p);
 
