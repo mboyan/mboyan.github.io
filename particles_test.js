@@ -114,42 +114,6 @@ class AngleConstraint {
         let len1 = Math.hypot(v1x, v1y);
         let len2 = Math.hypot(v2x, v2y);
         if (len1 < 1e-6 || len2 < 1e-6) return; // guard against degenerate geometry
-
-        // let angle1 = Math.atan2(v1y, v1x);
-        // let angle2 = Math.atan2(v2y, v2x);
-        // let currentAngle = angle2 - angle1;
-        // if (currentAngle < -Math.PI) currentAngle += 2 * Math.PI;
-        // if (currentAngle > Math.PI) currentAngle -= 2 * Math.PI;
-
-        // let angleDiff = currentAngle - this.targetAngle;
-        // // wrap to [-pi, pi]
-        // if (angleDiff > Math.PI) angleDiff -= 2 * Math.PI;
-        // if (angleDiff < -Math.PI) angleDiff += 2 * Math.PI;
-
-        // // convert angle correction to forces along the perpendicular directions
-        // // small factor to avoid very strong impulses; stiffness is usually small
-        // let correction = angleDiff * this.stiffness;
-
-        // // unit vectors
-        // let n1x = v1x / len1, n1y = v1y / len1;
-        // let n2x = v2x / len2, n2y = v2y / len2;
-
-        // // Apply forces roughly proportional to correction and particle distance.
-        // // These are simple heuristic forces that produce a torque-like effect.
-        // // Scale by 1/dt so effect is stable across time steps.
-        // let forceScale = correction / Math.max(dt, 1e-6);
-
-        // // apply opposite-sign forces to p1 and p3; p2 gets reaction (equal + opposite)
-        // // scale by small factor so it doesn't blow up
-        // let f1x = -forceScale * n1y * 0.5; // perpendicular to n1 (rotate by -90°)
-        // let f1y =  forceScale * n1x * 0.5;
-        // let f3x =  forceScale * n2y * 0.5;  // perpendicular to n2 (rotate by +90°)
-        // let f3y = -forceScale * n2x * 0.5;
-
-        // // Apply forces (p2 gets reaction)
-        // this.p1.applyForce(f1x, f1y);
-        // this.p3.applyForce(f3x, f3y);
-        // this.p2.applyForce(-(f1x + f3x), -(f1y + f3y));
         
         let n1x = v1x / len1, n1y = v1y / len1;
         let n2x = v2x / len2, n2y = v2y / len2;
@@ -201,7 +165,8 @@ class ParticleSystem {
             // Arrange particles in a circle
             let angle = (i / nParticles) * Math.PI * 2;
             let p = new Particle(
-                bndry.midX + bndry.rad * Math.cos(angle) - (i == 0 ? this.bndry.rad*0.125 : 0),
+                // bndry.midX + bndry.rad * Math.cos(angle) - (i == 0 ? this.bndry.rad*0.125 : 0),
+                bndry.midX + bndry.rad * Math.cos(angle) - Math.max(Math.cos(angle), 0.) * this.bndry.rad*0.125,
                 bndry.midY + bndry.rad * Math.sin(angle),
                 this.baseRad,
                 1,
@@ -309,9 +274,13 @@ class ParticleSystem {
         // for (let p of this.particles) {
         //     p.display();
         // }
+        // ctx.moveTo(this.particles[0].x, this.particles[0].y);
+        // for (let i = 0; i < this.nParticles - 2; i++){
+        //     var xs = this.particles[i]
+        // }
         for (let s of this.springs) {
             ctx.beginPath();
-            ctx.lineWidth = 15;
+            ctx.lineWidth = 1;
             ctx.lineCap = "round";
             ctx.moveTo(s.p1.x, s.p1.y);
             ctx.lineTo(s.p2.x, s.p2.y);
@@ -335,12 +304,12 @@ let bndry = {
     rad: 0.9 *canvas.width / 2
 }
 
-var nParticles = 100;
+var nParticles = 120;
 var frameCt = 0;
-var baseSmoothing = 0.001;
+var baseSmoothing = 0.008;
 
 // Initialize particle system
-pSystem = new ParticleSystem(nParticles, bndry, 1., 0.9, 0.001, 8., baseSmoothing);
+pSystem = new ParticleSystem(nParticles, bndry, 1.0, 0.9, 0.00, 8., baseSmoothing);
 
 function shiftedTanh(startVal, endVal, t, t_offset = 10.)
 {
@@ -351,9 +320,15 @@ function shiftedTanh(startVal, endVal, t, t_offset = 10.)
 function draw()
 {
     // Grow particle radii
-    maxRadScale = shiftedTanh(1., 3., frameCt * 0.025, 2.5);
+    let maxRadAdd = shiftedTanh(1.0, 3.0, frameCt * 0.005, 2.5);
+    // let maxRadAdd = shiftedTanh(0., 1., frameCt * 0.025, 2.5);
+    // maxRadAdd = (1.0 - Math.cos(maxRadAdd));
     for (let i = 0; i < nParticles; i++) {
-        let scaleGrad = 1.0 + (maxRadScale - 1.0) * (Math.cos(2 * Math.PI * i / (nParticles-1)) * 0.5 + 0.5);
+        let scaleGrad = Math.cos(2 * Math.PI * i / (nParticles-1)) * 0.5 + 0.5;
+        // scaleGrad = 1.0 - Math.cos(Math.PI * scaleGrad);
+        scaleGrad *= maxRadAdd;
+        scaleGrad += 1.0;
+        // let scaleGrad = 1.0 + maxRadAdd * (Math.cos(2 * Math.PI * i / (nParticles-1)) * 0.5 + 0.5);
         pSystem.particles[i].radius = pSystem.baseRad * scaleGrad;
         if (i > 0) {
             pSystem.springs[i-1].restLength = pSystem.particles[i-1].radius + pSystem.particles[i].radius;
@@ -362,17 +337,17 @@ function draw()
     pSystem.springs[nParticles-1].restLength = pSystem.particles[nParticles-2].radius + pSystem.particles[nParticles-1].radius;
 
     // Modulate bending stiffness
-    maxBendScale = shiftedTanh(1., 4., frameCt * 0.025, 2.5);
+    let maxBendScale = shiftedTanh(1., 4., frameCt * 0.025, 2.5);
     for (let ac in pSystem.angleConstraints) {
         ac.stiffness = pSystem.bendStiffness * maxBendScale;
     }
 
     // Modulate smoothing
-    maxSmoothScale = shiftedTanh(1., 5., frameCt * 0.025, 5);;
+    let maxSmoothScale = shiftedTanh(1., 10., frameCt * 0.025, 2.5);;
     pSystem.smoothing = maxSmoothScale * baseSmoothing;
 
     // Update particle system
-    pSystem.update(0.2);
+    pSystem.update(0.18);
 
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -391,4 +366,4 @@ function draw()
     frameCt++;
 }
 
-setInterval(draw, 30);
+setInterval(draw, 1);
