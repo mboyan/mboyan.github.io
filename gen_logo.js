@@ -276,7 +276,7 @@ class ParticleSystem {
         //     p.display();
         // }
         ctx.beginPath();
-        ctx.lineWidth = 4;
+        ctx.lineWidth = 5;
         ctx.moveTo(this.particles[0].x, this.particles[0].y);
         for (let i = 0; i < this.nParticles; i++){
             var xc = 0.5 * (this.particles[i].x + this.particles[(i + 1) % this.nParticles].x);
@@ -307,11 +307,6 @@ class ParticleSystem {
 }
 
 // Circular boundary
-// let bndry = {
-//     midX: canvas.width / 2,
-//     midY: canvas.height / 2,
-//     rad: 0.9 *canvas.width / 2
-// }
 let bndry = {
     midX: 215,
     midY: 150,
