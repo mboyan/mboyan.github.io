@@ -1,6 +1,7 @@
 //Initializing the canvas
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+const logo = document.getElementById("logo");
 
 class Particle {
     static color = "rgba(255, 0, 0, 0.5)";
@@ -274,19 +275,27 @@ class ParticleSystem {
         // for (let p of this.particles) {
         //     p.display();
         // }
-        // ctx.moveTo(this.particles[0].x, this.particles[0].y);
-        // for (let i = 0; i < this.nParticles - 2; i++){
-        //     var xs = this.particles[i]
-        // }
-        for (let s of this.springs) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.lineCap = "round";
-            ctx.moveTo(s.p1.x, s.p1.y);
-            ctx.lineTo(s.p2.x, s.p2.y);
-            ctx.strokeStyle = "black";
-            ctx.stroke();
+        ctx.beginPath();
+        ctx.lineWidth = 4;
+        ctx.moveTo(this.particles[0].x, this.particles[0].y);
+        for (let i = 0; i < this.nParticles; i++){
+            var xc = 0.5 * (this.particles[i].x + this.particles[(i + 1) % this.nParticles].x);
+            var yc = 0.5 * (this.particles[i].y + this.particles[(i + 1) % this.nParticles].y);
+            ctx.quadraticCurveTo(this.particles[i].x, this.particles[i].y, xc, yc);
         }
+        ctx.lineCap = "round";
+        ctx.closePath();
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+        // for (let s of this.springs) {
+        //     ctx.beginPath();
+        //     ctx.lineWidth = 1;
+        //     ctx.lineCap = "round";
+        //     ctx.moveTo(s.p1.x, s.p1.y);
+        //     ctx.lineTo(s.p2.x, s.p2.y);
+        //     ctx.strokeStyle = "black";
+        //     ctx.stroke();
+        // }
         // for (let ac of this.angleConstraints) {
         //     ctx.beginPath();
         //     ctx.moveTo(ac.p1.x, ac.p1.y);
@@ -298,10 +307,15 @@ class ParticleSystem {
 }
 
 // Circular boundary
+// let bndry = {
+//     midX: canvas.width / 2,
+//     midY: canvas.height / 2,
+//     rad: 0.9 *canvas.width / 2
+// }
 let bndry = {
-    midX: canvas.width / 2,
-    midY: canvas.height / 2,
-    rad: 0.9 *canvas.width / 2
+    midX: 215,
+    midY: 150,
+    rad: 45
 }
 
 var nParticles = 120;
@@ -310,6 +324,8 @@ var baseSmoothing = 0.008;
 
 // Initialize particle system
 pSystem = new ParticleSystem(nParticles, bndry, 1.0, 0.9, 0.00, 8., baseSmoothing);
+
+ctx.drawImage(logo, 0, 0, 450, 300);
 
 function shiftedTanh(startVal, endVal, t, t_offset = 10.)
 {
@@ -350,7 +366,8 @@ function draw()
     pSystem.update(0.18);
 
     // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(162, 100, 100, 100);
 
     // Update and display particle system
     pSystem.display();
