@@ -1,6 +1,6 @@
-//Initializing the canvas
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
+// Initializing the canvas
+let canvasLogo = document.getElementById("canvas_logo");
+let ctxLogo = canvasLogo.getContext("2d");
 const logo = document.getElementById("logo");
 
 class Particle {
@@ -46,10 +46,10 @@ class Particle {
     }
 
     display(){
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = Particle.color;
-        ctx.fill();
+        ctxLogo.beginPath();
+        ctxLogo.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctxLogo.fillStyle = Particle.color;
+        ctxLogo.fill();
     }
 }
 
@@ -275,33 +275,33 @@ class ParticleSystem {
         // for (let p of this.particles) {
         //     p.display();
         // }
-        ctx.beginPath();
-        ctx.lineWidth = 5;
-        ctx.moveTo(this.particles[0].x, this.particles[0].y);
+        ctxLogo.beginPath();
+        ctxLogo.lineWidth = 5;
+        ctxLogo.moveTo(this.particles[0].x, this.particles[0].y);
         for (let i = 0; i < this.nParticles; i++){
             var xc = 0.5 * (this.particles[i].x + this.particles[(i + 1) % this.nParticles].x);
             var yc = 0.5 * (this.particles[i].y + this.particles[(i + 1) % this.nParticles].y);
-            ctx.quadraticCurveTo(this.particles[i].x, this.particles[i].y, xc, yc);
+            ctxLogo.quadraticCurveTo(this.particles[i].x, this.particles[i].y, xc, yc);
         }
-        ctx.lineCap = "round";
-        ctx.closePath();
-        ctx.strokeStyle = "black";
-        ctx.stroke();
+        ctxLogo.lineCap = "round";
+        ctxLogo.closePath();
+        ctxLogo.strokeStyle = "black";
+        ctxLogo.stroke();
         // for (let s of this.springs) {
-        //     ctx.beginPath();
-        //     ctx.lineWidth = 1;
-        //     ctx.lineCap = "round";
-        //     ctx.moveTo(s.p1.x, s.p1.y);
-        //     ctx.lineTo(s.p2.x, s.p2.y);
-        //     ctx.strokeStyle = "black";
-        //     ctx.stroke();
+        //     ctxLogo.beginPath();
+        //     ctxLogo.lineWidth = 1;
+        //     ctxLogo.lineCap = "round";
+        //     ctxLogo.moveTo(s.p1.x, s.p1.y);
+        //     ctxLogo.lineTo(s.p2.x, s.p2.y);
+        //     ctxLogo.strokeStyle = "black";
+        //     ctxLogo.stroke();
         // }
         // for (let ac of this.angleConstraints) {
-        //     ctx.beginPath();
-        //     ctx.moveTo(ac.p1.x, ac.p1.y);
-        //     ctx.lineTo(ac.p3.x, ac.p3.y);
-        //     ctx.strokeStyle = "red";
-        //     ctx.stroke();
+        //     ctxLogo.beginPath();
+        //     ctxLogo.moveTo(ac.p1.x, ac.p1.y);
+        //     ctxLogo.lineTo(ac.p3.x, ac.p3.y);
+        //     ctxLogo.strokeStyle = "red";
+        //     ctxLogo.stroke();
         // }
     }
 }
@@ -320,7 +320,7 @@ var baseSmoothing = 0.008;
 // Initialize particle system
 pSystem = new ParticleSystem(nParticles, bndry, 1.0, 0.9, 0.00, 8., baseSmoothing);
 
-ctx.drawImage(logo, 0, 0, 450, 300);
+ctxLogo.drawImage(logo, 0, 0, 450, 300);
 
 function shiftedTanh(startVal, endVal, t, t_offset = 10.)
 {
@@ -360,19 +360,19 @@ function draw()
     // Update particle system
     pSystem.update(0.18);
 
-    // Clear canvas
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.clearRect(162, 100, 100, 100);
+    // Clear canvasLogo
+    // ctxLogo.clearRect(0, 0, canvasLogo.width, canvasLogo.height);
+    ctxLogo.clearRect(158, 96, 108, 108);
 
     // Update and display particle system
     pSystem.display();
 
     // Debug: Draw boundary
-    // ctx.beginPath();
-    // ctx.arc(bndry.midX, bndry.midY, bndry.rad, 0, Math.PI * 2);
-    // ctx.strokeStyle = "blue";
-    // ctx.stroke();
-    // ctx.closePath();
+    // ctxLogo.beginPath();
+    // ctxLogo.arc(bndry.midX, bndry.midY, bndry.rad, 0, Math.PI * 2);
+    // ctxLogo.strokeStyle = "blue";
+    // ctxLogo.stroke();
+    // ctxLogo.closePath();
 
     // Update frame counter
     frameCt++;
