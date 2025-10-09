@@ -9,6 +9,8 @@ let redStencil = [[0, 0], [1, 1], [2, 2]];
 let greenStencil = [[0, 2], [2, 1], [2, 0]];
 let blueStencil = [[0, 1], [1, 0], [1, 2]];
 
+let stride = 1;
+
 // console.log(Math.ceil(120/64));
 // let test = redStencil.slice(0, 2);
 // test = test.concat(greenStencil.slice(0, 2));
@@ -27,16 +29,16 @@ function drawPImg()
     const imgColData = imgData.data;
     const patData = ctxImg.createImageData(canvasImg.width, canvasImg.height);
     const patColData = patData.data;
-    let roughWidth = Math.ceil(canvasImg.width / 3);
-    let roughHeight = Math.ceil(canvasImg.height / 3);
+    let roughWidth = Math.ceil(canvasImg.width / (3 * stride));
+    let roughHeight = Math.ceil(canvasImg.height / (3 * stride));
 
     // console.log(roughWidth);
 
     // Fill default color
     for (let i = 0; i < patColData.length; i += 4){
-        patColData[i] = 0;
-        patColData[i + 1] = 0;
-        patColData[i + 2] = 0;
+        patColData[i] = 100;
+        patColData[i + 1] = 100;
+        patColData[i + 2] = 100;
         patColData[i + 3] = 255;
     }
 
@@ -45,7 +47,7 @@ function drawPImg()
     {
         for (let j = 0; j < roughHeight; j++)
         {
-            let idx = j * 12 * canvasImg.width + i * 12;
+            let idx = j * 12 * stride * canvasImg.width + i * 12 * stride;
             let red = imgColData[idx];
             let green = imgColData[idx + 1];
             let blue = imgColData[idx + 2];
@@ -73,10 +75,18 @@ function drawPImg()
             // patColData[patIdx + 2] = 0;
 
             for (let k = 0; k < addPix.length; k++) {
-                let patIdx = (j*3 + addPix[k][1]) * (canvasImg.width * 4) + (i*3 + addPix[k][0]) * 4;
-                patColData[patIdx] = 200;
-                patColData[patIdx + 1] = 200;
-                patColData[patIdx + 2] = 200;
+                for (let m = 0; m < stride; m++) {
+                    for (let n = 0; n < stride; n++) {
+                        let patIdx = (j*3*stride + addPix[k][1]*stride + m) * (canvasImg.width * 4) + (i*3*stride + addPix[k][0]*stride + n) * 4;
+                        patColData[patIdx] = 250;
+                        patColData[patIdx + 1] = 250;
+                        patColData[patIdx + 2] = 250;
+                    }
+                }
+                // let patIdx = (j*3 + addPix[k][1]) * (canvasImg.width * 4) + (i*3 + addPix[k][0]) * 4;
+                // patColData[patIdx] = 200;
+                // patColData[patIdx + 1] = 200;
+                // patColData[patIdx + 2] = 200;
             }
         }
     }
