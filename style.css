@@ -1,5 +1,13 @@
+body {
+  background-color: #f8f9fa;
+}
+
 .pimg, #canvas_img {
-  width: 100vw;
+  /* width: 100vw;
   height: 100vh;
-  display: block;
+  display: block; */
+  /* background-color: aqua; */
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
 }

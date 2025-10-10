@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World!</h1>
-<p>Website coming soon!</p>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>TheKnowDough</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        <p>Website coming soon!</p>
 
-<div style="display:none;">
-<img id="logo" width="450" height="300" src="images/logo.png">
-</div>
+        <div style="display:none;">
+            <img id="logo" width="500" height="300" src="images/logo.png">
+        </div>
 
-<div style="display:none;">
-<img class="patterned_img" id="awwp" src="images/awwp_01.JPG">
-</div>
+        <div style="display:none;">
+            <img class="patterned_img" id="awwp" src="images/awwp_01.JPG">
+        </div>
 
-<!-- Logo -->
-<div>
-    <canvas id="canvas_logo" width="450" height="300"></canvas>
-</div>
-<script src="gen_logo.js"></script>
+        <!-- Logo -->
+        <div>
+            <canvas id="canvas_logo" width="500" height="300"></canvas>
+        </div>
+        <script src="gen_logo.js"></script>
 
-<!-- Patterned image -->
-<div class="pimg">
-    <canvas id="canvas_img"></canvas>
-</div>
-<script src="pattern_img.js"></script>
 
-</body>
+
+        <!-- Patterned image -->
+        <div class="pimg">
+            <canvas id="canvas_img"></canvas>
+        </div>
+        <script src="pattern_img.js"></script>
+
+    </body>
 </html>

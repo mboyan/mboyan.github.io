@@ -36,9 +36,9 @@ function drawPImg()
 
     // Fill default color
     for (let i = 0; i < patColData.length; i += 4){
-        patColData[i] = 100;
-        patColData[i + 1] = 100;
-        patColData[i + 2] = 100;
+        patColData[i] = 73;
+        patColData[i + 1] = 80;
+        patColData[i + 2] = 87;
         patColData[i + 3] = 255;
     }
 
@@ -78,8 +78,8 @@ function drawPImg()
                 for (let m = 0; m < stride; m++) {
                     for (let n = 0; n < stride; n++) {
                         let patIdx = (j*3*stride + addPix[k][1]*stride + m) * (canvasImg.width * 4) + (i*3*stride + addPix[k][0]*stride + n) * 4;
-                        patColData[patIdx] = 250;
-                        patColData[patIdx + 1] = 250;
+                        patColData[patIdx] = 248;
+                        patColData[patIdx + 1] = 249;
                         patColData[patIdx + 2] = 250;
                     }
                 }

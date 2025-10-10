@@ -277,15 +277,18 @@ class ParticleSystem {
         // }
         ctxLogo.beginPath();
         ctxLogo.lineWidth = 5;
+        ctxLogo.lineCap = "round";
+        ctxLogo.strokeStyle = "black";
         ctxLogo.moveTo(this.particles[0].x, this.particles[0].y);
         for (let i = 0; i < this.nParticles; i++){
+            // ctxLogo.lineWidth = 0.5 * (this.particles[i].radius + this.particles[(i + 1) % this.nParticles].radius);
             var xc = 0.5 * (this.particles[i].x + this.particles[(i + 1) % this.nParticles].x);
             var yc = 0.5 * (this.particles[i].y + this.particles[(i + 1) % this.nParticles].y);
             ctxLogo.quadraticCurveTo(this.particles[i].x, this.particles[i].y, xc, yc);
+            // ctxLogo.stroke();
         }
-        ctxLogo.lineCap = "round";
+        
         ctxLogo.closePath();
-        ctxLogo.strokeStyle = "black";
         ctxLogo.stroke();
         // for (let s of this.springs) {
         //     ctxLogo.beginPath();
@@ -308,7 +311,7 @@ class ParticleSystem {
 
 // Circular boundary
 let bndry = {
-    midX: 215,
+    midX: 250,
     midY: 150,
     rad: 45
 }
@@ -321,7 +324,7 @@ var baseSmoothing = 0.008;
 pSystem = new ParticleSystem(nParticles, bndry, 1.0, 0.9, 0.00, 8., baseSmoothing);
 
 logo.onload = () => {
-    ctxLogo.drawImage(logo, 0, 0, 450, 300);
+    ctxLogo.drawImage(logo, 0, 0, 500, 300);
 }
 
 function shiftedTanh(startVal, endVal, t, t_offset = 10.)
@@ -364,8 +367,8 @@ function draw()
 
     // Clear canvasLogo
     ctxLogo.clearRect(0, 0, canvasLogo.width, canvasLogo.height);
-    ctxLogo.drawImage(logo, 0, 0, 450, 300);
-    ctxLogo.clearRect(158, 96, 108, 108);
+    ctxLogo.drawImage(logo, 0, 0, 500, 300);
+    ctxLogo.clearRect(200, 100, 100, 100);
 
     // Update and display particle system
     pSystem.display();
