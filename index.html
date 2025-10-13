@@ -5,8 +5,8 @@
         <title>TheKnowDough</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <p>Website coming soon!</p>
+        <!-- <h1>Hello World!</h1>
+        <p>Website coming soon!</p> -->
 
         <div style="display:none;">
             <img id="logo" width="500" height="300" src="images/logo.png">
@@ -16,9 +16,66 @@
             <img class="patterned_img" id="awwp" src="images/awwp_01.JPG">
         </div>
 
-        <!-- Logo -->
+        <!-- Logo & navigation -->
         <div>
             <canvas id="canvas_logo" width="500" height="300"></canvas>
+            <ul class="nav">
+                <li>
+                    <!-- <a href="index.html">
+                        <img onmouseover="this.src='buttons/button-home-active.png'" onmouseout="this.src='buttons/button-home.png'" src="buttons/button-home.png" alt="Home" width="100" height="100">
+                    </a> -->
+                    <a href="index.html">
+                    <div class="nav-item">
+                        <img src="buttons/button-home.png" alt="Home" class="first" width="100px" height="100px"/>
+                        <img src="buttons/button-home-active.png" class="second" width="100px" height="100px" />
+                    </div>
+                    </a>
+                </li>
+                <li>
+                    <!-- <a href="index.html">
+                        <img onmouseover="this.src='buttons/button-bio-active.png'" onmouseout="this.src='buttons/button-bio.png'" src="buttons/button-bio.png" alt="Bio" width="100" height="100">
+                    </a> -->
+                    <a href="index.html">
+                    <div class="nav-item">
+                        <img src="buttons/button-bio.png" alt="Bio" class="first" width="100px" height="100px"/>
+                        <img src="buttons/button-bio-active.png" class="second" width="100px" height="100px" />
+                    </div>
+                    </a>
+                </li>
+                <li>
+                    <!-- <a href="index.html">
+                        <img onmouseover="this.src='buttons/button-proj-active.png'" onmouseout="this.src='buttons/button-proj.png'" src="buttons/button-proj.png" alt="Projects" width="100" height="100">
+                    </a> -->
+                    <a href="index.html">
+                    <div class="nav-item">
+                        <img src="buttons/button-proj.png" alt="Project" class="first" width="100px" height="100px"/>
+                        <img src="buttons/button-proj-active.png" class="second" width="100px" height="100px" />
+                    </div>
+                    </a>
+                </li>
+                <li>
+                    <!-- <a href="index.html">
+                        <img onmouseover="this.src='buttons/button-sols-active.png'" onmouseout="this.src='buttons/button-sols.png'" src="buttons/button-sols.png" alt="Solutions" width="100" height="100">
+                    </a> -->
+                    <a href="index.html">
+                    <div class="nav-item">
+                        <img src="buttons/button-sols.png" alt="Solutions" class="first" width="100px" height="100px"/>
+                        <img src="buttons/button-sols-active.png" class="second" width="100px" height="100px" />
+                    </div>
+                    </a>
+                </li>
+                <li>
+                    <!-- <a href="index.html">
+                        <img onmouseover="this.src='buttons/button-contact-active.png'" onmouseout="this.src='buttons/button-contact.png'" src="buttons/button-contact.png" alt="Contact" width="100" height="100">
+                    </a> -->
+                    <a href="index.html">
+                    <div class="nav-item">
+                        <img src="buttons/button-contact.png" alt="Contact" class="first" width="100px" height="100px"/>
+                        <img src="buttons/button-contact-active.png" class="second" width="100px" height="100px" />
+                    </div>
+                    </a>
+                </li>
+            </ul>
         </div>
         <script src="gen_logo.js"></script>
 
@@ -27,6 +84,23 @@
         <!-- Patterned image -->
         <div class="pimg">
             <canvas id="canvas_img"></canvas>
+            <div class="overlay-text">
+                <p>
+                    <i>TheKnowDough</i> is an ever-evolving inter-disciplinary practice than channels visions through algorithmic processes to solve, explore and produce manifestations of complexity.
+                    Founded by Boyan Mihaylov, it fuses trajectories through product design, computational science, architecture, generative visuals and music.</p>
+
+                <p><i>TheKnowDough</i> unites these fields under common creative philosophy and ethics:
+                <ul>
+                    <li><b>A focus on creating processes rather than static objects.</b> Procedural design (creating your own instructions) enhances exploration compared to explicit crafting (following pre-defined instructions). Similarly, a product is never in a "finished" state, but is subject to ongoing environmental changes.</li>
+                    <li><b>Technology should aid curiosity, not stifle it.</b> Advanced computation is only valuable to human knowledge as long as it is an extension of human thinking, inspires exploration and allows critical dissection through tangible underlying processes.</li>
+                    <li><b>Technology should aid a better world, not serve itself.</b> Whether through advancing knowledge for mindful control of complex systems, or by subjecting itself to a responsible use of resources, computation should be an instrument for improving natural, not artificial, ecosystems.</li>
+                </p>
+
+                <blockquote>Once men turned their thinking over to machines in the hope that this would set them free. But that only permitted other men with machines to enslave them. <br>(Frank Herbert, <i>Dune</i>, 1965)</blockquote>
+
+Nature carries an inherent capacity to compute. The work of TheKnowDough is driven by a fascination with the natural intelligence found in biological, chemical and physical systems. This serves both as an inspiration (translating natural principles to form and function) and as an object of study (applying computational modelling to understand nature better).
+                </p>
+            </div>
         </div>
         <script src="pattern_img.js"></script>
 

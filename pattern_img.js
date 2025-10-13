@@ -91,7 +91,7 @@ function drawPImg()
         }
     }
     // console.log(addPix.legnth);
-    console.log("foo");
+    // console.log("foo");
 
     ctxImg.putImageData(patData, 0, 0);
 }
