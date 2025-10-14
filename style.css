@@ -1,6 +1,9 @@
 body {
   background-color: #f8f9fa;
-  font-family: 'Gill Sans', 'Arial', sans-serif;
+  /* font-family: 'Gill Sans', 'Arial', sans-serif; */
+  /* font-family: 'Optima', 'Segoe', 'Segoe UI', 'Candara', 'Calibri', 'Arial', sans-serif; */
+  /* font-family: 'Dejavu Sans', 'Arial', 'Verdana', sans-serif; */
+  font-family: 'Courier New', 'Courier', 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 }
 
 #canvas_logo {
@@ -78,21 +81,27 @@ ul.nav li a {
 
 /* Text content */
 
+/* p {
+  color: #212529;
+} */
+
 .overlay-text {
-  background-color: #f8f9fa81;
+  background-color: #f8f9fad1;
   position: absolute;
   top: 10px;
   left: 10px;
   /* transform: translate(-10px, -10px); */
-  color: black;
-  font-size: 18px;
+  color: #212529;
+  font-size: 1em;
   width: 400px;
   /* pointer-events: none; */
   padding: 50px;
   /* text-align: justify; */
 }
 
-
+ul li {
+  padding: 10px 0px;
+}
 
 /* p {
   font-family: 'Gill Sans', 'Arial', sans-serif;
