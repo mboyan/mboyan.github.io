@@ -325,6 +325,7 @@ pSystem = new ParticleSystem(nParticles, bndry, 1.0, 0.9, 0.00, 8., baseSmoothin
 
 logo.onload = () => {
     ctxLogo.drawImage(logo, 0, 0, 500, 300);
+    draw();
 }
 
 function shiftedTanh(startVal, endVal, t, t_offset = 10.)

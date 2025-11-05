@@ -5,9 +5,24 @@ const img = document.getElementsByClassName("patterned_img")[0];
 
 // ctxImg.drawImage(img, 0, 0, canvasImg.width, img.height);
 
-let redStencil = [[0, 0], [1, 1], [2, 2]];
-let greenStencil = [[0, 2], [2, 1], [2, 0]];
-let blueStencil = [[0, 1], [1, 0], [1, 2]];
+// Create 3x3 stencil
+let stencil = [];
+for (let i = 0; i < 3; i++){
+    for (let j = 0; j < 3; j++){
+        stencil[i*3 + j] = [i, j];
+    }
+}
+
+console.log(stencil);
+
+// let redStencil = [[0, 0], [1, 1], [2, 2]];
+// let greenStencil = [[0, 2], [2, 1], [2, 0]];
+// let blueStencil = [[0, 1], [1, 0], [1, 2]];
+let redStencil = [0, 4, 8];
+let greenStencil = [6, 5, 2];
+let blueStencil = [3, 1, 7];
+
+console.log(redStencil.includes(0));
 
 let stride = 1;
 
@@ -36,9 +51,12 @@ function drawPImg()
 
     // Fill default color
     for (let i = 0; i < patColData.length; i += 4){
-        patColData[i] = 73;
-        patColData[i + 1] = 80;
-        patColData[i + 2] = 87;
+        // patColData[i] = 73;
+        // patColData[i + 1] = 80;
+        // patColData[i + 2] = 87;
+        patColData[i] = 248;
+        patColData[i + 1] = 249;
+        patColData[i + 2] = 250;
         patColData[i + 3] = 255;
     }
 
@@ -52,42 +70,46 @@ function drawPImg()
             let green = imgColData[idx + 1];
             let blue = imgColData[idx + 2];
 
-            // console.log(red);
-
-            let addPix = redStencil.slice(0, Math.ceil(red / 64));
-            addPix = addPix.concat(greenStencil.slice(0, Math.ceil(green / 64)));
-            addPix = addPix.concat(blueStencil.slice(0, Math.ceil(blue / 64)));
-
-            // if (red > 128) {
-            //     let patIdx = j * 3 * canvasImg.width * 4 + i * 12;
-            //     patColData[patIdx] = 0;
-            //     patColData[patIdx + 1] = 0;
-            //     patColData[patIdx + 2] = 0;
-            // }
-
-            // console.log(addPix.length);
-
-            // let patIdx = j * 3 * canvasImg.width * 4 + i * 3 * 4;
-
-            // patColData[idx] = 200;
-            // patColData[patIdx] = 0;
-            // patColData[patIdx + 1] = 0;
-            // patColData[patIdx + 2] = 0;
-
-            for (let k = 0; k < addPix.length; k++) {
-                for (let m = 0; m < stride; m++) {
-                    for (let n = 0; n < stride; n++) {
-                        let patIdx = (j*3*stride + addPix[k][1]*stride + m) * (canvasImg.width * 4) + (i*3*stride + addPix[k][0]*stride + n) * 4;
-                        patColData[patIdx] = 248;
-                        patColData[patIdx + 1] = 249;
-                        patColData[patIdx + 2] = 250;
+            // let addPix = redStencil.slice(0, Math.ceil(red / 64));
+            // addPix = addPix.concat(greenStencil.slice(0, Math.ceil(green / 64)));
+            // addPix = addPix.concat(blueStencil.slice(0, Math.ceil(blue / 64)));
+            let stencilIndices = redStencil.slice(0, Math.ceil(red / 64));
+            stencilIndices = stencilIndices.concat(greenStencil.slice(0, Math.ceil(green / 64)));
+            stencilIndices = stencilIndices.concat(blueStencil.slice(0, Math.ceil(blue / 64)));
+            
+            for (let k = 0; k < 3; k++){
+                for (let p = 0; p < 3; p++){
+                    let testIdx = k*3 + p;
+                    if (!stencilIndices.includes(testIdx)){
+                        for (let m = 0; m < stride; m++) {
+                            for (let n = 0; n < stride; n++) {
+                                let addPix = stencil[testIdx];
+                                let patIdx = (j*3*stride + k*stride + m) * (canvasImg.width * 4) + (i*3*stride + p*stride + n) * 4;
+                                // patColData[patIdx] = 248;
+                                // patColData[patIdx + 1] = 249;
+                                // patColData[patIdx + 2] = 250;
+                                patColData[patIdx] = 73;
+                                patColData[patIdx + 1] = 80;
+                                patColData[patIdx + 2] = 87;
+                            }
+                        }
                     }
                 }
-                // let patIdx = (j*3 + addPix[k][1]) * (canvasImg.width * 4) + (i*3 + addPix[k][0]) * 4;
-                // patColData[patIdx] = 200;
-                // patColData[patIdx + 1] = 200;
-                // patColData[patIdx + 2] = 200;
             }
+
+            // for (let k = 0; k < addPix.length; k++) {
+            //     for (let m = 0; m < stride; m++) {
+            //         for (let n = 0; n < stride; n++) {
+            //             let patIdx = (j*3*stride + addPix[k][1]*stride + m) * (canvasImg.width * 4) + (i*3*stride + addPix[k][0]*stride + n) * 4;
+            //             // patColData[patIdx] = 248;
+            //             // patColData[patIdx + 1] = 249;
+            //             // patColData[patIdx + 2] = 250;
+            //             patColData[patIdx] = 73;
+            //             patColData[patIdx + 1] = 80;
+            //             patColData[patIdx + 2] = 87;
+            //         }
+            //     }
+            // }
         }
     }
     // console.log(addPix.legnth);
@@ -105,4 +127,4 @@ function resizeCanvas()
 
 img.onload = resizeCanvas;
 window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+// resizeCanvas();
