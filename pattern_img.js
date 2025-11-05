@@ -3,6 +3,8 @@ let canvasImg = document.getElementById("canvas_img");
 let ctxImg = canvasImg.getContext("2d");
 const img = document.getElementsByClassName("patterned_img")[0];
 
+// ctxImg.imageSmoothingEnabled = false;
+
 // ctxImg.drawImage(img, 0, 0, canvasImg.width, img.height);
 
 // Create 3x3 stencil
@@ -13,7 +15,7 @@ for (let i = 0; i < 3; i++){
     }
 }
 
-console.log(stencil);
+// console.log(stencil);
 
 // let redStencil = [[0, 0], [1, 1], [2, 2]];
 // let greenStencil = [[0, 2], [2, 1], [2, 0]];
@@ -22,7 +24,7 @@ let redStencil = [0, 4, 8];
 let greenStencil = [6, 5, 2];
 let blueStencil = [3, 1, 7];
 
-console.log(redStencil.includes(0));
+// console.log(redStencil.includes(0));
 
 let stride = 1;
 
@@ -44,8 +46,8 @@ function drawPImg()
     const imgColData = imgData.data;
     const patData = ctxImg.createImageData(canvasImg.width, canvasImg.height);
     const patColData = patData.data;
-    let roughWidth = Math.ceil(canvasImg.width / (3 * stride));
-    let roughHeight = Math.ceil(canvasImg.height / (3 * stride));
+    let roughWidth = Math.floor(canvasImg.width / (3 * stride));
+    let roughHeight = Math.floor(canvasImg.height / (3 * stride));
 
     // console.log(roughWidth);
 
@@ -120,8 +122,9 @@ function drawPImg()
 
 function resizeCanvas()
 {
-    canvasImg.width = window.innerWidth;
-    canvasImg.height = img.height * window.innerWidth / img.width;
+    const maxWidth = 1200;
+    canvasImg.width = Math.min(window.innerWidth, maxWidth);
+    canvasImg.height = img.height * canvasImg.width / img.width;
     drawPImg();
 }
 
