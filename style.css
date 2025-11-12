@@ -14,7 +14,7 @@ body {
   /* border: 3px solid red; */
 }
 
-#canvas_logo {
+#canvas-logo {
   margin: auto;
   border: 0px;
   padding: 0;
@@ -23,7 +23,7 @@ body {
   /* border: 3px solid green; */
 }
 
-.pimg, #canvas_img {
+.pimg, #canvas-img {
   /* width: 100vw;
   height: 100vh;
   display: block; */
@@ -40,7 +40,7 @@ body {
   /* border: 3px solid green; */
 }
 
-.page-header {
+#page-header {
   margin: auto;
   padding: 100px 0 0 0;
   width: 500px;
@@ -117,6 +117,59 @@ ul.nav li a {
 
 .nav-item:hover img.second {
   opacity: 1;
+}
+
+button {
+  transition-duration: 0.5s;
+}
+
+.nav-button {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-color: #f8f9fa;
+  border: none;
+  cursor: pointer;
+}
+
+#button-home {
+  background-image: url("buttons/button-home.png");
+}
+
+#button-home:hover {
+  background-image: url("buttons/button-home-active.png");
+}
+
+#button-bio {
+  background-image: url("buttons/button-bio.png");
+}
+
+#button-bio:hover {
+  background-image: url("buttons/button-bio-active.png");
+}
+
+#button-proj {
+  background-image: url("buttons/button-proj.png");
+}
+
+#button-proj:hover {
+  background-image: url("buttons/button-proj-active.png");
+}
+
+#button-sols {
+  background-image: url("buttons/button-sols.png");
+}
+
+#button-sols:hover {
+  background-image: url("buttons/button-sols-active.png");
+}
+
+#button-contact {
+  background-image: url("buttons/button-contact.png");
+}
+
+#button-contact:hover {
+  background-image: url("buttons/button-contact-active.png");
 }
 
 /* ===== Text content ===== */

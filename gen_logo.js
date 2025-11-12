@@ -1,8 +1,3 @@
-// Initializing the canvas
-let canvasLogo = document.getElementById("canvas_logo");
-let ctxLogo = canvasLogo.getContext("2d");
-const logo = document.getElementById("logo");
-
 class Particle {
     static color = "rgba(255, 0, 0, 0.5)";
     constructor(x, y, radius, mass = 1, dragCoeff = 0.1, initNoise = 0.01)
@@ -309,12 +304,6 @@ class ParticleSystem {
     }
 }
 
-// Circular boundary
-let bndry = {
-    midX: 250,
-    midY: 150,
-    rad: 45
-}
 
 var nParticles = 120;
 var frameCt = 0;
@@ -324,8 +313,9 @@ var baseSmoothing = 0.008;
 pSystem = new ParticleSystem(nParticles, bndry, 1.0, 0.9, 0.00, 8., baseSmoothing);
 
 logo.onload = () => {
-    ctxLogo.drawImage(logo, 0, 0, 500, 300);
-    draw();
+    console.log(canvasLogo.height);
+    ctxLogo.drawImage(logo, 0, 0, canvasLogo.width, canvasLogo.height);
+    drawGenLogo1();
 }
 
 function shiftedTanh(startVal, endVal, t, t_offset = 10.)
@@ -334,7 +324,7 @@ function shiftedTanh(startVal, endVal, t, t_offset = 10.)
     return startVal + (Math.tanh(t - t_offset) * 0.5 + 0.5) * amp;
 }
 
-function draw()
+function drawGenLogo1()
 {
     // Grow particle radii
     let maxRadAdd = shiftedTanh(1.0, 3.0, frameCt * 0.005, 2.5);
@@ -368,8 +358,9 @@ function draw()
 
     // Clear canvasLogo
     ctxLogo.clearRect(0, 0, canvasLogo.width, canvasLogo.height);
-    ctxLogo.drawImage(logo, 0, 0, 500, 300);
-    ctxLogo.clearRect(200, 100, 100, 100);
+    ctxLogo.drawImage(logo, 0, 0, canvasLogo.width, canvasLogo.height);
+    // console.log(canvasLogo.height);
+    ctxLogo.clearRect(bndry.midX-50, bndry.midY-50, 100, 100);
 
     // Update and display particle system
     pSystem.display();
@@ -385,4 +376,4 @@ function draw()
     frameCt++;
 }
 
-setInterval(draw, 1);
+genLogoInterval = setInterval(drawGenLogo1, 1);

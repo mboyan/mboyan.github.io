@@ -11,60 +11,83 @@
         </div>
 
         <div style="display:none;">
+            <img id="header-bio" width="500" height="100" src="images/page_header_bio.png">
+        </div>
+
+        <div style="display:none;">
+            <img id="header-proj" width="500" height="100" src="images/page_header_proj.png">
+        </div>
+
+        <div style="display:none;">
+            <img id="header-sols" width="500" height="100" src="images/page_header_sols.png">
+        </div>
+
+        <div style="display:none;">
+            <img id="header-contact" width="500" height="100" src="images/page_header_contact.png">
+        </div>
+
+        <div style="display:none;">
             <img class="patterned_img" id="awwp" src="images/awwp_01.JPG">
         </div>
 
         <!-- Logo & navigation -->
-        <div class="page-header">
-            <canvas id="canvas_logo" width="500" height="300"></canvas>
+        <div id="page-header">
+            <canvas id="canvas-logo" width="500" height="300"></canvas>
             <ul class="nav">
                 <li>
-                    <a href="index.html">
-                    <div class="nav-item">
-                        <img src="buttons/button-home.png" alt="Home" class="first" width="100px" height="100px"/>
-                        <img src="buttons/button-home-active.png" class="second" width="100px" height="100px" />
-                    </div>
-                    </a>
+                    <button class="nav-button" id="button-home" type="button" onclick="document.getElementById('main-iframe').src=`home.htm`">
+                    <!-- <a href="index.htm">
+                    <div class="nav-item"> -->
+                        <!-- <img src="buttons/button-home.png" alt="Home" class="first" width="100px" height="100px"/>
+                        <img src="buttons/button-home-active.png" class="second" width="100px" height="100px" /> -->
+                    <!-- </div>
+                    </a> -->
+                    </button>
                 </li>
                 <li>
-                    <a href="index.html">
+                    <button class="nav-button" id="button-bio" type="button" onclick="document.getElementById('main-iframe').src=`home.htm`"></button>
+                    <!-- <a href="index.htm">
                     <div class="nav-item">
                         <img src="buttons/button-bio.png" alt="Bio" class="first" width="100px" height="100px"/>
                         <img src="buttons/button-bio-active.png" class="second" width="100px" height="100px" />
                     </div>
-                    </a>
+                    </a> -->
                 </li>
                 <li>
-                    <a href="index.html">
+                    <button class="nav-button" id="button-proj" type="button" onclick="document.getElementById('main-iframe').src=`proj.htm`"></button>
+                    <!-- <a href="index.htm">
                     <div class="nav-item">
                         <img src="buttons/button-proj.png" alt="Project" class="first" width="100px" height="100px"/>
                         <img src="buttons/button-proj-active.png" class="second" width="100px" height="100px" />
                     </div>
-                    </a>
+                    </a> -->
                 </li>
                 <li>
-                    <a href="index.html">
+                    <button class="nav-button" id="button-sols" type="button" onclick="document.getElementById('main-iframe').src=`home.htm`"></button>
+                    <!-- <a href="index.htm">
                     <div class="nav-item">
                         <img src="buttons/button-sols.png" alt="Solutions" class="first" width="100px" height="100px"/>
                         <img src="buttons/button-sols-active.png" class="second" width="100px" height="100px" />
                     </div>
-                    </a>
+                    </a> -->
                 </li>
                 <li>
-                    <a href="index.html">
+                    <button class="nav-button" id="button-contact" type="button" onclick="document.getElementById('main-iframe').src=`home.htm`"></button>
+                    <!-- <a href="index.htm">
                     <div class="nav-item">
                         <img src="buttons/button-contact.png" alt="Contact" class="first" width="100px" height="100px"/>
                         <img src="buttons/button-contact-active.png" class="second" width="100px" height="100px" />
                     </div>
-                    </a>
+                    </a> -->
                 </li>
             </ul>
         </div>
+        <script src="header_transitions.js"></script>
         <script src="gen_logo.js"></script>
 
         <!-- Pages in iframe -->
         <div class="iframe-container">
-            <iframe src="home.htm"></iframe>
+            <iframe id="main-iframe" src="home.htm"></iframe>
         </div>
 
         <!-- Patterned image -->

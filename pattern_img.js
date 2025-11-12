@@ -1,5 +1,5 @@
 // Initializing the canvas
-let canvasImg = document.getElementById("canvas_img");
+let canvasImg = document.getElementById("canvas-img");
 let ctxImg = canvasImg.getContext("2d");
 const img = document.getElementsByClassName("patterned_img")[0];
 
