@@ -358,6 +358,16 @@ function drawGenLogo1()
 
     // Clear canvasLogo
     ctxLogo.clearRect(0, 0, canvasLogo.width, canvasLogo.height);
+
+    // ctxLogo.setTransform(
+    //     canvasLogo.clientWidth / canvasLogo.width,
+    //     0,
+    //     0,
+    //     canvasLogo.clientHeight / canvasLogo.height,
+    //     0,
+    //     0
+    // );
+
     ctxLogo.drawImage(logo, 0, 0, canvasLogo.width, canvasLogo.height);
     // console.log(canvasLogo.height);
     ctxLogo.clearRect(bndry.midX-50, bndry.midY-50, 100, 100);
