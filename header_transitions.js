@@ -185,10 +185,6 @@ function animateHeight() {
     rafId = requestAnimationFrame(animateHeight);
 }
 
-
-// --------------------------------------------
-// FINALIZE WITHOUT JUMP
-// --------------------------------------------
 function finalizeHeight() {
 
     canvasLogo.style.height = targetHeight + "px";
@@ -204,13 +200,11 @@ function finalizeHeight() {
 
     // Restart logo animation
     ctxLogo.clearRect(0, 0, canvasLogo.width, canvasLogo.height);
+    frameCt = 0;
+    pSystem = new ParticleSystem(nParticles, bndry, 1.0, 0.9, 0.00, 8., baseSmoothing);
     genLogoInterval = setInterval(drawGenLogo1, 1);
 }
 
-
-// --------------------------------------------
-// TRANSITION REQUEST HELPERS
-// --------------------------------------------
 function startTransition() {
     cancelAnimationFrame(rafId);
     clearInterval(genLogoInterval);
@@ -221,9 +215,6 @@ function startTransition() {
 
     // Clear canvas completely
     ctxLogo.clearRect(0, 0, canvasLogo.width, canvasLogo.height);
-
-    // Redraw the base logo immediately (optional)
-    ctxLogo.drawImage(targetLogo, 0, 0, canvasLogo.width, canvasLogo.height);
 
     if (!animating) {
         animating = true;

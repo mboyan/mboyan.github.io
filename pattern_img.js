@@ -128,6 +128,23 @@ function resizeCanvas()
     drawPImg();
 }
 
-img.onload = resizeCanvas;
+// let fadeCt = 0;
+function shrinkStride()
+{
+    if (stride > 1) {
+        stride -= 1;
+        resizeCanvas();
+    }
+    else {
+        stride = 1;
+        clearInterval(strideFuncInterval);
+    }
+}
+
+img.onload = () => {
+    resizeCanvas();
+    stride = 10;
+    strideFuncInterval = setInterval(shrinkStride, 10);
+}
 window.addEventListener('resize', resizeCanvas);
 // resizeCanvas();

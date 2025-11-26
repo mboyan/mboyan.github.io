@@ -50,15 +50,11 @@ body {
 }
 
 .iframe-container{
-  /* padding: 0; */
-  /* display: flex; */
   flex-direction: column;
   height: 100%;
 }
 
 iframe {
-  /* padding: 0; */
-  /* flex: 1; */
   width: 100%;
   height: 100%;
   border: none;
@@ -175,10 +171,6 @@ button {
 
 /* ===== Text content ===== */
 
-/* p {
-  color: #212529;
-} */
-
 .overlay-text-container {
   display: flex;
   margin: auto;
@@ -186,9 +178,11 @@ button {
   top: 0px;
   left: 0px;
   width: 100%;
+  /* width: 480px; */
   /* border: 3px solid green; */
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .overlay-text {
@@ -220,3 +214,99 @@ h2 {
 /* p {
   font-family: 'Gill Sans', 'Arial', sans-serif;
 } */
+
+/* ===== Project filters ===== */
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+#filter-button-container{
+  margin: auto;
+  /* width: 100%;
+  height: 100%; */
+  /* overflow: hidden; */
+  display: flex;
+  width: 500px;
+  flex-direction: row;
+  /* border: 3px solid rgb(128, 19, 0); */
+}
+
+.filter-items-container {
+  /* margin-top: 20px; */
+  margin: auto;
+  /* overflow: hidden; */
+  /* border: 3px solid rgb(128, 19, 0); */
+}
+
+.filter-btn {
+  border: none;
+  outline: none;
+  /* padding: 12px 16px; */
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background-color: #ddd;
+}
+
+.filter-btn.active {
+  background-color: #666;
+  color: white;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  width: 125px;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-filters {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  /* text-align: left; */
+  position: absolute;
+  background-color: #f9f9f9;
+  /* min-width: 200px; */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* .dropdown-filters a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+} */
+
+.dropdown-filters:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-filters {
+  display: flex;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}

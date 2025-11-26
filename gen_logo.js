@@ -356,6 +356,16 @@ function drawGenLogo1()
     // Update particle system
     pSystem.update(0.18);
 
+    // ----------------
+    // DRAW
+    // ----------------
+
+    if (frameCt <= 100) {
+        // ctxLogo.fillStyle = rgb(255, 255, 255);
+        // ctxLogo.fillRect(0, 0, canvasLogo.width, canvasLogo.height);
+        ctxLogo.globalAlpha = frameCt / 100;
+    }
+
     // Clear canvasLogo
     ctxLogo.clearRect(0, 0, canvasLogo.width, canvasLogo.height);
 
@@ -374,6 +384,8 @@ function drawGenLogo1()
 
     // Update and display particle system
     pSystem.display();
+
+    
 
     // Debug: Draw boundary
     // ctxLogo.beginPath();

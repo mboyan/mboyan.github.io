@@ -6,5 +6,64 @@
     </head>
     <body>
 
+        <div style="display:none;">
+            <img class="patterned_img" id="awwp" src="images/awwp_01.JPG">
+        </div>
+
+        <div class="pimg">
+            <canvas id="canvas-img"></canvas>
+
+            <div class="overlay-text-container">
+                <div class="overlay-text">
+                    <h3>Filter by</h3>
+                
+                
+                    <div id="filter-button-container">
+                        <div class="dropdown">
+                            <button class="dropbtn">Engagement</button>
+                            <div class="dropdown-filters">
+                                <button class="filter-btn" onclick="filterSelection('cars')">Cars</button>
+                                <button class="filter-btn" onclick="filterSelection('animals')">Animals</button>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">Realisation</button>
+                            <div class="dropdown-filters">
+                                <button class="filter-btn" onclick="filterSelection('fruits')">Fruits</button>
+                                <button class="filter-btn" onclick="filterSelection('colors')">Colors</button>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">Discipline</button>
+                            <div class="dropdown-filters">
+                                <button class="filter-btn" onclick="filterSelection('fruits')">Fruits</button>
+                                <button class="filter-btn" onclick="filterSelection('colors')">Colors</button>
+                            </div>
+                        </div>
+                        <button class="dropbtn active" onclick="filterSelection('all')">Show all</button>
+                    </div>
+
+                    <div class="filter-items-container">
+                        <div class="filterDiv cars">BMW</div>
+                        <div class="filterDiv colors fruits">Orange</div>
+                        <div class="filterDiv cars">Volvo</div>
+                        <div class="filterDiv colors">Red</div>
+                        <div class="filterDiv cars">Ford</div>
+                        <div class="filterDiv colors">Blue</div>
+                        <div class="filterDiv animals">Cat</div>
+                        <div class="filterDiv animals">Dog</div>
+                        <div class="filterDiv fruits">Melon</div>
+                        <div class="filterDiv fruits animals">Kiwi</div>
+                        <div class="filterDiv fruits">Banana</div>
+                        <div class="filterDiv fruits">Lemon</div>
+                        <div class="filterDiv animals">Cow</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="filter_projects.js"></script>
+        <script src="pattern_img.js"></script>
     </body>
 </html>
