@@ -20,43 +20,58 @@
                 
                     <div id="filter-button-container">
                         <div class="dropdown">
-                            <button class="dropbtn">Engagement</button>
+                            <button class="dropbtn engagement">Engagement</button>
                             <div class="dropdown-filters">
-                                <button class="filter-btn" onclick="filterSelection('cars')">Cars</button>
-                                <button class="filter-btn" onclick="filterSelection('animals')">Animals</button>
+                                <button class="filter-btn engagement" onclick="changeFilter('engagement', 'hire')">Work-for-hire</button>
+                                <button class="filter-btn engagement" onclick="changeFilter('engagement', 'freelance')">Freelance</button>
+                                <button class="filter-btn engagement" onclick="changeFilter('engagement', 'colab')">Collaboration</button>
+                                <button class="filter-btn engagement" onclick="changeFilter('engagement', 'academic')">Academic</button>
+                                <button class="filter-btn engagement" onclick="changeFilter('engagement', 'commission')">Commission</button>
+                                <button class="filter-btn engagement" onclick="changeFilter('engagement', 'independent')">Independent</button>
+                                <!-- <button class="filter-btn engagement resetter" onclick="changeFilter('engagement', 'allE')">All</button> -->
                             </div>
                         </div>
                         <div class="dropdown">
-                            <button class="dropbtn">Realisation</button>
+                            <button class="dropbtn realisation">Realisation</button>
                             <div class="dropdown-filters">
-                                <button class="filter-btn" onclick="filterSelection('fruits')">Fruits</button>
-                                <button class="filter-btn" onclick="filterSelection('colors')">Colors</button>
+                                <button class="filter-btn realisation" onclick="changeFilter('realisation', 'physical')">Physical</button>
+                                <button class="filter-btn realisation" onclick="changeFilter('realisation', 'digital')">Digital</button>
+                                <!-- <button class="filter-btn realisation resetter" onclick="changeFilter('realisation', 'allR')">All</button> -->
                             </div>
                         </div>
                         <div class="dropdown">
-                            <button class="dropbtn">Discipline</button>
+                            <button class="dropbtn discipline">Discipline</button>
                             <div class="dropdown-filters">
-                                <button class="filter-btn" onclick="filterSelection('fruits')">Fruits</button>
-                                <button class="filter-btn" onclick="filterSelection('colors')">Colors</button>
+                                <button class="filter-btn discipline" onclick="changeFilter('discipline', 'architecture')">Architecture</button>
+                                <button class="filter-btn discipline" onclick="changeFilter('discipline', 'art')">Art</button>
+                                <button class="filter-btn discipline" onclick="changeFilter('discipline', 'design')">Design</button>
+                                <button class="filter-btn discipline" onclick="changeFilter('discipline', 'visuals')">Visuals</button>
+                                <button class="filter-btn discipline" onclick="changeFilter('discipline', 'graphics')">Graphics</button>
+                                <button class="filter-btn discipline" onclick="changeFilter('discipline', 'science')">Science</button>
+                                <button class="filter-btn discipline" onclick="changeFilter('discipline', 'sound')">Sound</button>
+                                <button class="filter-btn discipline" onclick="changeFilter('discipline', 'video')">Video</button>
+                                <button class="filter-btn discipline" onclick="changeFilter('discipline', 'web')">Web</button>
+                                <!-- <button class="filter-btn discipline resetter" onclick="changeFilter('discipline', 'allD')">All</button> -->
                             </div>
                         </div>
-                        <button class="dropbtn active" onclick="filterSelection('all')">Show all</button>
+                        <button class="dropbtn all" onclick="filterSelection(['all', 'all', 'all'])">Show all</button>
                     </div>
 
                     <div class="filter-items-container">
-                        <div class="filterDiv cars">BMW</div>
-                        <div class="filterDiv colors fruits">Orange</div>
-                        <div class="filterDiv cars">Volvo</div>
-                        <div class="filterDiv colors">Red</div>
-                        <div class="filterDiv cars">Ford</div>
-                        <div class="filterDiv colors">Blue</div>
-                        <div class="filterDiv animals">Cat</div>
-                        <div class="filterDiv animals">Dog</div>
-                        <div class="filterDiv fruits">Melon</div>
-                        <div class="filterDiv fruits animals">Kiwi</div>
-                        <div class="filterDiv fruits">Banana</div>
-                        <div class="filterDiv fruits">Lemon</div>
-                        <div class="filterDiv animals">Cow</div>
+                        <div class="filterDiv hire physical architecture">MX3D Bridge</div>
+                        <div class="filterDiv freelance physical architecture">The Underground Tree</div>
+                        <div class="filterDiv academic physical architecture">ICD/ITKE Research Pavilion 2011</div>
+                        <div class="filterDiv academic digital science">Master's Thesis Computational Science</div>
+                        <div class="filterDiv colab physical design">Diploria Ligthing</div>
+                        <div class="filterDiv colab digital graphics sound video visuals">WP Frequencies</div>
+                        <div class="filterDiv hire physical art design">Hygro Scope</div>
+                        <div class="filterDiv hire physical art design architecture">Room Dividers</div>
+                        <div class="filterDiv hire physical architecture">Hygro Skin</div>
+                        <div class="filterDiv hire physical design">Gradient Lounge</div>
+                        <div class="filterDiv independent digital visuals">Eyesing</div>
+                        <div class="filterDiv independent colab digital physical visuals">Activités en Forêt</div>
+                        <div class="filterDiv independent digital visuals">Hydra visuals</div>
+                        <div class="filterDiv independent digital web">This website</div>
                     </div>
 
                 </div>
