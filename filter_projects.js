@@ -1,10 +1,10 @@
 // let engagementFilter = "all";
 // let realisationFilter = "all";
 // let disciplineFilter = "all";
-let categoryFilters = ["all", "all", "all"];
-let categoryMapper = {"engagement": 0, "realisation": 1, "discipline": 2};
+let categoryFilters = ["all", "all", "all", "all"];
+let categoryMapper = {"engagement": 0, "realisation": 1, "discipline": 2, "year": 3};
 
-filterSelection("all", "all", "all");
+filterSelection(categoryFilters);
 
 function changeFilter(filter, val) {
     if (filter == "engagement") {
@@ -15,6 +15,9 @@ function changeFilter(filter, val) {
     }
     else if (filter == "discipline") {
         categoryFilters[2] = val;
+    }
+    else if (filter == "year") {
+        categoryFilters[3] = val;
     }
     filterSelection(categoryFilters);
 }
@@ -33,19 +36,16 @@ function filterSelection(catFilters) {
             catFilterCodes[i] = catFilters[i];
         }
     }
-    
-    // if (engagF.indexOf("all") > -1) engagF = "";
-    // if (realF.indexOf("all") > -1) realF = "";
-    // if (discipF.indexOf("all") > -1) discipF = "";
 
     console.log(catFilters);
+    console.log(catFilterCodes);
 
     for (i = 0; i < x.length; i++) {
         removeClass(x[i], "show");
-        if (x[i].className.indexOf(catFilterCodes[0]) > -1 && x[i].className.indexOf(catFilterCodes[1]) > -1 && x[i].className.indexOf(catFilterCodes[2]) > -1) {
+        if (catFilterCodes.every(code => x[i].className.includes(code))) {
             addClass(x[i], "show");
         }
-        console.log(x[i].className);
+        console.log(x[i].textContent + ": " + x[i].className);
     }
 }
 
@@ -78,30 +78,22 @@ for (var i = 0; i < btnContainers.length; i++) {
         // Add listener
         btns[j].addEventListener("click", function(){
 
-            // Get button category
-            // var btnCategory = this.className.split(' ')[1];
-            
-            // var current = document.getElementsByClassName("active");// + btnCategory);
-            // console.log(current);
-            
-            // Reset active filters if "All" is clicked for respective category
-            // if (this.className.indexOf("resetter") > -1) {
-            //     while (current.length > 0) {
-            //         current[0].className = current[0].className.replace(" active", "");
-            //     }
-            // }
-            // else {
-            //     var resetter = document.getElementsByClassName("resetter " + btnCategory);
-            //     console.log(resetter);
-            //     resetter[0].className = resetter[0].className.replace(" active", "");
-            // }
             if (this.className.indexOf("active") > -1) {
-                this.className.replace(" active", "");
+                this.className = this.className.replace(" active", "");
             }
             else {
                 this.className += " active";
             }
-            
+
+            // Deactivate other buttons in the same category
+            var btnCategory = this.className.split(' ')[1];
+            var others = document.getElementsByClassName(btnCategory);
+            // console.log(others);
+            for (const element of others) {
+                if (element != this) {
+                    element.className = element.className.replace(" active", "");
+                }
+            }
         });
     }
 }
@@ -112,19 +104,23 @@ for (var i = 0; i < dropContainers.length; i++) {
     dropContainers[i].addEventListener("click", function(){
         var btnCategory = this.className.split(' ')[1];
 
-        if (btnCategory == "all") { // Show all
-            btnCatAppend = "";
-            categoryFilters = ["all", "all", "all"];
-        }
-        else {
-            btnCatAppend = " " + btnCategory;
-            categoryFilters[categoryMapper[btnCategory]] = "all";
-        }
+        btnCatAppend = " " + btnCategory;
+        categoryFilters[categoryMapper[btnCategory]] = "all";
 
         var current = document.getElementsByClassName("active" + btnCatAppend);
         while (current.length > 0) {
             current[0].className = current[0].className.replace(" active", "");
-            if (btnCategory != "all") changeFilter(btnCategory, "all");
+            changeFilter(btnCategory, "all");
         }
     });
 }
+
+var showallContainer = document.getElementById("showall");
+showallContainer.addEventListener("click", function(){
+    categoryFilters = ["all", "all", "all", "all"];
+    var current = document.getElementsByClassName("active");
+    console.log(current);
+    while (current.length > 0) {
+        current[0].className = current[0].className.replace(" active", "");
+    }
+});

@@ -15,7 +15,8 @@
 
             <div class="overlay-text-container">
                 <div class="overlay-text">
-                    <h3>Filter by</h3>
+                    <h2>The following is a selection of works from the last two decades of my practice that have shaped the computational design approach of <i>TheKnowDough</i>.</h2>
+                    <h3>Filter by<button id="showall" onclick="filterSelection(['all', 'all', 'all', 'all'])">Show all</button></h3>
                 
                 
                     <div id="filter-button-container">
@@ -28,7 +29,6 @@
                                 <button class="filter-btn engagement" onclick="changeFilter('engagement', 'academic')">Academic</button>
                                 <button class="filter-btn engagement" onclick="changeFilter('engagement', 'commission')">Commission</button>
                                 <button class="filter-btn engagement" onclick="changeFilter('engagement', 'independent')">Independent</button>
-                                <!-- <button class="filter-btn engagement resetter" onclick="changeFilter('engagement', 'allE')">All</button> -->
                             </div>
                         </div>
                         <div class="dropdown">
@@ -36,7 +36,6 @@
                             <div class="dropdown-filters">
                                 <button class="filter-btn realisation" onclick="changeFilter('realisation', 'physical')">Physical</button>
                                 <button class="filter-btn realisation" onclick="changeFilter('realisation', 'digital')">Digital</button>
-                                <!-- <button class="filter-btn realisation resetter" onclick="changeFilter('realisation', 'allR')">All</button> -->
                             </div>
                         </div>
                         <div class="dropdown">
@@ -51,16 +50,29 @@
                                 <button class="filter-btn discipline" onclick="changeFilter('discipline', 'sound')">Sound</button>
                                 <button class="filter-btn discipline" onclick="changeFilter('discipline', 'video')">Video</button>
                                 <button class="filter-btn discipline" onclick="changeFilter('discipline', 'web')">Web</button>
-                                <!-- <button class="filter-btn discipline resetter" onclick="changeFilter('discipline', 'allD')">All</button> -->
                             </div>
                         </div>
-                        <button class="dropbtn all" onclick="filterSelection(['all', 'all', 'all'])">Show all</button>
+                        <div class="dropdown">
+                            <button class="dropbtn year">Year</button>
+                            <div class="dropdown-filters">
+                                <button class="filter-btn year" onclick="changeFilter('year', '2011')">2011-2013</button>
+                                <button class="filter-btn year" onclick="changeFilter('year', '2012')">2012</button>
+                                <button class="filter-btn year" onclick="changeFilter('year', '2013')">2013</button>
+                                <button class="filter-btn year" onclick="changeFilter('year', '2014')">2014</button>
+                                <button class="filter-btn year" onclick="changeFilter('year', '2015')">2015</button>
+                                <button class="filter-btn year" onclick="changeFilter('year', '2016')">2016</button>
+                                <button class="filter-btn year" onclick="changeFilter('year', '2017')">2017</button>
+                                <button class="filter-btn year" onclick="changeFilter('year', '2018')">2018</button>
+                                <button class="filter-btn year" onclick="changeFilter('year', '2024')">2024</button>
+                            </div>
+                        </div>
+                        <!-- <button class="dropbtn all" onclick="filterSelection(['all', 'all', 'all'])">Show all</button> -->
                     </div>
 
                     <div class="filter-items-container">
                         <div class="filterDiv hire physical architecture">MX3D Bridge</div>
-                        <div class="filterDiv freelance physical architecture">The Underground Tree</div>
-                        <div class="filterDiv academic physical architecture">ICD/ITKE Research Pavilion 2011</div>
+                        <div class="filterDiv freelance physical architecture art 2024">The Underground Tree</div>
+                        <div class="filterDiv academic physical architecture 2011">ICD/ITKE Research Pavilion 2011</div>
                         <div class="filterDiv academic digital science">Master's Thesis Computational Science</div>
                         <div class="filterDiv colab physical design">Diploria Ligthing</div>
                         <div class="filterDiv colab digital graphics sound video visuals">WP Frequencies</div>
