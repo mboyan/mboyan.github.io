@@ -131,43 +131,43 @@ button {
 }
 
 #button-home {
-  background-image: url("buttons/button-home.png");
+  background-image: url("../buttons/button-home.png");
 }
 
 #button-home:hover {
-  background-image: url("buttons/button-home-active.png");
+  background-image: url("../buttons/button-home-active.png");
 }
 
 #button-bio {
-  background-image: url("buttons/button-bio.png");
+  background-image: url("../buttons/button-bio.png");
 }
 
 #button-bio:hover {
-  background-image: url("buttons/button-bio-active.png");
+  background-image: url("../buttons/button-bio-active.png");
 }
 
 #button-proj {
-  background-image: url("buttons/button-proj.png");
+  background-image: url("../buttons/button-proj.png");
 }
 
 #button-proj:hover {
-  background-image: url("buttons/button-proj-active.png");
+  background-image: url("../buttons/button-proj-active.png");
 }
 
 #button-sols {
-  background-image: url("buttons/button-sols.png");
+  background-image: url("../buttons/button-sols.png");
 }
 
 #button-sols:hover {
-  background-image: url("buttons/button-sols-active.png");
+  background-image: url("../buttons/button-sols-active.png");
 }
 
 #button-contact {
-  background-image: url("buttons/button-contact.png");
+  background-image: url("../buttons/button-contact.png");
 }
 
 #button-contact:hover {
-  background-image: url("buttons/button-contact-active.png");
+  background-image: url("../buttons/button-contact-active.png");
 }
 
 /* ===== Text content ===== */
