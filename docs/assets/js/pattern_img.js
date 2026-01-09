@@ -72,9 +72,6 @@ function drawPImg()
             let green = imgColData[idx + 1];
             let blue = imgColData[idx + 2];
 
-            // let addPix = redStencil.slice(0, Math.ceil(red / 64));
-            // addPix = addPix.concat(greenStencil.slice(0, Math.ceil(green / 64)));
-            // addPix = addPix.concat(blueStencil.slice(0, Math.ceil(blue / 64)));
             let stencilIndices = redStencil.slice(0, Math.ceil(red / 64));
             stencilIndices = stencilIndices.concat(greenStencil.slice(0, Math.ceil(green / 64)));
             stencilIndices = stencilIndices.concat(blueStencil.slice(0, Math.ceil(blue / 64)));
@@ -85,11 +82,7 @@ function drawPImg()
                     if (!stencilIndices.includes(testIdx)){
                         for (let m = 0; m < stride; m++) {
                             for (let n = 0; n < stride; n++) {
-                                let addPix = stencil[testIdx];
                                 let patIdx = (j*3*stride + k*stride + m) * (canvasImg.width * 4) + (i*3*stride + p*stride + n) * 4;
-                                // patColData[patIdx] = 248;
-                                // patColData[patIdx + 1] = 249;
-                                // patColData[patIdx + 2] = 250;
                                 patColData[patIdx] = 73;
                                 patColData[patIdx + 1] = 80;
                                 patColData[patIdx + 2] = 87;
@@ -98,24 +91,8 @@ function drawPImg()
                     }
                 }
             }
-
-            // for (let k = 0; k < addPix.length; k++) {
-            //     for (let m = 0; m < stride; m++) {
-            //         for (let n = 0; n < stride; n++) {
-            //             let patIdx = (j*3*stride + addPix[k][1]*stride + m) * (canvasImg.width * 4) + (i*3*stride + addPix[k][0]*stride + n) * 4;
-            //             // patColData[patIdx] = 248;
-            //             // patColData[patIdx + 1] = 249;
-            //             // patColData[patIdx + 2] = 250;
-            //             patColData[patIdx] = 73;
-            //             patColData[patIdx + 1] = 80;
-            //             patColData[patIdx + 2] = 87;
-            //         }
-            //     }
-            // }
         }
     }
-    // console.log(addPix.legnth);
-    // console.log("foo");
 
     ctxImg.putImageData(patData, 0, 0);
 }
@@ -126,6 +103,7 @@ function resizeCanvas()
     canvasImg.width = Math.min(window.innerWidth, maxWidth);
     canvasImg.height = img.height * canvasImg.width / img.width;
     drawPImg();
+    console.log("Image drawn");
 }
 
 // let fadeCt = 0;
@@ -141,10 +119,13 @@ function shrinkStride()
     }
 }
 
+console.log("Testing");
+
 img.onload = () => {
     resizeCanvas();
     stride = 10;
     strideFuncInterval = setInterval(shrinkStride, 10);
+    console.log("Image loaded");
 }
 window.addEventListener('resize', resizeCanvas);
 // resizeCanvas();
