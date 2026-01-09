@@ -119,7 +119,7 @@ function shrinkStride()
     }
 }
 
-console.log(img);
+console.log(img.complete);
 
 img.onload = () => {
     resizeCanvas();
