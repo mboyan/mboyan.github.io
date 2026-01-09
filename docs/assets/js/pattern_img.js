@@ -15,26 +15,11 @@ for (let i = 0; i < 3; i++){
     }
 }
 
-// console.log(stencil);
-
-// let redStencil = [[0, 0], [1, 1], [2, 2]];
-// let greenStencil = [[0, 2], [2, 1], [2, 0]];
-// let blueStencil = [[0, 1], [1, 0], [1, 2]];
 let redStencil = [0, 4, 8];
 let greenStencil = [6, 5, 2];
 let blueStencil = [3, 1, 7];
 
-// console.log(redStencil.includes(0));
-
 let stride = 1;
-
-// console.log(Math.ceil(120/64));
-// let test = redStencil.slice(0, 2);
-// test = test.concat(greenStencil.slice(0, 2));
-// for (let i = 0; i < test.length; i++){
-//     console.log(test);
-// }
-
 
 function drawPImg()
 {
@@ -49,13 +34,8 @@ function drawPImg()
     let roughWidth = Math.floor(canvasImg.width / (3 * stride));
     let roughHeight = Math.floor(canvasImg.height / (3 * stride));
 
-    // console.log(roughWidth);
-
     // Fill default color
     for (let i = 0; i < patColData.length; i += 4){
-        // patColData[i] = 73;
-        // patColData[i + 1] = 80;
-        // patColData[i + 2] = 87;
         patColData[i] = 248;
         patColData[i + 1] = 249;
         patColData[i + 2] = 250;
@@ -106,7 +86,6 @@ function resizeCanvas()
     console.log("Image drawn");
 }
 
-// let fadeCt = 0;
 function shrinkStride()
 {
     if (stride > 1) {
@@ -119,17 +98,18 @@ function shrinkStride()
     }
 }
 
-console.log(img.complete);
-
-img.onload = () => {
+function initImg()
+{
+    if (strideFuncInterval) clearInterval(strideFuncInterval);
     resizeCanvas();
     stride = 10;
     strideFuncInterval = setInterval(shrinkStride, 10);
-    console.log("Image loaded");
 }
 
-img.onerror = () => {
-    console.log("Error loading image");
+img.onload = () => {
+    initImg();
 }
+
 window.addEventListener('resize', resizeCanvas);
+initImg();
 // resizeCanvas();
