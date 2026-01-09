@@ -127,5 +127,9 @@ img.onload = () => {
     strideFuncInterval = setInterval(shrinkStride, 10);
     console.log("Image loaded");
 }
+
+img.onerror = () => {
+    console.log("Error loading image");
+}
 window.addEventListener('resize', resizeCanvas);
 // resizeCanvas();
