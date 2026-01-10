@@ -1,6 +1,3 @@
-// let engagementFilter = "all";
-// let realisationFilter = "all";
-// let disciplineFilter = "all";
 let categoryFilters = ["all", "all", "all", "all"];
 let categoryMapper = {"engagement": 0, "realisation": 1, "discipline": 2, "year": 3};
 
@@ -25,7 +22,7 @@ function changeFilter(filter, val) {
 function filterSelection(catFilters) {
     var x, i;
     x = document.getElementsByClassName("filterDiv");
-    console.log("===");
+    // console.log("===");
 
     let catFilterCodes = [];
     for (i = 0; i < catFilters.length; i++) {
@@ -37,15 +34,15 @@ function filterSelection(catFilters) {
         }
     }
 
-    console.log(catFilters);
-    console.log(catFilterCodes);
+    // console.log(catFilters);
+    // console.log(catFilterCodes);
 
     for (i = 0; i < x.length; i++) {
         removeClass(x[i], "show");
         if (catFilterCodes.every(code => x[i].className.includes(code))) {
             addClass(x[i], "show");
         }
-        console.log(x[i].textContent + ": " + x[i].className);
+        // console.log(x[i].textContent + ": " + x[i].className);
     }
 }
 
@@ -119,7 +116,7 @@ var showallContainer = document.getElementById("showall");
 showallContainer.addEventListener("click", function(){
     categoryFilters = ["all", "all", "all", "all"];
     var current = document.getElementsByClassName("active");
-    console.log(current);
+    // console.log(current);
     while (current.length > 0) {
         current[0].className = current[0].className.replace(" active", "");
     }
