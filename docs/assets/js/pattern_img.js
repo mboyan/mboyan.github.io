@@ -106,6 +106,8 @@ function initImg()
     strideFuncInterval = setInterval(shrinkStride, 10);
 }
 
+var strideFuncInterval = null;
+
 img.onload = () => {
     initImg();
 }
