@@ -135,3 +135,25 @@ function headerTransitionContact() {
     targetLogo = document.getElementById("header-contact");
     startTransition();
 }
+
+// Change of URL
+let headerFunctions = {
+    'home.htm': headerTransitionHome,
+    'bio.htm': headerTransitionBio,
+    'proj.htm': headerTransitionProj,
+    'sols.htm': headerTransitionSols,
+    'contact.htm': headerTransitionContact
+}
+
+window.addEventListener('popstate', () => {
+    const currentUrl = window.location.href;
+    var page = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+    // console.log(page);
+
+    if (page in headerFunctions){
+        // document.getElementById('main-iframe').src = currentUrl;
+
+        // Trigger transition
+        headerFunctions[page]();
+    }
+});

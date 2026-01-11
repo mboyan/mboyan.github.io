@@ -113,5 +113,5 @@ img.onload = () => {
 }
 
 window.addEventListener('resize', resizeCanvas);
-initImg();
+// initImg();
 // resizeCanvas();

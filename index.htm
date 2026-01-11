@@ -31,23 +31,24 @@
         </div>
 
         <!-- Logo & navigation -->
+         <script src="./docs/assets/js/navbar.js"></script>
         <div id="page-header">
             <canvas id="canvas-logo" width="500" height="300"></canvas>
             <ul class="nav">
                 <li>
-                    <button class="nav-button" id="button-home" type="button" onclick="document.getElementById('main-iframe').src=`./docs/home.htm`"></button>
+                    <button class="nav-button" id="button-home" type="button" onclick="navigate(`./home.htm`)"></button>
                 </li>
                 <li>
-                    <button class="nav-button" id="button-bio" type="button" onclick="document.getElementById('main-iframe').src=`./docs/bio.htm`"></button>
+                    <button class="nav-button" id="button-bio" type="button" onclick="navigate(`./bio.htm`)"></button>
                 </li>
                 <li>
-                    <button class="nav-button" id="button-proj" type="button" onclick="document.getElementById('main-iframe').src=`./docs/proj.htm`"></button>
+                    <button class="nav-button" id="button-proj" type="button" onclick="navigate(`./proj.htm`)"></button>
                 </li>
                 <li>
-                    <button class="nav-button" id="button-sols" type="button" onclick="document.getElementById('main-iframe').src=`./docs/home.htm`"></button>
+                    <button class="nav-button" id="button-sols" type="button" onclick="navigate(`./home.htm`)"></button>
                 </li>
                 <li>
-                    <button class="nav-button" id="button-contact" type="button" onclick="document.getElementById('main-iframe').src=`./docs/home.htm`"></button>
+                    <button class="nav-button" id="button-contact" type="button" onclick="navigate(`./home.htm`)"></button>
                 </li>
             </ul>
         </div>
@@ -56,7 +57,7 @@
 
         <!-- Pages in iframe -->
         <div class="iframe-container">
-            <iframe id="main-iframe" src="./docs/home.htm"></iframe>
+            <iframe id="main-iframe" src="./home.htm"></iframe>
         </div>
 
     </body>
