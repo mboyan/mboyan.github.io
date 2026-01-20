@@ -151,7 +151,6 @@ window.addEventListener('popstate', () => {
     // console.log(page);
 
     if (page in headerFunctions){
-        // document.getElementById('main-iframe').src = currentUrl;
 
         // Trigger transition
         headerFunctions[page]();

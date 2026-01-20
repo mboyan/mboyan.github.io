@@ -31,33 +31,33 @@
         </div>
 
         <!-- Logo & navigation -->
-         <script src="./docs/assets/js/navbar.js"></script>
+        <script src="./docs/assets/js/navbar.js"></script>
         <div id="page-header">
             <canvas id="canvas-logo" width="500" height="300"></canvas>
             <ul class="nav">
                 <li>
-                    <button class="nav-button" id="button-home" type="button" onclick="navigate(`./home.htm`)"></button>
+                    <button class="nav-button" id="button-home" type="button" onclick="loadPage(`home`)"></button>
                 </li>
                 <li>
-                    <button class="nav-button" id="button-bio" type="button" onclick="navigate(`./bio.htm`)"></button>
+                    <button class="nav-button" id="button-bio" type="button" onclick="loadPage(`bio`)"></button>
                 </li>
                 <li>
-                    <button class="nav-button" id="button-proj" type="button" onclick="navigate(`./proj.htm`)"></button>
+                    <button class="nav-button" id="button-proj" type="button" onclick="loadPage(`proj`)"></button>
                 </li>
                 <li>
-                    <button class="nav-button" id="button-sols" type="button" onclick="navigate(`./home.htm`)"></button>
+                    <button class="nav-button" id="button-sols" type="button" onclick="loadPage(`home`)"></button>
                 </li>
                 <li>
-                    <button class="nav-button" id="button-contact" type="button" onclick="navigate(`./home.htm`)"></button>
+                    <button class="nav-button" id="button-contact" type="button" onclick="loadPage(`home`)"></button>
                 </li>
             </ul>
         </div>
         <script src="./docs/assets/js/header_transitions.js"></script>
         <script src="./docs/assets/js/gen_logo.js"></script>
 
-        <!-- Pages in iframe -->
-        <div class="iframe-container">
-            <iframe id="main-iframe" src="./home.htm"></iframe>
+        <!-- Pages in main frame -->
+        <div class="main-frame-container">
+            <main id="main-frame"></main>
         </div>
 
     </body>
