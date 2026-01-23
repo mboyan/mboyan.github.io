@@ -2,6 +2,7 @@
 let canvasImg = document.getElementById("canvas-img");
 let ctxImg = canvasImg.getContext("2d");
 const img = document.getElementsByClassName("patterned_img")[0];
+var strideFuncInterval = null;
 
 // ctxImg.imageSmoothingEnabled = false;
 
@@ -83,7 +84,7 @@ function resizeCanvas()
     canvasImg.width = Math.min(window.innerWidth, maxWidth);
     canvasImg.height = img.height * canvasImg.width / img.width;
     drawPImg();
-    console.log("Image drawn");
+    // console.log("Image drawn");
 }
 
 function shrinkStride()
@@ -106,10 +107,9 @@ function initImg()
     strideFuncInterval = setInterval(shrinkStride, 10);
 }
 
-var strideFuncInterval = null;
-
 img.onload = () => {
     initImg();
+    console.log("foo");
 }
 
 window.addEventListener('resize', resizeCanvas);

@@ -1,7 +1,20 @@
 let categoryFilters = ["all", "all", "all", "all"];
 let categoryMapper = {"engagement": 0, "realisation": 1, "discipline": 2, "year": 3};
 
-filterSelection(categoryFilters);
+function initFilters()
+{
+    filterSelection(categoryFilters);
+
+    var showallContainer = document.getElementById("showall");
+    showallContainer.addEventListener("click", function(){
+        categoryFilters = ["all", "all", "all", "all"];
+        var current = document.getElementsByClassName("active");
+        // console.log(current);
+        while (current.length > 0) {
+            current[0].className = current[0].className.replace(" active", "");
+        }
+    });
+}
 
 function changeFilter(filter, val) {
     if (filter == "engagement") {
@@ -111,13 +124,3 @@ for (var i = 0; i < dropContainers.length; i++) {
         }
     });
 }
-
-var showallContainer = document.getElementById("showall");
-showallContainer.addEventListener("click", function(){
-    categoryFilters = ["all", "all", "all", "all"];
-    var current = document.getElementsByClassName("active");
-    // console.log(current);
-    while (current.length > 0) {
-        current[0].className = current[0].className.replace(" active", "");
-    }
-});
