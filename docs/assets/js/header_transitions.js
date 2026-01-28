@@ -26,11 +26,11 @@ let genLogoInterval = null;  // Logo drawing loop ID
 // --------------------------------------------
 // EVENT LISTENERS
 // --------------------------------------------
-document.getElementById("button-home").addEventListener("click", headerTransitionHome);
-document.getElementById("button-bio").addEventListener("click", headerTransitionBio);
-document.getElementById("button-proj").addEventListener("click", headerTransitionProj);
-document.getElementById("button-sols").addEventListener("click", headerTransitionSols);
-document.getElementById("button-contact").addEventListener("click", headerTransitionContact);
+// document.getElementById("button-home").addEventListener("click", headerTransitionHome);
+// document.getElementById("button-bio").addEventListener("click", headerTransitionBio);
+// document.getElementById("button-proj").addEventListener("click", headerTransitionProj);
+// document.getElementById("button-sols").addEventListener("click", headerTransitionSols);
+// document.getElementById("button-contact").addEventListener("click", headerTransitionContact);
 
 
 // --------------------------------------------

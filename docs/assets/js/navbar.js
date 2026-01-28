@@ -3,6 +3,8 @@ function loadPage(page, pushState = true) {
     .then(r => r.text())
     .then(html => {
       document.getElementById('main-frame').innerHTML = html;
+      // Transform header
+      window[`headerTransition${page.charAt(0).toUpperCase() + page.slice(1)}`]?.();
       // Initialize project filters
       requestAnimationFrame(() => {
         if (page == "proj"){
@@ -11,8 +13,8 @@ function loadPage(page, pushState = true) {
       });
       if (pushState) {
         history.pushState({ page }, "", `${page}`);
-      } else {
-        console.log("foo");
+      // } else {
+      //   console.log("foo");
       }
     });
 }

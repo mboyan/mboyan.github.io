@@ -109,7 +109,7 @@ function initImg()
 
 img.onload = () => {
     initImg();
-    console.log("foo");
+    // console.log("foo");
 }
 
 window.addEventListener('resize', resizeCanvas);
