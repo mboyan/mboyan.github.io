@@ -1,7 +1,9 @@
 // Initializing the canvas
 let canvasImg = document.getElementById("canvas-img");
 let ctxImg = canvasImg.getContext("2d");
-const img = document.getElementsByClassName("patterned_img")[0];
+// const img = document.getElementsByClassName("patterned_img")[0];
+// let img = document.getElementById("awwp");
+let img = document.getElementById("patterned_img");
 var strideFuncInterval = null;
 
 // ctxImg.imageSmoothingEnabled = false;
@@ -25,6 +27,7 @@ let stride = 1;
 function drawPImg()
 {
     let scaledHeight = img.height * canvasImg.width / img.width;
+    console.log(img);
     ctxImg.clearRect(img, 0, 0, canvasImg.width, scaledHeight);
     ctxImg.drawImage(img, 0, 0, canvasImg.width, scaledHeight);
 
@@ -105,6 +108,15 @@ function initImg()
     resizeCanvas();
     stride = 10;
     strideFuncInterval = setInterval(shrinkStride, 10);
+}
+
+function resetImg(imgSrc)
+{
+    console.log("foobar");
+    if (img != null) {
+        img.src = imgSrc;//`${imgSrc}?${Date.now()}`;
+    }
+    initImg();
 }
 
 img.onload = () => {

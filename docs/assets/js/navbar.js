@@ -1,10 +1,24 @@
+const backgroundImages = new Map();
+backgroundImages.set("home", "./docs/assets/img/patterned/awwp_01.JPG");
+backgroundImages.set("bio", "./docs/assets/img/patterned/bio.JPG");
+backgroundImages.set("proj", "./docs/assets/img/patterned/awwp_01.JPG");
+backgroundImages.set("sols", "./docs/assets/img/patterned/awwp_01.JPG");
+backgroundImages.set("contact", "./docs/assets/img/patterned/awwp_01.JPG");
+
 function loadPage(page, pushState = true) {
   fetch(`./${page}.htm`)
     .then(r => r.text())
     .then(html => {
+
+      // Change inner HTML
       document.getElementById('main-frame').innerHTML = html;
+
       // Transform header
       window[`headerTransition${page.charAt(0).toUpperCase() + page.slice(1)}`]?.();
+
+      // Change background
+      resetImg(backgroundImages.get(page));
+
       // Initialize project filters
       requestAnimationFrame(() => {
         if (page == "proj"){
