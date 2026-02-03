@@ -1,6 +1,6 @@
 const backgroundImages = new Map();
 backgroundImages.set("home", "./docs/assets/img/patterned/awwp_01.JPG");
-backgroundImages.set("bio", "./docs/assets/img/patterned/bio.JPG");
+backgroundImages.set("bio", "./docs/assets/img/patterned/bio2.JPG");
 backgroundImages.set("proj", "./docs/assets/img/patterned/awwp_01.JPG");
 backgroundImages.set("sols", "./docs/assets/img/patterned/awwp_01.JPG");
 backgroundImages.set("contact", "./docs/assets/img/patterned/awwp_01.JPG");
