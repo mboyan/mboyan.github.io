@@ -52,16 +52,16 @@ function drawPImg()
         for (let j = 0; j < roughHeight; j++)
         {
             let red, green, blue;
-            if (Math.random()*0.05 < j/roughHeight) {
-                let idx = j * 12 * stride * canvasImg.width + i * 12 * stride;
-                red = imgColData[idx];
-                green = imgColData[idx + 1];
-                blue = imgColData[idx + 2];
-            } else {
-                red = 255;
-                green = 255;
-                blue = 255;
-            }
+            // if (Math.random()*0.05 < j/roughHeight) {
+            let idx = j * 12 * stride * canvasImg.width + i * 12 * stride;
+            red = imgColData[idx];
+            green = imgColData[idx + 1];
+            blue = imgColData[idx + 2];
+            // } else {
+            //     red = 255;
+            //     green = 255;
+            //     blue = 255;
+            // }
 
             let stencilIndices = redStencil.slice(0, Math.ceil(red / 64));
             stencilIndices = stencilIndices.concat(greenStencil.slice(0, Math.ceil(green / 64)));
