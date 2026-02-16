@@ -27,7 +27,7 @@ let stride = 1;
 function drawPImg()
 {
     let scaledHeight = img.height * canvasImg.width / img.width;
-    console.log(img);
+    // console.log(img);
     ctxImg.clearRect(img, 0, 0, canvasImg.width, scaledHeight);
     ctxImg.drawImage(img, 0, 0, canvasImg.width, scaledHeight);
 
@@ -51,10 +51,17 @@ function drawPImg()
     {
         for (let j = 0; j < roughHeight; j++)
         {
-            let idx = j * 12 * stride * canvasImg.width + i * 12 * stride;
-            let red = imgColData[idx];
-            let green = imgColData[idx + 1];
-            let blue = imgColData[idx + 2];
+            let red, green, blue;
+            if (Math.random()*0.05 < j/roughHeight) {
+                let idx = j * 12 * stride * canvasImg.width + i * 12 * stride;
+                red = imgColData[idx];
+                green = imgColData[idx + 1];
+                blue = imgColData[idx + 2];
+            } else {
+                red = 255;
+                green = 255;
+                blue = 255;
+            }
 
             let stencilIndices = redStencil.slice(0, Math.ceil(red / 64));
             stencilIndices = stencilIndices.concat(greenStencil.slice(0, Math.ceil(green / 64)));
@@ -83,7 +90,7 @@ function drawPImg()
 
 function resizeCanvas()
 {
-    const maxWidth = 1200;
+    const maxWidth = 2560;
     canvasImg.width = Math.min(window.innerWidth, maxWidth);
     canvasImg.height = img.height * canvasImg.width / img.width;
     drawPImg();
@@ -112,7 +119,7 @@ function initImg()
 
 function resetImg(imgSrc)
 {
-    console.log("foobar");
+    // console.log("foobar");
     if (img != null) {
         img.src = imgSrc;//`${imgSrc}?${Date.now()}`;
     }
