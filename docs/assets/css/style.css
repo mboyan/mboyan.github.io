@@ -16,6 +16,8 @@ body {
 }
 
 #canvas-logo {
+  width: 500px;
+  height: 300px;
   margin: auto;
   border: 0px;
   padding: 0;
@@ -51,6 +53,8 @@ body {
 }
 
 .main-frame-container{
+  margin: auto;
+  width: 500px;
   flex-direction: column;
   height: 100%;
 }
@@ -350,3 +354,22 @@ b {
 /* h3 {
   border: 3px solid rgb(128, 19, 0);
 } */
+
+@media screen and (max-width: 500) {
+  #page-header {
+    width: 320px;
+    height: 262px;
+  }
+  .main-frame-container{
+    width: 320px;
+  }
+  #filter-button-container{
+    width: 320px;
+  }
+  .overlay-text {
+    width: 300px;
+  }
+  #canvas-logo {
+    width: 300px;
+  }
+}

@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="./docs/assets/css/style.css">
         <title>TheKnowDough</title>
-         <meta charset="UTF-8">
+        <meta charset="UTF-8">
         <meta name="description" content="Professional website of TheKnowDough: portfolio and solutions">
         <meta name="keywords" content="design, computation, parametric, generative, visuals">
         <meta name="author" content="Boyan Mihaylov">
@@ -34,10 +34,16 @@
         <!-- <script src="./docs/assets/js/pattern_img.js"></script> -->
         <script src="./docs/assets/js/filter_projects.js"></script>
 
+        <div class="main-frame-container">
+            <div style="display:none;">
+                <img id="patterned_img" src="./docs/assets/img/patterned/awwp_01.JPG">
+                <!-- <img class="patterned_img" id="awwp" src="./docs/assets/img/patterned/awwp_01.JPG"> -->
+                <!-- <img class="patterned_img" id="bio_img" src="./docs/assets/img/patterned/bio.JPG"> -->
+            </div>
         <!-- Logo & navigation -->
         <script src="./docs/assets/js/navbar.js"></script>
         <div id="page-header">
-            <canvas id="canvas-logo" width="500" height="300"></canvas>
+            <canvas id="canvas-logo"></canvas>
             <ul class="nav">
                 <li>
                     <button class="nav-button" id="button-home" type="button" onclick="loadPage(`home`)"></button>
@@ -60,12 +66,12 @@
         <script src="./docs/assets/js/gen_logo.js"></script>
 
         <!-- Pages in main frame -->
-        <div class="main-frame-container">
-            <div style="display:none;">
-                <img id="patterned_img" src="./docs/assets/img/patterned/awwp_01.JPG">
+        <!-- <div class="main-frame-container"> -->
+            <!-- <div style="display:none;">
+                <img id="patterned_img" src="./docs/assets/img/patterned/awwp_01.JPG"> -->
                 <!-- <img class="patterned_img" id="awwp" src="./docs/assets/img/patterned/awwp_01.JPG"> -->
                 <!-- <img class="patterned_img" id="bio_img" src="./docs/assets/img/patterned/bio.JPG"> -->
-            </div>
+            <!-- </div> -->
 
             <div class="pimg">
                 <canvas id="canvas-img"></canvas>
