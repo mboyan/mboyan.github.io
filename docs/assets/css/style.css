@@ -64,6 +64,8 @@ body {
 /* ===== Navigation bar ====== */
 
 ul.nav {
+  display: flex;
+  justify-content: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -72,7 +74,7 @@ ul.nav {
 }
 
 ul.nav li {
-  float: left;
+  float: none;
   margin: 0;
   padding: 0;
 }
