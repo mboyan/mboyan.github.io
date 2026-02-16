@@ -143,6 +143,7 @@ class ParticleSystem {
         this.angleConstraints = [];
         this.nParticles = nParticles;
         this.bndry = bndry;
+        this.lineWidth = isMobile ? 3 : 5;
 
         this.baseRad = bndry.rad * Math.sin(Math.PI / nParticles);
 
@@ -271,7 +272,7 @@ class ParticleSystem {
         //     p.display();
         // }
         ctxLogo.beginPath();
-        ctxLogo.lineWidth = 5;
+        ctxLogo.lineWidth = this.lineWidth ;
         ctxLogo.lineCap = "round";
         ctxLogo.strokeStyle = "black";
         ctxLogo.moveTo(this.particles[0].x, this.particles[0].y);
@@ -305,7 +306,7 @@ class ParticleSystem {
 }
 
 
-var nParticles = 120;
+var nParticles = isMobile ? 77 : 120;
 var frameCt = 0;
 var baseSmoothing = 0.008;
 

@@ -64,9 +64,10 @@ body {
 
 .main-frame-container{
   margin: auto;
-  width: 500px;
+  width: 100%;
   flex-direction: column;
   height: 100%;
+  /* border: 3px solid green; */
 }
 
 .main-frame {
@@ -370,9 +371,9 @@ b {
     width: 320px;
     height: 262px;
   }
-  .main-frame-container{
+  /* .main-frame-container{
     width: 320px;
-  }
+  } */
   #filter-button-container{
     width: 320px;
   }
