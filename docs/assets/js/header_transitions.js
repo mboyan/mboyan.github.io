@@ -5,17 +5,29 @@ let canvasLogo = document.getElementById("canvas-logo");
 let ctxLogo = canvasLogo.getContext("2d");
 let logo = document.getElementById("logo");
 
-// Circular boundary object
-let bndry = {
-    midX: 250,
-    midY: 150,
-    rad: 45
-};
+const isMobile = window.matchMedia("(max-width: 500px)").matches;
 
-let currHeight = 300;
-let targetHeight = 300;
-let newBndryMidX = 250;
-let newBndryMidY = 150;
+// Circular boundary object
+let bndry;
+
+if (!isMobile){
+    bndry = {
+        midX: 250,
+        midY: 150,
+        rad: 45
+    };
+} else {
+    bndry = {
+        midX: 160,
+        midY: 96,
+        rad: 29
+    };
+}
+
+let currHeight = isMobile ? 192 : 300;
+let targetHeight = isMobile ? 192 : 300;
+let newBndryMidX = isMobile ? 160 : 250;
+let newBndryMidY = isMobile ? 96 : 150;
 let targetLogo = document.getElementById("logo");
 
 let animating = false;
@@ -97,41 +109,41 @@ function startTransition() {
 // BUTTON HANDLERS
 // --------------------------------------------
 function headerTransitionHome() {
-    newBndryMidX = 250;
-    newBndryMidY = 150;
-    targetHeight = 300;
+    newBndryMidX = isMobile ? 160 : 250;
+    newBndryMidY = isMobile ? 96 : 150;
+    targetHeight = isMobile ? 192 : 300;
     targetLogo = document.getElementById("logo");
     startTransition();
 }
 
 function headerTransitionBio() {
-    newBndryMidX = 50;
-    newBndryMidY = 50;
-    targetHeight = 100;
+    newBndryMidX = isMobile ? 32 : 50;
+    newBndryMidY = isMobile ? 32 : 50;
+    targetHeight = isMobile ? 64 : 100;
     targetLogo = document.getElementById("header-bio");
     startTransition();
 }
 
 function headerTransitionProj() {
-    newBndryMidX = 50;
-    newBndryMidY = 50;
-    targetHeight = 100;
+    newBndryMidX = isMobile ? 32 : 50;
+    newBndryMidY = isMobile ? 32 : 50;
+    targetHeight = isMobile ? 64 : 100;
     targetLogo = document.getElementById("header-proj");
     startTransition();
 }
 
 function headerTransitionSols() {
-    newBndryMidX = 50;
-    newBndryMidY = 50;
-    targetHeight = 100;
+    newBndryMidX = isMobile ? 32 : 50;
+    newBndryMidY = isMobile ? 32 : 50;
+    targetHeight = isMobile ? 64 : 100;
     targetLogo = document.getElementById("header-sols");
     startTransition();
 }
 
 function headerTransitionContact() {
-    newBndryMidX = 50;
-    newBndryMidY = 50;
-    targetHeight = 100;
+    newBndryMidX = isMobile ? 32 : 50;
+    newBndryMidY = isMobile ? 32 : 50;
+    targetHeight = isMobile ? 64 : 100;
     targetLogo = document.getElementById("header-contact");
     startTransition();
 }

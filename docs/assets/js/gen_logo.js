@@ -380,7 +380,7 @@ function drawGenLogo1()
 
     ctxLogo.drawImage(logo, 0, 0, canvasLogo.width, canvasLogo.height);
     // console.log(canvasLogo.height);
-    ctxLogo.clearRect(bndry.midX-50, bndry.midY-50, 100, 100);
+    ctxLogo.clearRect(bndry.midX-(isMobile ? 32 : 50), bndry.midY-(isMobile ? 32 : 50), (isMobile ? 64 : 100), (isMobile ? 64 : 100));
 
     // Update and display particle system
     pSystem.display();

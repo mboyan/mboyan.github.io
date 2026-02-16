@@ -26,6 +26,16 @@ body {
   /* border: 3px solid green; */
 }
 
+#logo{
+  width: 500px;
+  height: 300px;
+}
+
+#header-bio, #header-proj, #header-sols, #header-contact{
+  width: 500px;
+  height: 100px;
+}
+
 .pimg, #canvas-img {
   /* width: 100%; */
   /*height: 100vh;
@@ -355,7 +365,7 @@ b {
   border: 3px solid rgb(128, 19, 0);
 } */
 
-@media screen and (max-width: 500) {
+@media screen and (max-width: 500px) {
   #page-header {
     width: 320px;
     height: 262px;
@@ -370,6 +380,22 @@ b {
     width: 300px;
   }
   #canvas-logo {
-    width: 300px;
+    width: 320px;
+    height: 192px;
+  }
+  .nav-button {
+    width: 64px;
+    height: 64px;
+  }
+  .dropbtn {
+    width: 76px;
+    font-size: 11px;
+    padding: 4px 2px 4px 2px;
+  }
+  #showall {
+    font-size: 11px;
+  }
+  .filter-btn {
+    font-size: 11px;
   }
 }
