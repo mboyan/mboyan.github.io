@@ -314,7 +314,6 @@ var baseSmoothing = 0.008;
 pSystem = new ParticleSystem(nParticles, bndry, 1.0, 0.9, 0.00, 8., baseSmoothing);
 
 logo.onload = () => {
-    console.log(canvasLogo.height);
     ctxLogo.drawImage(logo, 0, 0, canvasLogo.width, canvasLogo.height);
     drawGenLogo1();
 }
