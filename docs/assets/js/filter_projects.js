@@ -14,6 +14,52 @@ function initFilters()
             current[0].className = current[0].className.replace(" active", "");
         }
     });
+
+    // Add active class to the current button (highlight it)
+    var btnContainers = document.getElementsByClassName("dropdown-filters");
+    for (var i = 0; i < btnContainers.length; i++) {
+        var btns = btnContainers[i].getElementsByClassName("filter-btn");
+        for (var j = 0; j < btns.length; j++) {
+            // Add listener
+            btns[j].addEventListener("click", function(){
+
+                if (this.className.indexOf("active") > -1) {
+                    this.className = this.className.replace(" active", "");
+                }
+                else {
+                    this.className += " active";
+                }
+
+                // Deactivate other buttons in the same category
+                var btnCategory = this.className.split(' ')[1];
+                var others = document.getElementsByClassName(btnCategory);
+                // console.log(others);
+                for (const element of others) {
+                    if (element != this) {
+                        element.className = element.className.replace(" active", "");
+                    }
+                }
+            });
+        }
+    }
+
+    // Add listeners for filter resetting buttons
+    var dropContainers = document.getElementsByClassName("dropbtn");
+    // console.log(dropContainers.length);
+    for (var i = 0; i < dropContainers.length; i++) {
+        dropContainers[i].addEventListener("click", function(){
+            var btnCategory = this.className.split(' ')[1];
+
+            btnCatAppend = " " + btnCategory;
+            categoryFilters[categoryMapper[btnCategory]] = "all";
+
+            var current = document.getElementsByClassName("active" + btnCatAppend);
+            while (current.length > 0) {
+                current[0].className = current[0].className.replace(" active", "");
+                changeFilter(btnCategory, "all");
+            }
+        });
+    }
 }
 
 function changeFilter(filter, val) {
@@ -35,7 +81,6 @@ function changeFilter(filter, val) {
 function filterSelection(catFilters) {
     var x, i;
     x = document.getElementsByClassName("filterDiv");
-    // console.log("===");
 
     let catFilterCodes = [];
     for (i = 0; i < catFilters.length; i++) {
@@ -78,49 +123,4 @@ function removeClass(element, name) {
         }
     }
     element.className = arr1.join(" ");
-}
-
-// Add active class to the current button (highlight it)
-var btnContainers = document.getElementsByClassName("dropdown-filters");
-for (var i = 0; i < btnContainers.length; i++) {
-    var btns = btnContainers[i].getElementsByClassName("filter-btn");
-    for (var j = 0; j < btns.length; j++) {
-        // Add listener
-        btns[j].addEventListener("click", function(){
-
-            if (this.className.indexOf("active") > -1) {
-                this.className = this.className.replace(" active", "");
-            }
-            else {
-                this.className += " active";
-            }
-
-            // Deactivate other buttons in the same category
-            var btnCategory = this.className.split(' ')[1];
-            var others = document.getElementsByClassName(btnCategory);
-            // console.log(others);
-            for (const element of others) {
-                if (element != this) {
-                    element.className = element.className.replace(" active", "");
-                }
-            }
-        });
-    }
-}
-
-// Add listeners for filter resetting buttons
-var dropContainers = document.getElementsByClassName("dropbtn");
-for (var i = 0; i < dropContainers.length; i++) {
-    dropContainers[i].addEventListener("click", function(){
-        var btnCategory = this.className.split(' ')[1];
-
-        btnCatAppend = " " + btnCategory;
-        categoryFilters[categoryMapper[btnCategory]] = "all";
-
-        var current = document.getElementsByClassName("active" + btnCatAppend);
-        while (current.length > 0) {
-            current[0].className = current[0].className.replace(" active", "");
-            changeFilter(btnCategory, "all");
-        }
-    });
 }

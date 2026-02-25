@@ -398,4 +398,4 @@ function drawGenLogo1()
     frameCt++;
 }
 
-genLogoInterval = setInterval(drawGenLogo1, 1);
+// genLogoInterval = setInterval(drawGenLogo1, 1);
