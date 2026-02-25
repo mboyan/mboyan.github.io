@@ -28,7 +28,7 @@ function drawPImg()
 {
     let scaledHeight = img.height * canvasImg.width / img.width;
     // console.log(img);
-    ctxImg.clearRect(img, 0, 0, canvasImg.width, scaledHeight);
+    ctxImg.clearRect(0, 0, canvasImg.width, scaledHeight);
     ctxImg.drawImage(img, 0, 0, canvasImg.width, scaledHeight);
 
     const imgData = ctxImg.getImageData(0, 0, canvasImg.width, canvasImg.height);
@@ -88,13 +88,26 @@ function drawPImg()
     ctxImg.putImageData(patData, 0, 0);
 }
 
+// function resizeCanvas()
+// {
+//     const maxWidth = 2560;
+//     canvasImg.width = Math.min(window.innerWidth, maxWidth);
+//     canvasImg.height = img.height * canvasImg.width / img.width;
+//     drawPImg();
+//     // console.log("Image drawn");
+// }
+
 function resizeCanvas()
 {
+    if (!img.complete || img.naturalWidth === 0) return;
+
     const maxWidth = 2560;
     canvasImg.width = Math.min(window.innerWidth, maxWidth);
-    canvasImg.height = img.height * canvasImg.width / img.width;
+    canvasImg.height = img.naturalHeight * canvasImg.width / img.naturalWidth;
+
+    if (canvasImg.width === 0 || canvasImg.height === 0) return;
+
     drawPImg();
-    // console.log("Image drawn");
 }
 
 function shrinkStride()
