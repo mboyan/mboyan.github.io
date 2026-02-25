@@ -1,9 +1,9 @@
 const backgroundImages = new Map();
-backgroundImages.set("home", "./docs/assets/img/patterned/awwp_01.JPG");
-backgroundImages.set("bio", "./docs/assets/img/patterned/bio4.JPG");
-backgroundImages.set("proj", "./docs/assets/img/patterned/awwp_01.JPG");
-backgroundImages.set("sols", "./docs/assets/img/patterned/awwp_01.JPG");
-backgroundImages.set("contact", "./docs/assets/img/patterned/awwp_01.JPG");
+backgroundImages.set("home", "./docs/assets/img/patterned/awwp_01.jpg");
+backgroundImages.set("bio", "./docs/assets/img/patterned/bio4.jpg");
+backgroundImages.set("proj", "./docs/assets/img/patterned/awwp_01.jpg");
+backgroundImages.set("sols", "./docs/assets/img/patterned/awwp_01.jpg");
+backgroundImages.set("contact", "./docs/assets/img/patterned/awwp_01.jpg");
 
 function loadPage(page, pushState = true) {
   fetch(`./${page}.htm`)
