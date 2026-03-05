@@ -33,6 +33,21 @@ function loadPage(page, pushState = true) {
     });
 }
 
+function loadProject(proj, pushState = true) {
+  fetch(`./${proj}.htm`)
+    .then(r => r.text())
+    .then(html => {
+
+      // Change inner HTML
+      document.getElementById('project-frame').innerHTML = html;
+      if (pushState) {
+        history.pushState("/proj/", { proj }, "", `${proj}`);
+      // } else {
+      //   console.log("foo");
+      }
+    });
+}
+
 window.addEventListener("popstate", (e) => {
   if (e.state?.page) {
     loadPage(e.state.page, false);

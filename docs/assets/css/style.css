@@ -238,18 +238,24 @@ b {
 } */
 
 /* ===== Project filters ===== */
-.filterDiv {
+.projButton {
   float: left;
-  /* background-color: #2196F3; */
+  background-color: #f8f9fae7;
   /* color: #ffffff; */
   /* width: 125px; */
   /* line-height: 100px; */
+  font-size: 15px;
   text-align: left;
   margin: 2px;
   display: none;
   padding: 5px;
   border: 1px solid #212529;
   border-radius: 5px;;
+}
+
+.projButton:hover {
+  background-color: #495057;
+  color: #f8f9fa;
 }
 
 .show {
@@ -271,8 +277,10 @@ b {
 .filter-items-container {
   /* margin-top: 20px; */
   margin: auto;
+  width: 100%;
+  height: auto;
   /* overflow: hidden; */
-  /* border: 3px solid rgb(128, 19, 0); */
+  border: 3px solid rgb(128, 19, 0);
 }
 
 .filter-btn {
@@ -306,6 +314,7 @@ b {
   cursor: pointer;
 }
 
+.projButton,
 .filter-btn,
 .dropbtn,
 #showall {

@@ -80,7 +80,7 @@ function changeFilter(filter, val) {
 
 function filterSelection(catFilters) {
     var x, i;
-    x = document.getElementsByClassName("filterDiv");
+    x = document.getElementsByClassName("projButton");
 
     let catFilterCodes = [];
     for (i = 0; i < catFilters.length; i++) {
