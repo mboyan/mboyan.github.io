@@ -63,6 +63,7 @@ body {
 }
 
 .main-frame-container{
+  /* position: relative; */
   margin: auto;
   width: 100%;
   flex-direction: column;
@@ -250,7 +251,7 @@ b {
   display: none;
   padding: 5px;
   border: 1px solid #212529;
-  border-radius: 5px;;
+  border-radius: 5px;
 }
 
 .projButton:hover {
@@ -278,9 +279,16 @@ b {
   /* margin-top: 20px; */
   margin: auto;
   width: 100%;
-  height: auto;
+  height: fit-content;
   /* overflow: hidden; */
-  border: 3px solid rgb(128, 19, 0);
+  /* border: 3px solid rgb(128, 19, 0); */
+}
+
+/* Lets container scale around buttons */
+.filter-items-container::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .filter-btn {
@@ -375,6 +383,46 @@ b {
   border: 3px solid rgb(128, 19, 0);
 } */
 
+/* ===== Breakout images ===== */
+.image-breakout {
+  position: absolute;
+  left: 2vw; /* push the image into the left void */
+  width: calc((100% - 580px - 4vw) / 2); /* or your desired width */
+  max-width: 500px; /* optional: limit max width */
+  border: 2px solid #f8f9fa;
+  transition: 0.3s;
+}
+
+.image-breakout img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-breakout:hover {
+  width: 96vw;
+  max-width: 100%;
+  border: 2px solid #0D7C82;
+  z-index: 12;
+}
+
+/* The connecting line */
+.connector-line {
+  position: relative;
+  top: 0;
+  left: -10%;
+  width: 100%;
+  height: 2px;
+  background: #f8f9fa;
+}
+
+/* Optional: Add padding to the container where the image would be,
+   so text doesn't overlap the image's original space. */
+.image-breakout + p {
+  padding-top: 20px; /* or as needed */
+}
+
+/* ===== Responsive design ===== */
 @media screen and (max-width: 500px) {
   #page-header {
     width: 320px;
@@ -407,5 +455,14 @@ b {
   }
   .filter-btn {
     font-size: 11px;
+  }
+  .image-breakout {
+    position: static;
+    left: 0;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .connector-line {
+    height: 0;
   }
 }
