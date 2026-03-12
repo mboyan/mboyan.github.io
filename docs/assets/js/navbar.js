@@ -1,9 +1,13 @@
 const backgroundImages = new Map();
-backgroundImages.set("home", "./docs/assets/img/patterned/awwp_01.JPG");
-backgroundImages.set("bio", "./docs/assets/img/patterned/bio5.jpg");
-backgroundImages.set("proj", "./docs/assets/img/patterned/awwp_01.JPG");
-backgroundImages.set("sols", "./docs/assets/img/patterned/awwp_01.JPG");
-backgroundImages.set("contact", "./docs/assets/img/patterned/awwp_01.JPG");
+backgroundImages.set("home", "./docs/assets/img/patterned/home.JPG");
+backgroundImages.set("bio", "./docs/assets/img/patterned/bio6.jpg");
+backgroundImages.set("proj", "./docs/assets/img/patterned/proj.JPG");
+backgroundImages.set("sols", "./docs/assets/img/patterned/sols.JPG");
+backgroundImages.set("contact", "./docs/assets/img/patterned/contact.JPG");
+
+backgroundImages.set("proj_tree", "./docs/assets/img/patterned/home.JPG");
+backgroundImages.set("proj_diplo", "./docs/assets/img/patterned/proj.JPG");
+backgroundImages.set("proj_thesis", "./docs/assets/img/patterned/proj_thesis.png");
 
 function loadPage(page, pushState = true) {
   fetch(`./${page}.htm`)
@@ -27,6 +31,26 @@ function loadPage(page, pushState = true) {
       });
       if (pushState) {
         history.pushState({ page }, "", `${page}`);
+      // } else {
+      //   console.log("foo");
+      }
+    });
+}
+
+function loadProject(proj, pushState = true) {
+  fetch(`./${proj}.htm`)
+    .then(r => r.text())
+    .then(html => {
+
+      // Change inner HTML
+      document.getElementById('project-frame').innerHTML = html;
+
+      // Change background
+      resetImg(backgroundImages.get(proj));
+
+      if (pushState) {
+        history.pushState("/proj/", { proj }, "", `${proj}`);
+        addImgClickListeners(); // Add listener for image maximisation
       // } else {
       //   console.log("foo");
       }

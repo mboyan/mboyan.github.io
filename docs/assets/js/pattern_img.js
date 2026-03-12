@@ -1,14 +1,8 @@
 // Initializing the canvas
 let canvasImg = document.getElementById("canvas-img");
 let ctxImg = canvasImg.getContext("2d");
-// const img = document.getElementsByClassName("patterned_img")[0];
-// let img = document.getElementById("awwp");
 let img = document.getElementById("patterned_img");
 var strideFuncInterval = null;
-
-// ctxImg.imageSmoothingEnabled = false;
-
-// ctxImg.drawImage(img, 0, 0, canvasImg.width, img.height);
 
 // Create 3x3 stencil
 let stencil = [];

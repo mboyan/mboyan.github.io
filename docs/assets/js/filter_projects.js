@@ -80,7 +80,7 @@ function changeFilter(filter, val) {
 
 function filterSelection(catFilters) {
     var x, i;
-    x = document.getElementsByClassName("filterDiv");
+    x = document.getElementsByClassName("projButton");
 
     let catFilterCodes = [];
     for (i = 0; i < catFilters.length; i++) {
@@ -123,4 +123,23 @@ function removeClass(element, name) {
         }
     }
     element.className = arr1.join(" ");
+}
+
+function addImgClickListeners() {
+    document.querySelectorAll('.image-breakout').forEach((image, idx) => {
+        image.addEventListener('click', () => {
+            if (image.classList.contains("maximized")) {
+                image.classList.remove("maximized");
+            }
+            else {
+                // Remove for all others
+                document.querySelectorAll('.image-breakout').forEach((image2, idx2) => {
+                    if (idx2 != idx) {
+                        image2.classList.remove("maximized");
+                    }
+                });
+                image.classList.add("maximized");
+            }
+        });
+    });
 }

@@ -1,0 +1,32 @@
+<h1>
+    Modelling Diffusive Signals for the Germination of <i>Aspergillus</i> Conidia
+</h1>
+
+<p>
+<i>
+    MSc Thesis in Computational Science (UvA/VU)
+    <br>
+    Supervised by Prof. Dr. Han Wösten, Utrecht University
+    <br>
+    2024-2025, Amsterdam
+</i>
+</p>
+
+<img class="image-breakout left" src="./docs/assets/img/projects/thesis_01.png">
+<img class="image-breakout right" src="./docs/assets/img/projects/thesis_04.png">
+<p>
+    The germination rate of <i>Aspergillus</i> conidia is reportedly influenced by the inducing carbon source in the medium and by an auto-inhibitor produced by the spores. This thesis assesses the plausibility of diffusion-driven mechanisms in timing the action of these signals until germination is enabled. To this end, computational models of spores releasing inhibitor molecules are constructed on multiple scales, first simulating the depletion of inhibitor from a single spore, then exploring the effect of increasing spore culture densities, and eventually inspecting the diffusive outflow in a dense spore cluster. This leads to several observations:
+    <ul>
+        <li>the commonly considered inhibitor 1-octen-3-ol would be depleted too fast, unless a strong cell wall adsorption or continuous synthesis slow down its decrease;</li>
+        <li>increasing spore densities flatten the permeation-driving gradient through an ambient inhibitor saturation;</li>
+        <li>dense spore packings do not lead to substantial inhibitor retention, unless their contact area is large.</li>
+    </ul>
+</p>
+<img class="image-breakout right" src="./docs/assets/img/projects/thesis_02.png">
+<p>
+    Finally, germination probability models incorporating induction and inhibition are proposed, representing heterogeneities in the spores through random variables.
+    Parameter estimation through global and local optimisation highlights a promising model that fits experimental data under biologically sensible parameters.
+    In this model, an inhibitor falls below a critical value, and an inhibitor-dependent inducing signal rises above an inhibitor-dependent threshold to trigger germination.
+    In an attempt to explain data with both endogenously and exogenously driven 1-octen-3-ol inhibition, no appropriate parameter combination is found, leading to the supposition that <i>in vivo</i> inhibition is more complex than merely saturating the medium with the compound.
+</p>
+<p>More info <a href="https://github.com/mboyan/msc-thesis" target="_blank">here</a>.</p>

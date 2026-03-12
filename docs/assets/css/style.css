@@ -63,6 +63,7 @@ body {
 }
 
 .main-frame-container{
+  /* position: relative; */
   margin: auto;
   width: 100%;
   flex-direction: column;
@@ -233,23 +234,45 @@ b {
   color:#0D7C82;
 }
 
+a {
+  color:#0D7C82;
+}
+
+a:visited {
+  color:#0D7C82;
+}
+
+a:hover {
+  color:#0D7C82;
+}
+
+a:active {
+  color:#59A399;
+}
+
 /* p {
   font-family: 'Gill Sans', 'Arial', sans-serif;
 } */
 
 /* ===== Project filters ===== */
-.filterDiv {
+.projButton {
   float: left;
-  /* background-color: #2196F3; */
+  background-color: #f8f9fae7;
   /* color: #ffffff; */
   /* width: 125px; */
   /* line-height: 100px; */
+  font-size: 15px;
   text-align: left;
   margin: 2px;
   display: none;
   padding: 5px;
   border: 1px solid #212529;
-  border-radius: 5px;;
+  border-radius: 5px;
+}
+
+.projButton:hover {
+  background-color: #495057;
+  color: #f8f9fa;
 }
 
 .show {
@@ -271,8 +294,17 @@ b {
 .filter-items-container {
   /* margin-top: 20px; */
   margin: auto;
+  width: 100%;
+  height: fit-content;
   /* overflow: hidden; */
   /* border: 3px solid rgb(128, 19, 0); */
+}
+
+/* Lets container scale around buttons */
+.filter-items-container::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .filter-btn {
@@ -306,6 +338,7 @@ b {
   cursor: pointer;
 }
 
+.projButton,
 .filter-btn,
 .dropbtn,
 #showall {
@@ -366,6 +399,67 @@ b {
   border: 3px solid rgb(128, 19, 0);
 } */
 
+/* ===== Standard page images ===== */
+figure {
+  margin: 0;
+}
+
+.page-img {
+  max-width: 480px;
+  margin: 10px 0 20px 0;
+}
+
+/* ===== Breakout images ===== */
+.image-breakout {
+  position: absolute;
+  width: calc((100% - 580px - 10vw) / 2); /* or your desired width */
+  max-width: 220px;
+  border: 2px solid #f8f9fa;
+  transition: 0.3s;
+  object-fit: contain;
+}
+
+.image-breakout.left {
+  left: 5vw; /* push the image into the left void */
+}
+
+.image-breakout.right {
+  right: 5vw; /* push the image into the left void */
+}
+
+.image-breakout img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-breakout.maximized {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: auto !important;
+  max-width: calc(100% - 2vw) !important;
+  max-height: calc(100% - 2vw) !important;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure it’s above other content */
+}
+
+/* The connecting line */
+/* .connector-line {
+  position: absolute;
+  left: 2vw;
+  width: calc(50% - 2vw);
+  height: 2px;
+  background: #f8f9fa;
+} */
+
+/* Optional: Add padding to the container where the image would be,
+   so text doesn't overlap the image's original space. */
+.image-breakout + p {
+  padding-top: 20px; /* or as needed */
+}
+
+/* ===== Responsive design ===== */
 @media screen and (max-width: 500px) {
   #page-header {
     width: 320px;
@@ -398,5 +492,15 @@ b {
   }
   .filter-btn {
     font-size: 11px;
+  }
+  .image-breakout {
+    position: static;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    /* margin-bottom: 10px; */
+  }
+  .connector-line {
+    height: 0;
   }
 }
