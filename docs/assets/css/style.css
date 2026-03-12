@@ -234,6 +234,22 @@ b {
   color:#0D7C82;
 }
 
+a {
+  color:#0D7C82;
+}
+
+a:visited {
+  color:#0D7C82;
+}
+
+a:hover {
+  color:#0D7C82;
+}
+
+a:active {
+  color:#59A399;
+}
+
 /* p {
   font-family: 'Gill Sans', 'Arial', sans-serif;
 } */
@@ -383,14 +399,32 @@ b {
   border: 3px solid rgb(128, 19, 0);
 } */
 
+/* ===== Standard page images ===== */
+figure {
+  margin: 0;
+}
+
+.page-img {
+  max-width: 480px;
+  margin: 10px 0 20px 0;
+}
+
 /* ===== Breakout images ===== */
 .image-breakout {
   position: absolute;
-  left: 2vw; /* push the image into the left void */
-  width: calc((100% - 580px - 4vw) / 2); /* or your desired width */
-  max-width: 500px; /* optional: limit max width */
+  width: calc((100% - 580px - 10vw) / 2); /* or your desired width */
+  max-width: 220px;
   border: 2px solid #f8f9fa;
   transition: 0.3s;
+  object-fit: contain;
+}
+
+.image-breakout.left {
+  left: 5vw; /* push the image into the left void */
+}
+
+.image-breakout.right {
+  right: 5vw; /* push the image into the left void */
 }
 
 .image-breakout img {
@@ -399,22 +433,25 @@ b {
   display: block;
 }
 
-.image-breakout:hover {
-  width: 96vw;
-  max-width: 100%;
-  border: 2px solid #59A399;
-  z-index: 12;
+.image-breakout.maximized {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: auto !important;
+  max-width: calc(100% - 2vw) !important;
+  max-height: calc(100% - 2vw) !important;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure it’s above other content */
 }
 
 /* The connecting line */
-.connector-line {
-  position: relative;
-  top: 0;
-  left: -10%;
-  width: 100%;
+/* .connector-line {
+  position: absolute;
+  left: 2vw;
+  width: calc(50% - 2vw);
   height: 2px;
   background: #f8f9fa;
-}
+} */
 
 /* Optional: Add padding to the container where the image would be,
    so text doesn't overlap the image's original space. */
@@ -460,7 +497,8 @@ b {
     position: static;
     left: 0;
     width: 100%;
-    margin-bottom: 20px;
+    max-width: 100%;
+    /* margin-bottom: 10px; */
   }
   .connector-line {
     height: 0;
