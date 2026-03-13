@@ -405,7 +405,7 @@ figure {
 }
 
 .page-img {
-  max-width: 480px;
+  max-width: 100%; /*480px;*/
   margin: 10px 0 20px 0;
 }
 
@@ -499,8 +499,5 @@ figure {
     width: 100%;
     max-width: 100%;
     /* margin-bottom: 10px; */
-  }
-  .connector-line {
-    height: 0;
   }
 }

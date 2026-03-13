@@ -2,12 +2,14 @@ const backgroundImages = new Map();
 backgroundImages.set("home", "./docs/assets/img/patterned/home.JPG");
 backgroundImages.set("bio", "./docs/assets/img/patterned/bio6.jpg");
 backgroundImages.set("proj", "./docs/assets/img/patterned/proj.JPG");
-backgroundImages.set("sols", "./docs/assets/img/patterned/sols.JPG");
+backgroundImages.set("sols", "./docs/assets/img/patterned/sols.jpg");
 backgroundImages.set("contact", "./docs/assets/img/patterned/contact.JPG");
 
 backgroundImages.set("proj_tree", "./docs/assets/img/patterned/home.JPG");
 backgroundImages.set("proj_diplo", "./docs/assets/img/patterned/proj.JPG");
 backgroundImages.set("proj_thesis", "./docs/assets/img/patterned/proj_thesis.png");
+backgroundImages.set("proj_waam", "./docs/assets/img/patterned/proj_waam.jpg");
+backgroundImages.set("proj_furniture", "./docs/assets/img/patterned/sols.jpg");
 
 function loadPage(page, pushState = true) {
   fetch(`./${page}.htm`)
