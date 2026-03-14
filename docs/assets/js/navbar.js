@@ -10,8 +10,44 @@ backgroundImages.set("proj_diplo", "./docs/assets/img/patterned/proj.JPG");
 backgroundImages.set("proj_thesis", "./docs/assets/img/patterned/proj_thesis.png");
 backgroundImages.set("proj_waam", "./docs/assets/img/patterned/proj_waam.jpg");
 backgroundImages.set("proj_furniture", "./docs/assets/img/patterned/sols.jpg");
+backgroundImages.set("proj_hygroscope", "./docs/assets/img/patterned/proj_hygroscope.jpg");
+backgroundImages.set("proj_hygroskin", "./docs/assets/img/patterned/proj_hygroskin.jpg");
+backgroundImages.set("proj_eyesing", "./docs/assets/img/patterned/proj_eyesing.png");
+backgroundImages.set("proj_wpf", "./docs/assets/img/patterned/proj_wpf.JPG");
+backgroundImages.set("proj_aef", "./docs/assets/img/patterned/proj_aef.jpg");
+backgroundImages.set("proj_hydra", "./docs/assets/img/patterned/proj_hydra.jpg");
+backgroundImages.set("proj_website", "./docs/assets/img/patterned/proj_website.JPG");
+
+var user = ["b", "o", "y", "a", "n"];
+var domain = ["t", "h", "e", "k", "n", "o", "w", "d", "o", "u", "g", "h", ".", "c", "o", "m"];
+
+var hydras = [];
+
+function cleanupHydra() {
+    // Remove all canvases
+    var canvases = document.getElementsByClassName('hydra-canvas');
+    while (canvases.length > 0) {
+        const canvas = canvases[0];
+        const gl = canvas.getContext('webgl');
+        if (gl) {
+            const ext = gl.getExtension('WEBGL_lose_context');
+            if (ext) ext.loseContext();
+        }
+        canvas.remove();
+    }
+    // Clear the hydras array
+    while (hydras.length > 0) {
+        hydras.pop();
+    }
+}
 
 function loadPage(page, pushState = true) {
+  cleanupHydra();
+  // var canvases = document.getElementsByClassName('hydra-canvas');
+  // console.log(canvases.length);
+  // while (canvases.length > 0) {
+  //     canvases[0].remove();
+  // }
   fetch(`./${page}.htm`)
     .then(r => r.text())
     .then(html => {
@@ -29,6 +65,8 @@ function loadPage(page, pushState = true) {
       requestAnimationFrame(() => {
         if (page == "proj"){
           initFilters();
+        } else if (page == "contact"){
+          document.getElementById("email").innerHTML = user.join("") + "@" + domain.join("");
         }
       });
       if (pushState) {
@@ -40,6 +78,12 @@ function loadPage(page, pushState = true) {
 }
 
 function loadProject(proj, pushState = true) {
+  cleanupHydra();
+  // var canvases = document.getElementsByClassName('hydra-canvas');
+  // console.log(canvases.length);
+  // while (canvases.length > 0) {
+  //     canvases[0].remove();
+  // }
   fetch(`./${proj}.htm`)
     .then(r => r.text())
     .then(html => {
@@ -50,8 +94,15 @@ function loadProject(proj, pushState = true) {
       // Change background
       resetImg(backgroundImages.get(proj));
 
+      // Initialize hydra visuals
+      requestAnimationFrame(() => {
+        if (proj == "proj_hydra"){
+          loadHydraScripts();
+        }
+      });
+
       if (pushState) {
-        history.pushState("/proj/", { proj }, "", `${proj}`);
+        history.pushState({ proj }, "", `${proj}`);
         addImgClickListeners(); // Add listener for image maximisation
       // } else {
       //   console.log("foo");
@@ -73,7 +124,12 @@ function getCurrentPage() {
 
 function initSPA() {
   const page = getCurrentPage();
-  loadPage(page);
+  if (page.startsWith("proj_")) {
+    loadPage("proj");
+    loadProject(page);
+  } else {
+    loadPage(page);
+  }
 }
 
 initSPA();
