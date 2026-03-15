@@ -48,7 +48,7 @@ function loadPage(page, pushState = true) {
   // while (canvases.length > 0) {
   //     canvases[0].remove();
   // }
-  fetch(`./pages/${page}.htm`)
+  fetch(`./pages/${page}.html`)
     .then(r => r.text())
     .then(html => {
 
@@ -84,7 +84,7 @@ function loadProject(proj, pushState = true) {
   // while (canvases.length > 0) {
   //     canvases[0].remove();
   // }
-  fetch(`./pages/${proj}.htm`)
+  fetch(`./pages/${proj}.html`)
     .then(r => r.text())
     .then(html => {
 
@@ -119,7 +119,7 @@ window.addEventListener("popstate", (e) => {
 function getCurrentPage() {
   const path = window.location.pathname;
   if (path === "/" || path === "") return "home";
-  return path.replace("/", "").replace(".htm", "");
+  return path.replace("/", "").replace(".html", "");
 }
 
 function initSPA() {
