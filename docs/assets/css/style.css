@@ -1,18 +1,30 @@
-html{
-  height: 100%
+html, body{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
   background-color: #f8f9fa;
-  /* font-family: 'Gill Sans', 'Arial', sans-serif; */
-  /* font-family: 'Optima', 'Segoe', 'Segoe UI', 'Candara', 'Calibri', 'Arial', sans-serif; */
-  /* font-family: 'Dejavu Sans', 'Arial', 'Verdana', sans-serif; */
   color: #212529;
   font-family: 'Courier New', 'Courier', 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
   padding: 0;
   margin: 0;
-  height: 100%;
-  /* border: 3px solid red; */
+  /* height: 100%; */
+}
+
+footer {
+  width: 100%;
+  background-color: #f8f9fa;
+  color: #212529;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  clear: both;
+  text-align: left;
+  font-size: 0.75em;
+  column-count: 3;
+  /* top: 100%; */
 }
 
 #canvas-logo {
@@ -97,7 +109,7 @@ ul.nav li {
 
 ul.nav li a {
   display: block;
-  color: white;
+  color: #f8f9fa;
   text-align: center;
   padding: 0;
   text-decoration: none;
@@ -197,28 +209,17 @@ button {
   top: 0px;
   left: 0px;
   width: 100%;
-  /* width: 480px; */
-  /* border: 3px solid green; */
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
 .overlay-text {
-  /* border: 1px solid green; */
   background-color: #f8f9fae7;
-  /* position: absolute; */
-  /* top: 10px; */
-  /* left: 10px; */
-  /* left: 5%; */
-  /* transform: translate(-10px, -10px); */
-  /* color: #212529; */
   font-size: 1em;
   width: 480px;
-  /* pointer-events: none; */
   padding: 25px;
-  /* text-align: justify; */
-  min-width: unset; /* 320px; */
+  min-width: unset;
   max-width: 600px;
 }
 

@@ -118,13 +118,13 @@ function getCurrentPage() {
 //   }
 // }
 
-(function () {
-  const redirect = sessionStorage.redirect;
-  if (redirect) {
-    sessionStorage.removeItem("redirect");
-    history.replaceState(null, null, redirect);
-  }
-})();
+// (function () {
+//   const redirect = sessionStorage.redirect;
+//   if (redirect) {
+//     sessionStorage.removeItem("redirect");
+//     history.replaceState(null, null, redirect);
+//   }
+// })();
 
 function initSPA() {
 
@@ -145,6 +145,23 @@ function initSPA() {
     loadProject(page);
   } else {
     loadPage(page);
+  }
+}
+
+(function restoreRedirect() {
+  const redirect = sessionStorage.getItem("redirect");
+
+  if (redirect && redirect !== "/" && redirect !== window.location.pathname) {
+    sessionStorage.removeItem("redirect");
+    history.replaceState(null, "", redirect);
+  }
+})();
+
+if (location.hostname !== "localhost") {
+  const redirect = sessionStorage.getItem("redirect");
+  if (redirect) {
+    sessionStorage.removeItem("redirect");
+    history.replaceState(null, "", redirect);
   }
 }
 
