@@ -1,22 +1,22 @@
 const backgroundImages = new Map();
-backgroundImages.set("home", "./docs/assets/img/patterned/home.JPG");
-backgroundImages.set("bio", "./docs/assets/img/patterned/bio6.jpg");
-backgroundImages.set("proj", "./docs/assets/img/patterned/proj.JPG");
-backgroundImages.set("sols", "./docs/assets/img/patterned/sols.jpg");
-backgroundImages.set("contact", "./docs/assets/img/patterned/contact.JPG");
+backgroundImages.set("home", "./assets/img/patterned/home.JPG");
+backgroundImages.set("bio", "./assets/img/patterned/bio6.jpg");
+backgroundImages.set("proj", "./assets/img/patterned/proj.JPG");
+backgroundImages.set("sols", "./assets/img/patterned/sols.jpg");
+backgroundImages.set("contact", "./assets/img/patterned/contact.JPG");
 
-backgroundImages.set("proj_tree", "./docs/assets/img/patterned/home.JPG");
-backgroundImages.set("proj_diplo", "./docs/assets/img/patterned/proj.JPG");
-backgroundImages.set("proj_thesis", "./docs/assets/img/patterned/proj_thesis.png");
-backgroundImages.set("proj_waam", "./docs/assets/img/patterned/proj_waam.jpg");
-backgroundImages.set("proj_furniture", "./docs/assets/img/patterned/sols.jpg");
-backgroundImages.set("proj_hygroscope", "./docs/assets/img/patterned/proj_hygroscope.jpg");
-backgroundImages.set("proj_hygroskin", "./docs/assets/img/patterned/proj_hygroskin.jpg");
-backgroundImages.set("proj_eyesing", "./docs/assets/img/patterned/proj_eyesing.png");
-backgroundImages.set("proj_wpf", "./docs/assets/img/patterned/proj_wpf.JPG");
-backgroundImages.set("proj_aef", "./docs/assets/img/patterned/proj_aef.jpg");
-backgroundImages.set("proj_hydra", "./docs/assets/img/patterned/proj_hydra.jpg");
-backgroundImages.set("proj_website", "./docs/assets/img/patterned/proj_website.JPG");
+backgroundImages.set("proj_tree", "./assets/img/patterned/home.JPG");
+backgroundImages.set("proj_diplo", "./assets/img/patterned/proj.JPG");
+backgroundImages.set("proj_thesis", "./assets/img/patterned/proj_thesis.png");
+backgroundImages.set("proj_waam", "./assets/img/patterned/proj_waam.jpg");
+backgroundImages.set("proj_furniture", "./assets/img/patterned/sols.jpg");
+backgroundImages.set("proj_hygroscope", "./assets/img/patterned/proj_hygroscope.jpg");
+backgroundImages.set("proj_hygroskin", "./assets/img/patterned/proj_hygroskin.jpg");
+backgroundImages.set("proj_eyesing", "./assets/img/patterned/proj_eyesing.png");
+backgroundImages.set("proj_wpf", "./assets/img/patterned/proj_wpf.JPG");
+backgroundImages.set("proj_aef", "./assets/img/patterned/proj_aef.jpg");
+backgroundImages.set("proj_hydra", "./assets/img/patterned/proj_hydra.jpg");
+backgroundImages.set("proj_website", "./assets/img/patterned/proj_website.JPG");
 
 var user = ["b", "o", "y", "a", "n"];
 var domain = ["t", "h", "e", "k", "n", "o", "w", "d", "o", "u", "g", "h", ".", "c", "o", "m"];
@@ -48,7 +48,7 @@ function loadPage(page, pushState = true) {
   // while (canvases.length > 0) {
   //     canvases[0].remove();
   // }
-  fetch(`./${page}.htm`)
+  fetch(`./pages/${page}.htm`)
     .then(r => r.text())
     .then(html => {
 
@@ -84,7 +84,7 @@ function loadProject(proj, pushState = true) {
   // while (canvases.length > 0) {
   //     canvases[0].remove();
   // }
-  fetch(`./${proj}.htm`)
+  fetch(`./pages/${proj}.htm`)
     .then(r => r.text())
     .then(html => {
 
