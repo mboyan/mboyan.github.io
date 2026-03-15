@@ -48,7 +48,8 @@ function loadPage(page, pushState = true) {
     .then(html => {
 
       // Change inner HTML
-      document.getElementById('main-frame').innerHTML = html;
+      mainFrame = document.getElementById('main-frame')
+      mainFrame.innerHTML = html;
 
       // Transform header
       window[`headerTransition${page.charAt(0).toUpperCase() + page.slice(1)}`]?.();
@@ -107,24 +108,6 @@ function getCurrentPage() {
   if (path === "/" || path === "") return "home";
   return path.replace("/", "").replace(".html", "");
 }
-
-// function initSPA() {
-//   const page = getCurrentPage();
-//   if (page.startsWith("proj_")) {
-//     loadPage("proj");
-//     loadProject(page);
-//   } else {
-//     loadPage(page);
-//   }
-// }
-
-// (function () {
-//   const redirect = sessionStorage.redirect;
-//   if (redirect) {
-//     sessionStorage.removeItem("redirect");
-//     history.replaceState(null, null, redirect);
-//   }
-// })();
 
 function initSPA() {
 
