@@ -108,8 +108,30 @@ function getCurrentPage() {
   return path.replace("/", "").replace(".html", "");
 }
 
+// function initSPA() {
+//   const page = getCurrentPage();
+//   if (page.startsWith("proj_")) {
+//     loadPage("proj");
+//     loadProject(page);
+//   } else {
+//     loadPage(page);
+//   }
+// }
+
 function initSPA() {
-  const page = getCurrentPage();
+
+  const params = new URLSearchParams(window.location.search);
+  const redirectedPath = params.get("p");
+
+  let page;
+
+  if (redirectedPath) {
+    page = redirectedPath.replace("/", "");
+    history.replaceState({}, "", page);
+  } else {
+    page = getCurrentPage();
+  }
+
   if (page.startsWith("proj_")) {
     loadPage("proj");
     loadProject(page);
