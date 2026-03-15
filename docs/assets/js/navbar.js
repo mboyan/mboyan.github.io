@@ -43,7 +43,7 @@ function cleanupHydra() {
 
 function loadPage(page, pushState = true) {
   cleanupHydra();
-  fetch(`./pages/${page}.html`)
+  fetch(`/pages/${page}.html`)
     .then(r => r.text())
     .then(html => {
 
@@ -72,7 +72,7 @@ function loadPage(page, pushState = true) {
 
 function loadProject(proj, pushState = true) {
   cleanupHydra();
-  fetch(`./pages/${proj}.html`)
+  fetch(`/pages/${proj}.html`)
     .then(r => r.text())
     .then(html => {
 
