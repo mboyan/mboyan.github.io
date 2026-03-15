@@ -118,6 +118,14 @@ function getCurrentPage() {
 //   }
 // }
 
+(function () {
+  const redirect = sessionStorage.redirect;
+  if (redirect) {
+    sessionStorage.removeItem("redirect");
+    history.replaceState(null, null, redirect);
+  }
+})();
+
 function initSPA() {
 
   const params = new URLSearchParams(window.location.search);
