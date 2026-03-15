@@ -43,12 +43,7 @@ function cleanupHydra() {
 
 function loadPage(page, pushState = true) {
   cleanupHydra();
-  // var canvases = document.getElementsByClassName('hydra-canvas');
-  // console.log(canvases.length);
-  // while (canvases.length > 0) {
-  //     canvases[0].remove();
-  // }
-  fetch(`./pages/${page}.html`)
+  fetch(`./${page}.html`)
     .then(r => r.text())
     .then(html => {
 
@@ -71,20 +66,13 @@ function loadPage(page, pushState = true) {
       });
       if (pushState) {
         history.pushState({ page }, "", `${page}`);
-      // } else {
-      //   console.log("foo");
       }
     });
 }
 
 function loadProject(proj, pushState = true) {
   cleanupHydra();
-  // var canvases = document.getElementsByClassName('hydra-canvas');
-  // console.log(canvases.length);
-  // while (canvases.length > 0) {
-  //     canvases[0].remove();
-  // }
-  fetch(`./pages/${proj}.html`)
+  fetch(`./${proj}.html`)
     .then(r => r.text())
     .then(html => {
 
@@ -104,8 +92,6 @@ function loadProject(proj, pushState = true) {
       if (pushState) {
         history.pushState({ proj }, "", `${proj}`);
         addImgClickListeners(); // Add listener for image maximisation
-      // } else {
-      //   console.log("foo");
       }
     });
 }
