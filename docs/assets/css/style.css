@@ -3,19 +3,20 @@ html {
 }
 
 html, body{
-  height: fit-content;
   display: flex;
   flex-direction: column;
+  height: fit-content;
   margin: 0;
-  /* border: 3px solid blue; */
+  border: 3px solid blue;
 }
 
 body {
-  min-height: 100vh;
+  justify-content: center;
+  /* min-height: 100vh; */
+  padding: 0;
   background-color: #f8f9fa;
   color: #212529;
   font-family: 'Courier New', 'Courier', 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-  padding: 0;
 }
 
 footer {
@@ -49,15 +50,22 @@ footer {
   height: 100px;
 }
 
-.pimg, #canvas-img {
-  margin: auto;
-  border: 0px;
-  padding: 0px;
+.content-with-pimg, #canvas-img {
+  position: relative;
+  flex: 1;
+  /* margin: auto; */
   max-width: 2560px;
+  z-index: -1;
+  /* border: 0px; */
+  padding: 0px;
 }
 
-.pimg {
+/* .content-with-pimg {
   position: relative;
+} */
+
+#canvas-img {
+  bottom: 0; /* MAKE THIS WORK (SNAP TO BOTTOM)!!! */
 }
 
 #page-header {
@@ -385,7 +393,7 @@ figure {
 }
 
 .page-img {
-  max-width: 100%; /*480px;*/
+  max-width: 100%;
   margin: 10px 0 20px 0;
 }
 

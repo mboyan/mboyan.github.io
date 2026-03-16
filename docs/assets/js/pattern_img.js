@@ -82,15 +82,6 @@ function drawPImg()
     ctxImg.putImageData(patData, 0, 0);
 }
 
-// function resizeCanvas()
-// {
-//     const maxWidth = 2560;
-//     canvasImg.width = Math.min(window.innerWidth, maxWidth);
-//     canvasImg.height = img.height * canvasImg.width / img.width;
-//     drawPImg();
-//     // console.log("Image drawn");
-// }
-
 function resizeCanvas()
 {
     if (!img.complete || img.naturalWidth === 0) return;
