@@ -1,5 +1,5 @@
 const backgroundImages = new Map();
-backgroundImages.set("home", "./assets/img/patterned/home.jpg");
+backgroundImages.set("home", "./assets/img/patterned/home.JPG");
 backgroundImages.set("bio", "./assets/img/patterned/bio.png");
 backgroundImages.set("proj", "./assets/img/patterned/proj.JPG");
 backgroundImages.set("sols", "./assets/img/patterned/sols.png");
