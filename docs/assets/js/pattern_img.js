@@ -21,7 +21,6 @@ let stride = 1;
 function drawPImg()
 {
     let scaledHeight = img.height * canvasImg.width / img.width;
-    // console.log(img);
     ctxImg.clearRect(0, 0, canvasImg.width, scaledHeight);
     ctxImg.drawImage(img, 0, 0, canvasImg.width, scaledHeight);
 
@@ -46,16 +45,10 @@ function drawPImg()
         for (let j = 0; j < roughHeight; j++)
         {
             let red, green, blue;
-            // if (Math.random()*0.05 < j/roughHeight) {
             let idx = j * 12 * stride * canvasImg.width + i * 12 * stride;
             red = imgColData[idx];
             green = imgColData[idx + 1];
             blue = imgColData[idx + 2];
-            // } else {
-            //     red = 255;
-            //     green = 255;
-            //     blue = 255;
-            // }
 
             let stencilIndices = redStencil.slice(0, Math.ceil(red / 64));
             stencilIndices = stencilIndices.concat(greenStencil.slice(0, Math.ceil(green / 64)));
@@ -88,9 +81,23 @@ function resizeCanvas()
 
     const maxWidth = 2560;
     canvasImg.width = Math.min(window.innerWidth, maxWidth);
-    canvasImg.height = img.naturalHeight * canvasImg.width / img.naturalWidth;
+
+    const aspectRatio = img.naturalHeight / img.naturalWidth;
+    canvasImg.height = canvasImg.width * aspectRatio; // Maintain aspect ratio
+
+    const contentHeight = document.querySelector('.overlay-text-container').offsetHeight;
 
     if (canvasImg.width === 0 || canvasImg.height === 0) return;
+
+    // Calculate free space between content and bottom of the viewport
+    const freeSpace = canvasImg.height - contentHeight;
+    console.log(freeSpace);
+
+    if (freeSpace > 0) {
+        document.querySelector('.spacer').style.minHeight = `${freeSpace}px`; // Adjust spacer height
+    } else {
+        document.querySelector('.spacer').style.minHeight = '0'; // Reset spacer if there's no free space
+    }
 
     drawPImg();
 }
@@ -117,18 +124,14 @@ function initImg()
 
 function resetImg(imgSrc)
 {
-    // console.log("foobar");
     if (img != null) {
-        img.src = imgSrc;//`${imgSrc}?${Date.now()}`;
+        img.src = imgSrc;
     }
     initImg();
 }
 
 img.onload = () => {
     initImg();
-    // console.log("foo");
 }
 
 window.addEventListener('resize', resizeCanvas);
-// initImg();
-// resizeCanvas();
