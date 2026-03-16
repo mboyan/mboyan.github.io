@@ -91,7 +91,6 @@ function resizeCanvas()
 
     // Calculate free space between content and bottom of the viewport
     const freeSpace = canvasImg.height - contentHeight;
-    console.log(freeSpace);
 
     if (freeSpace > 0) {
         document.querySelector('.spacer').style.minHeight = `${freeSpace}px`; // Adjust spacer height

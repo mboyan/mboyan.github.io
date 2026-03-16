@@ -1,20 +1,20 @@
 const backgroundImages = new Map();
 backgroundImages.set("home", "./assets/img/patterned/home.jpg");
-backgroundImages.set("bio", "./assets/img/patterned/bio.jpg");
+backgroundImages.set("bio", "./assets/img/patterned/bio.png");
 backgroundImages.set("proj", "./assets/img/patterned/proj.JPG");
-backgroundImages.set("sols", "./assets/img/patterned/sols.jpg");
+backgroundImages.set("sols", "./assets/img/patterned/sols.png");
 backgroundImages.set("contact", "./assets/img/patterned/contact.JPG");
 
 backgroundImages.set("proj_tree", "./assets/img/patterned/home.JPG");
 backgroundImages.set("proj_diplo", "./assets/img/patterned/proj.JPG");
 backgroundImages.set("proj_thesis", "./assets/img/patterned/proj_thesis.png");
 backgroundImages.set("proj_waam", "./assets/img/patterned/proj_waam.jpg");
-backgroundImages.set("proj_furniture", "./assets/img/patterned/sols.jpg");
+backgroundImages.set("proj_furniture", "./assets/img/patterned/sols.png");
 backgroundImages.set("proj_hygroscope", "./assets/img/patterned/proj_hygroscope.jpg");
 backgroundImages.set("proj_hygroskin", "./assets/img/patterned/proj_hygroskin.jpg");
 backgroundImages.set("proj_eyesing", "./assets/img/patterned/proj_eyesing.png");
 backgroundImages.set("proj_wpf", "./assets/img/patterned/proj_wpf.JPG");
-backgroundImages.set("proj_aef", "./assets/img/patterned/proj_aef.jpg");
+backgroundImages.set("proj_aef", "./assets/img/patterned/proj_aef.png");
 backgroundImages.set("proj_hydra", "./assets/img/patterned/proj_hydra.jpg");
 backgroundImages.set("proj_website", "./assets/img/patterned/proj_website.JPG");
 
