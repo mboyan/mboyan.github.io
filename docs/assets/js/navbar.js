@@ -13,7 +13,7 @@ backgroundImages.set("proj_furniture", "./assets/img/patterned/sols.png");
 backgroundImages.set("proj_hygroscope", "./assets/img/patterned/proj_hygroscope.jpg");
 backgroundImages.set("proj_hygroskin", "./assets/img/patterned/proj_hygroskin.jpg");
 backgroundImages.set("proj_eyesing", "./assets/img/patterned/proj_eyesing.png");
-backgroundImages.set("proj_wpf", "./assets/img/patterned/proj_wpf.JPG");
+backgroundImages.set("proj_wpf", "./assets/img/patterned/proj_wpf.png");
 backgroundImages.set("proj_aef", "./assets/img/patterned/proj_aef.png");
 backgroundImages.set("proj_hydra", "./assets/img/patterned/proj_hydra.jpg");
 backgroundImages.set("proj_website", "./assets/img/patterned/proj_website.JPG");
