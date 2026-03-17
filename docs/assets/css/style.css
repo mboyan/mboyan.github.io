@@ -231,7 +231,8 @@ button.internal-link {
   align-items: center;
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 100px;
+  padding-bottom: 250px;
+  border: 3px solid green;
 }
 
 .overlay-text {
@@ -301,6 +302,7 @@ a:active {
   display: flex;
   width: 500px;
   flex-direction: row;
+  z-index: 2000;
 }
 
 .filter-items-container {
@@ -323,6 +325,7 @@ a:active {
   font-size: 15px;
   background-color: #f8f9fa;
   cursor: pointer;
+  z-index: 2000;
 }
 
 .filter-btn:hover {
