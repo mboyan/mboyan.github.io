@@ -42,7 +42,6 @@ function cleanupHydra() {
 }
 
 function loadPage(page, pushState = true) {
-  // clearImg();
   cleanupHydra();
   fetch(`/pages/${page}.html`)
     .then(r => r.text())
@@ -57,7 +56,6 @@ function loadPage(page, pushState = true) {
 
       // Change background
       resetImg(backgroundImages.get(page));
-      // setTimeout(() => resetImg(backgroundImages.get(page)), 50);
 
       // Initialize project filters
       requestAnimationFrame(() => {
