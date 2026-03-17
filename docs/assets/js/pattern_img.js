@@ -121,6 +121,11 @@ function initImg()
     strideFuncInterval = setInterval(shrinkStride, 10);
 }
 
+// function clearImg()
+// {
+//     img.src = null;
+// }
+
 function resetImg(imgSrc)
 {
     if (img != null) {

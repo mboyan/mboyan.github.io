@@ -86,6 +86,7 @@ footer {
     flex: 1;
     min-height: 100px;
     max-height: 1000px;
+    /* transition-duration: 1s; */
 }
 
 /* ===== Navigation bar ====== */
@@ -233,6 +234,7 @@ button.internal-link {
   overflow-y: auto;
   padding-bottom: 250px;
   /* border: 3px solid green; */
+  transition-duration: 1s;
 }
 
 .overlay-text {
@@ -244,6 +246,7 @@ button.internal-link {
   min-width: unset;
   max-width: 600px;
   /* border: 3px solid green; */
+  transition-duration: 1s;
 }
 
 ul li {
@@ -286,6 +289,7 @@ a:active {
   padding: 5px;
   border: 1px solid #212529;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .projButton:hover {
