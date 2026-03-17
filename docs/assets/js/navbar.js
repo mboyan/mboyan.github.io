@@ -101,6 +101,10 @@ window.addEventListener("popstate", (e) => {
   if (e.state?.page) {
     loadPage(e.state.page, false);
   }
+  else if (e.state?.proj) {
+    loadPage("proj", false);
+    loadPage(e.state.proj, false);
+  }
 });
 
 function getCurrentPage() {

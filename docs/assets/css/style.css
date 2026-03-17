@@ -208,6 +208,14 @@ button {
   cursor: pointer;
 }
 
+button.internal-link {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
 /* ===== Text content ===== */
 
 .overlay-text-container {
@@ -241,10 +249,6 @@ ul li {
   padding: 10px 0px;
 }
 
-h2 {
-  text-align: justify;
-}
-
 b {
   color:#0D7C82;
 }
@@ -267,7 +271,7 @@ a:active {
 
 #legal {
   margin: 0;
-  column-count: 3;
+  column-count: 2;
 }
 
 /* ===== Project filters ===== */
