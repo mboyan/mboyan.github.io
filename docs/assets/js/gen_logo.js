@@ -274,7 +274,7 @@ class ParticleSystem {
         ctxLogo.beginPath();
         ctxLogo.lineWidth = this.lineWidth * 1.25;
         ctxLogo.lineCap = "round";
-        ctxLogo.strokeStyle = "rgba(248, 249, 250, 255)";
+        ctxLogo.strokeStyle = "white";
         ctxLogo.moveTo(this.particles[0].x, this.particles[0].y);
         for (let i = 0; i < this.nParticles; i++){
             // ctxLogo.lineWidth = 0.5 * (this.particles[i].radius + this.particles[(i + 1) % this.nParticles].radius);
