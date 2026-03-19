@@ -11,15 +11,15 @@ body {
   justify-content: center;
   /* min-height: 100vh; */
   padding: 0;
-  background-color: #f8f9fa;
-  color: #212529;
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
   font-family: 'Courier New', 'Courier', 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 }
 
 footer {
   width: 100%;
-  background-color: #f8f9fa;
-  color: #212529;
+  /* background-color: #f8f9fa;
+  color: #212529; */
   padding: 20px;
   box-sizing: border-box;
   position: relative;
@@ -109,7 +109,7 @@ ul.nav li {
 
 ul.nav li a {
   display: block;
-  color: #f8f9fa;
+  color: #f8f9fa !important;
   text-align: center;
   padding: 0;
   text-decoration: none;
@@ -155,7 +155,7 @@ button {
   width: 100px;
   height: 100px;
   background-size: cover;
-  background-color: #f8f9fa;
+  background-color: #f8f9fa !important;
   border: none;
   cursor: pointer;
 }
@@ -203,8 +203,8 @@ button {
 #toggle-legal {
   font-family: inherit;
   font-size: 1em;
-  color: #0D7C82;
-  background-color: #f8f9fa;
+  color: #0D7C82 !important;
+  background-color: #f8f9fa !important;
   border: 0;
   cursor: pointer;
 }
@@ -239,7 +239,7 @@ button.internal-link {
 
 .overlay-text {
   flex: 1;
-  background-color: #f8f9fae7;
+  background-color: #f8f9fae7 !important;
   font-size: 1em;
   width: 480px;
   padding: 25px;
@@ -254,23 +254,23 @@ ul li {
 }
 
 b {
-  color:#0D7C82;
+  color:#0D7C82 !important;
 }
 
 a {
-  color:#0D7C82;
+  color:#0D7C82 !important;
 }
 
 a:visited {
-  color:#0D7C82;
+  color:#0D7C82 !important;
 }
 
 a:hover {
-  color:#0D7C82;
+  color:#0D7C82 !important;
 }
 
 a:active {
-  color:#59A399;
+  color:#59A399 !important;
 }
 
 #legal {
@@ -281,20 +281,20 @@ a:active {
 /* ===== Project filters ===== */
 .projButton {
   float: left;
-  background-color: #f8f9fae7;
+  background-color: #f8f9fae7 !important;
   font-size: 15px;
   text-align: left;
   margin: 2px;
   display: none;
   padding: 5px;
-  border: 1px solid #212529;
+  border: 1px solid #212529 !important;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .projButton:hover {
-  background-color: #495057;
-  color: #f8f9fa;
+  background-color: #495057 !important;
+  color: #f8f9fa !important;
 }
 
 .show {
@@ -327,24 +327,24 @@ a:active {
   outline: none;
   padding: 8px 0px 8px 0px;
   font-size: 15px;
-  background-color: #f8f9fa;
+  background-color: #f8f9fa !important;
   cursor: pointer;
   z-index: 2000;
 }
 
 .filter-btn:hover {
-  background-color: #0D7C82;
-  color: #f8f9fa;
+  background-color: #0D7C82 !important;
+  color: #f8f9fa !important;
 }
 
 .filter-btn.active {
-  background-color: #59A399;
-  color: #f8f9fa;
+  background-color: #59A399 !important;
+  color: #f8f9fa !important;
 }
 
 .dropbtn {
-  background-color: #59A399;
-  color: #f8f9fa;
+  background-color: #59A399 !important;
+  color: #f8f9fa !important;
   width: 118px;
   margin: 1px;
   padding: 8px;
@@ -370,7 +370,7 @@ a:active {
   flex-direction: column;
   width: 100%;
   position: absolute;
-  background-color: #f8f9fa;
+  background-color: #f8f9fa !important;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
@@ -379,20 +379,20 @@ a:active {
 }
 
 .dropbtn:hover {
-  background-color: #0D7C82;
+  background-color: #0D7C82 !important;
 }
 
 #showall {
   float:right;
   font-size: 15px;
-  color: #495057;
-  background-color: #f8f9fa;
-  border: 1px solid #f8f9fa;
+  color: #495057 !important;
+  background-color: #f8f9fa !important;
+  border: 1px solid #f8f9fa !important;
   cursor: pointer;
 }
 
 #showall:hover {
-  border-color: #495057;
+  border-color: #495057 !important;
 }
 
 /* ===== Standard page images ===== */
@@ -410,7 +410,7 @@ figure {
   position: absolute;
   width: calc((100% - 580px - 10vw) / 2); /* or your desired width */
   max-width: 220px;
-  border: 2px solid #f8f9fa;
+  border: 2px solid #f8f9fa !important;
   transition: 0.3s;
   object-fit: contain;
 }
