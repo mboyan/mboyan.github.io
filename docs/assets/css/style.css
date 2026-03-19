@@ -490,7 +490,7 @@ figure {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html, body {
     background-color: #f8f9fa !important;
     color: #212529 !important;
@@ -563,7 +563,7 @@ figure {
   .image-breakout {
     border: 2px solid #f8f9fa !important;
   }
-}
+} */
 
 /* ===== Hydra ===== */
 .hydra-canvas {

@@ -36,7 +36,7 @@ function drawPImg()
         patColData[i] = 248;
         patColData[i + 1] = 249;
         patColData[i + 2] = 250;
-        patColData[i + 3] = 255;
+        patColData[i + 3] = 0;
     }
 
     // Create halftone pattern
@@ -64,6 +64,7 @@ function drawPImg()
                                 patColData[patIdx] = 73;
                                 patColData[patIdx + 1] = 80;
                                 patColData[patIdx + 2] = 87;
+                                patColData[patIdx + 3] = 255;
                             }
                         }
                     }

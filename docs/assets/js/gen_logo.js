@@ -272,9 +272,9 @@ class ParticleSystem {
         //     p.display();
         // }
         ctxLogo.beginPath();
-        ctxLogo.lineWidth = this.lineWidth ;
+        ctxLogo.lineWidth = this.lineWidth * 1.1;
         ctxLogo.lineCap = "round";
-        ctxLogo.strokeStyle = "black";
+        ctxLogo.strokeStyle = "rgba(248, 249, 250, 255)";
         ctxLogo.moveTo(this.particles[0].x, this.particles[0].y);
         for (let i = 0; i < this.nParticles; i++){
             // ctxLogo.lineWidth = 0.5 * (this.particles[i].radius + this.particles[(i + 1) % this.nParticles].radius);
@@ -286,22 +286,22 @@ class ParticleSystem {
         
         ctxLogo.closePath();
         ctxLogo.stroke();
-        // for (let s of this.springs) {
-        //     ctxLogo.beginPath();
-        //     ctxLogo.lineWidth = 1;
-        //     ctxLogo.lineCap = "round";
-        //     ctxLogo.moveTo(s.p1.x, s.p1.y);
-        //     ctxLogo.lineTo(s.p2.x, s.p2.y);
-        //     ctxLogo.strokeStyle = "black";
-        //     ctxLogo.stroke();
-        // }
-        // for (let ac of this.angleConstraints) {
-        //     ctxLogo.beginPath();
-        //     ctxLogo.moveTo(ac.p1.x, ac.p1.y);
-        //     ctxLogo.lineTo(ac.p3.x, ac.p3.y);
-        //     ctxLogo.strokeStyle = "red";
-        //     ctxLogo.stroke();
-        // }
+
+        ctxLogo.beginPath();
+        ctxLogo.lineWidth = this.lineWidth ;
+        ctxLogo.lineCap = "round";
+        ctxLogo.strokeStyle = "rgba(33, 37, 41, 255)";
+        ctxLogo.moveTo(this.particles[0].x, this.particles[0].y);
+        for (let i = 0; i < this.nParticles; i++){
+            // ctxLogo.lineWidth = 0.5 * (this.particles[i].radius + this.particles[(i + 1) % this.nParticles].radius);
+            var xc = 0.5 * (this.particles[i].x + this.particles[(i + 1) % this.nParticles].x);
+            var yc = 0.5 * (this.particles[i].y + this.particles[(i + 1) % this.nParticles].y);
+            ctxLogo.quadraticCurveTo(this.particles[i].x, this.particles[i].y, xc, yc);
+            // ctxLogo.stroke();
+        }
+        
+        ctxLogo.closePath();
+        ctxLogo.stroke();
     }
 }
 
