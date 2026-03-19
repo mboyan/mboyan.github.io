@@ -272,7 +272,7 @@ class ParticleSystem {
         //     p.display();
         // }
         ctxLogo.beginPath();
-        ctxLogo.lineWidth = this.lineWidth * 1.1;
+        ctxLogo.lineWidth = this.lineWidth * 1.25;
         ctxLogo.lineCap = "round";
         ctxLogo.strokeStyle = "rgba(248, 249, 250, 255)";
         ctxLogo.moveTo(this.particles[0].x, this.particles[0].y);
