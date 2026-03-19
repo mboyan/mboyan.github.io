@@ -1,3 +1,7 @@
+:root {
+  color-scheme: light;
+}
+
 html, body{
   height: 100%;
   margin: 0;
@@ -483,6 +487,81 @@ figure {
     width: 100%;
     max-width: 100%;
     /* margin-bottom: 10px; */
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+  }
+  ul.nav li a {
+    color: #f8f9fa !important;
+  }
+  .nav-button {
+    background-color: #f8f9fa !important;
+  }
+  #toggle-legal {
+    color: #0D7C82 !important;
+    background-color: #f8f9fa !important;
+  }
+  .overlay-text {
+    background-color: #f8f9fae7 !important;
+  }
+  b {
+    color:#0D7C82 !important;
+  }
+  a {
+    color:#0D7C82 !important;
+  }
+  a:visited {
+    color:#0D7C82 !important;
+  }
+  a:hover {
+    color:#0D7C82 !important;
+  }
+  a:active {
+    color:#59A399 !important;
+  }
+  .projButton {
+    background-color: #f8f9fae7 !important;
+    border: 1px solid #212529 !important;
+  }
+  .projButton:hover {
+    background-color: #495057 !important;
+    color: #f8f9fa !important;
+  }
+  .filter-btn {
+    background-color: #f8f9fa !important;
+  }
+  .filter-btn:hover {
+    background-color: #0D7C82 !important;
+    color: #f8f9fa !important;
+  }
+  .filter-btn.active {
+    background-color: #59A399 !important;
+    color: #f8f9fa !important;
+  }
+  .dropbtn {
+    background-color: #59A399 !important;
+    color: #f8f9fa !important;
+  }
+  .dropdown-filters {
+    background-color: #f8f9fa !important;
+  }
+  .dropbtn:hover {
+    background-color: #0D7C82 !important;
+  }
+  #showall {
+    color: #495057 !important;
+    background-color: #f8f9fa !important;
+    border: 1px solid #f8f9fa !important;
+  }
+  #showall:hover {
+    border-color: #495057 !important;
+  }
+  .image-breakout {
+    border: 2px solid #f8f9fa !important;
   }
 }
 
