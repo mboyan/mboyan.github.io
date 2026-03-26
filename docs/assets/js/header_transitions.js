@@ -30,7 +30,7 @@ let newBndryMidX = isMobile ? 160 : 250;
 let newBndryMidY = isMobile ? 96 : 150;
 let targetLogo = document.getElementById("logo");
 
-let animating = false;
+// let animating = false;
 let rafId = null;       // requestAnimationFrame ID
 let genLogoInterval = null;  // Logo drawing loop ID
 
@@ -40,7 +40,7 @@ let genLogoInterval = null;  // Logo drawing loop ID
 function animateHeight() {
 
     // Smooth step toward target
-    currHeight += (targetHeight - currHeight) * 0.15;
+    currHeight += (targetHeight - currHeight) * 0.1;
 
     // Apply heights
     canvasLogo.style.height = currHeight + "px";

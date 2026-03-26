@@ -4,6 +4,7 @@ backgroundImages.set("bio", "./assets/img/patterned/bio.png");
 backgroundImages.set("proj", "./assets/img/patterned/proj.JPG");
 backgroundImages.set("sols", "./assets/img/patterned/sols.png");
 backgroundImages.set("contact", "./assets/img/patterned/contact.JPG");
+backgroundImages.set("legal", "./assets/img/patterned/contact.JPG");
 
 backgroundImages.set("proj_tree", "./assets/img/patterned/home.JPG");
 backgroundImages.set("proj_diplo", "./assets/img/patterned/proj.JPG");
@@ -22,6 +23,7 @@ var user = ["b", "o", "y", "a", "n"];
 var domain = ["t", "h", "e", "k", "n", "o", "w", "d", "o", "u", "g", "h", ".", "c", "o", "m"];
 
 var hydras = [];
+let animating = false;
 
 function cleanupHydra() {
     // Remove all canvases
@@ -47,26 +49,31 @@ function loadPage(page, pushState = true) {
     .then(r => r.text())
     .then(html => {
 
-      // Change inner HTML
-      mainFrame = document.getElementById('main-frame')
-      mainFrame.innerHTML = html;
+      if (animating) {
+        window.setTimeout(loadPage(page, pushState), 100);
+      }
+      else {
+        // Change inner HTML
+        mainFrame = document.getElementById('main-frame')
+        mainFrame.innerHTML = html;
 
-      // Transform header
-      window[`headerTransition${page.charAt(0).toUpperCase() + page.slice(1)}`]?.();
+        // Transform header
+        window[`headerTransition${page.charAt(0).toUpperCase() + page.slice(1)}`]?.();
 
-      // Change background
-      resetImg(backgroundImages.get(page));
-
-      // Initialize project filters
-      requestAnimationFrame(() => {
-        if (page == "proj"){
-          initFilters();
-        } else if (page == "contact"){
-          document.getElementById("email").innerHTML = user.join("") + "@" + domain.join("");
+        // Change background
+        resetImg(backgroundImages.get(page));
+        
+        // Initialize project filters
+        requestAnimationFrame(() => {
+          if (page == "proj"){
+            initFilters();
+          } else if (page == "contact"){
+            document.getElementById("email").innerHTML = user.join("") + "@" + domain.join("");
+          }
+        });
+        if (pushState) {
+          history.pushState({ page }, "", `${page}`);
         }
-      });
-      if (pushState) {
-        history.pushState({ page }, "", `${page}`);
       }
     });
 }

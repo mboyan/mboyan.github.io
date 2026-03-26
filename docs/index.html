@@ -81,18 +81,11 @@
         <script src="./assets/js/pattern_img.js"></script>
         <footer>
             Website by TheKnowDough, 2026 |
-            <button id="toggle-legal" onclick="fetch(`./pages/legal.html`)
-                .then(r => r.text())
-                .then(html => {
-                    if (document.getElementById('legal').innerHTML == '') {
-                        document.getElementById('legal').innerHTML = html;
-                        document.getElementById('toggle-legal').innerHTML = 'Legal [X]';
-                    } else {
-                        document.getElementById('legal').innerHTML = '';
-                        document.getElementById('toggle-legal').innerHTML = 'Legal';
-                    }
-                    })">
+            <button id="toggle-legal" onclick="loadPage('legal')">
                 Legal
+            </button> | 
+            <button id="toggle-legal" onclick="loadPage('privacy')">
+                Privacy
             </button>
             <br>
             <hr>
