@@ -569,3 +569,10 @@ figure {
 .hydra-canvas {
   width: 100%;
 }
+
+/* ===== Fixed height element ===== */
+.frozen {
+  /* height: var(--fixed-height); */
+  /* display: block !important; */
+  height: 2000px !important;
+}

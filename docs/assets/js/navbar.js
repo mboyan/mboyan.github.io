@@ -5,6 +5,7 @@ backgroundImages.set("proj", "./assets/img/patterned/proj.JPG");
 backgroundImages.set("sols", "./assets/img/patterned/sols.png");
 backgroundImages.set("contact", "./assets/img/patterned/contact.JPG");
 backgroundImages.set("legal", "./assets/img/patterned/contact.JPG");
+backgroundImages.set("privacy", "./assets/img/patterned/contact.JPG");
 
 backgroundImages.set("proj_tree", "./assets/img/patterned/home.JPG");
 backgroundImages.set("proj_diplo", "./assets/img/patterned/proj.JPG");
@@ -53,8 +54,15 @@ function loadPage(page, pushState = true) {
         window.setTimeout(loadPage(page, pushState), 100);
       }
       else {
+        
+        // Freeze main container height
+        let mainContainer = document.getElementsByClassName('main-frame-container')[0];
+        let mainContainerHeight = mainContainer.getBoundingClientRect().height;
+        document.documentElement.style.setProperty('--fixed-height', `${mainContainerHeight}px !important`);
+        mainContainer.className += " frozen"
+        
         // Change inner HTML
-        mainFrame = document.getElementById('main-frame')
+        mainFrame = document.getElementById('main-frame');
         mainFrame.innerHTML = html;
 
         // Transform header
@@ -73,6 +81,8 @@ function loadPage(page, pushState = true) {
               mailFields[i].innerHTML = user.join("") + "@" + domain.join("");
             }
           }
+          // Unfreeze height
+          mainContainer.className = mainContainer.className.replace(" frozen", "");
         });
         if (pushState) {
           history.pushState({ page }, "", `${page}`);
