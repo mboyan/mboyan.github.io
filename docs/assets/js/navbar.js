@@ -67,8 +67,11 @@ function loadPage(page, pushState = true) {
         requestAnimationFrame(() => {
           if (page == "proj"){
             initFilters();
-          } else if (page == "contact"){
-            document.getElementById("email").innerHTML = user.join("") + "@" + domain.join("");
+          } else if (page == "contact" || page == "legal" || page == "privacy"){
+            let mailFields = document.getElementsByClassName("email");
+            for (let i = 0; i < mailFields.length; i++){
+              mailFields[i].innerHTML = user.join("") + "@" + domain.join("");
+            }
           }
         });
         if (pushState) {
