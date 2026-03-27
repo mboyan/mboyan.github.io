@@ -68,8 +68,7 @@ function loadPage(page, pushState = true) {
         // Transform header
         window[`headerTransition${page.charAt(0).toUpperCase() + page.slice(1)}`]?.();
 
-        // Change background
-        resetImg(backgroundImages.get(page));
+        
         
         // Initialize project filters
         requestAnimationFrame(() => {
@@ -83,6 +82,8 @@ function loadPage(page, pushState = true) {
           }
           // Unfreeze height
           mainContainer.className = mainContainer.className.replace(" frozen", "");
+          // Change background
+          resetImg(backgroundImages.get(page));
         });
         if (pushState) {
           history.pushState({ page }, "", `${page}`);
