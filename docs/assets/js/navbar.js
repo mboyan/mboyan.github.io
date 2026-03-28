@@ -88,6 +88,9 @@ function loadPage(page, pushState = true) {
         if (pushState) {
           history.pushState({ page }, "", `${page}`);
         }
+
+        // Scroll to top for Safari
+        window.requestAnimationFrame(() => window.scrollTo({ top: 0 }));
       }
     });
 }

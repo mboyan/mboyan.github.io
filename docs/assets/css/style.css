@@ -286,6 +286,7 @@ a:active {
 .projButton {
   float: left;
   background-color: #f8f9fae7 !important;
+  color: #212529 !important;
   font-size: 15px;
   text-align: left;
   margin: 2px;
@@ -572,7 +573,5 @@ figure {
 
 /* ===== Fixed height element ===== */
 .frozen {
-  /* height: var(--fixed-height); */
-  /* display: block !important; */
   height: 2000px !important;
 }
