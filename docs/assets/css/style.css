@@ -61,14 +61,13 @@ footer {
   /* border: 3px solid green; */
 }
 
-header {
+#page-header {
   position: relative;
   margin: auto;
   padding: 100px 0 0 0;
   width: 500px;
   height: 410px;
   min-height: 0;
-  z-index: 5000;
   /* border: 3px solid green; */
 }
 
