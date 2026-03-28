@@ -453,6 +453,11 @@ figure {
   padding-top: 20px;
 }
 
+.video-embed {
+  width: 480px;
+  height: 270px;
+}
+
 /* ===== Responsive design ===== */
 @media screen and (max-width: 500px) {
   #page-header {
@@ -490,6 +495,10 @@ figure {
     width: 100%;
     max-width: 100%;
     /* margin-bottom: 10px; */
+  }
+  .video-embed {
+    width: 320px;
+    height: 180px;
   }
 }
 

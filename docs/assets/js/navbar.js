@@ -67,8 +67,6 @@ function loadPage(page, pushState = true) {
 
         // Transform header
         window[`headerTransition${page.charAt(0).toUpperCase() + page.slice(1)}`]?.();
-
-        
         
         // Initialize project filters
         requestAnimationFrame(() => {
