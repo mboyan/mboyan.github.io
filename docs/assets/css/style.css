@@ -79,7 +79,7 @@ footer {
   margin: auto;
   width: 100%;
   max-width: 2560px;
-  min-height: 100vh;
+  min-height: var(--fixed-height);/*100vh*/;
   padding: 0;
 }
 
@@ -585,5 +585,5 @@ figure {
 
 /* ===== Fixed height element ===== */
 .frozen {
-  height: var(--fixed-height) !important;
+  min-height: var(--fixed-height) !important;
 }
