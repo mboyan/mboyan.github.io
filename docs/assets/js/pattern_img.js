@@ -1,7 +1,7 @@
 // Initializing the canvas
-let canvasImg = document.getElementById("canvas-img");
+let canvasImg = document.getElementById("canvas-bkg");
 let ctxImg = canvasImg.getContext("2d");
-let img = document.getElementById("patterned_img");
+let img = document.getElementById("patterned-img");
 var strideFuncInterval = null;
 
 // Create 3x3 stencil

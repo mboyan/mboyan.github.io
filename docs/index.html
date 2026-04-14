@@ -19,6 +19,8 @@
         <script src="https://cdn.jsdelivr.net/npm/hydra-synth/dist/hydra-synth.js"></script>
         <script src="./assets/js/hydra_scripts.js"></script>
 
+        <!-- Hidden images for header -->
+
         <div style="display:none;">
             <img id="logo" src="./assets/img/headers/logo.png">
         </div>
@@ -39,9 +41,26 @@
             <img id="header-contact" src="./assets/img/headers/page_header_contact.png">
         </div>
 
+        <!-- Hidden image for backgrounds -->
+
         <div style="display:none;">
-            <img id="patterned_img" src="./assets/img/patterned/home.JPG">
+            <img id="patterned-img" src="./assets/img/patterned/home.JPG">
         </div>
+
+        <!-- Hidden images for impressions gallery -->
+
+        <div style="display:none;">
+            <img class="impressions-left" src="./assets/img/projects/awwp_06.JPG">
+        </div>
+
+        <div style="display:none;">
+            <img class="impressions-center" src="./assets/img/projects/diplo_01.JPG">
+        </div>
+
+        <div style="display:none;">
+            <img class="impressions-right" src="./assets/img/projects/pavilion_04.JPG">
+        </div>
+
 
         <script src="./assets/js/filter_projects.js"></script>
 
@@ -77,7 +96,7 @@
                 </div>
             </div>
             <div class="spacer"></div>
-            <canvas id="canvas-img"></canvas>
+            <canvas id="canvas-bkg"></canvas>
         </div>
 
         <script src="./assets/js/pattern_img.js"></script>
@@ -89,7 +108,6 @@
             <button id="toggle-legal" onclick="loadPage('privacy')">
                 Privacy
             </button>
-            <p id="legal"></p>
         </footer>
     </body>
 </html>
