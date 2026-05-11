@@ -18,18 +18,46 @@ let blueStencil = [3, 1, 7];
 
 let stride = 1;
 
-function drawPImg()
+function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare = false)
 {
-    let scaledHeight = img.height * canvasImg.width / img.width;
-    ctxImg.clearRect(0, 0, canvasImg.width, scaledHeight);
-    ctxImg.drawImage(img, 0, 0, canvasImg.width, scaledHeight);
+    const canvWidth = canv.clientWidth;
+    const canvHeight = canv.clientHeight;
+    // const minDim = Math.min(canvWidth, canvHeight);
+    // let scaledHeight = (cropToSquare ? canvWidth : inputImg.height * canvWidth / inputImg.width);
+    const imgAspectRatio = inputImg.naturalHeight / inputImg.naturalWidth;
+    let scaledWidth = canvWidth / imgAspectRatio;
+    let scaledHeight = imgAspectRatio * canvWidth;
+    
+    ctxt.clearRect(0, 0, canvWidth, scaledHeight);
+    if (cropToSquare) {
+        if (imgAspectRatio < 1.0) {
+            let excessX = Math.min(canvWidth - scaledWidth, 0.0) * 0.5;
+            ctxt.drawImage(inputImg, excessX, 0, scaledWidth, canvHeight);
+        } else {
+            let excessY = Math.min(canvHeight - scaledHeight, 0.0) * 0.5;
+            ctxt.drawImage(inputImg, 0, excessY, canvWidth, scaledHeight);
+        }
+    } else {
+        ctxt.drawImage(inputImg, 0, 0, canvWidth, scaledHeight);
+    }
 
-    const imgData = ctxImg.getImageData(0, 0, canvasImg.width, canvasImg.height);
+    const imgData = ctxt.getImageData(0, 0, canvWidth, canvHeight);
     const imgColData = imgData.data;
-    const patData = ctxImg.createImageData(canvasImg.width, canvasImg.height);
+    const patData = ctxt.createImageData(canvWidth, canvHeight);
     const patColData = patData.data;
-    let roughWidth = Math.floor(canvasImg.width / (3 * stride));
-    let roughHeight = Math.floor(canvasImg.height / (3 * stride));
+    let roughWidth = Math.floor(canvWidth / (3 * strideSize));
+    let roughHeight = Math.floor(canvHeight / (3 * strideSize));
+
+    // Crop source image to a square
+    if (cropToSquare) {
+        console.log(roughWidth);
+        console.log(roughHeight);
+        // console.log(canvWidth);
+        // console.log(canvHeight);
+        // console.log(scaledHeight);
+        // console.log(imgColData.length);
+        // console.log(patColData.length);
+    }
 
     // Fill default color
     for (let i = 0; i < patColData.length; i += 4){
@@ -45,7 +73,7 @@ function drawPImg()
         for (let j = 0; j < roughHeight; j++)
         {
             let red, green, blue;
-            let idx = j * 12 * stride * canvasImg.width + i * 12 * stride;
+            let idx = j * 12 * strideSize * canvWidth + i * 12 * strideSize;
             red = imgColData[idx];
             green = imgColData[idx + 1];
             blue = imgColData[idx + 2];
@@ -58,9 +86,9 @@ function drawPImg()
                 for (let p = 0; p < 3; p++){
                     let testIdx = k*3 + p;
                     if (!stencilIndices.includes(testIdx)){
-                        for (let m = 0; m < stride; m++) {
-                            for (let n = 0; n < stride; n++) {
-                                let patIdx = (j*3*stride + k*stride + m) * (canvasImg.width * 4) + (i*3*stride + p*stride + n) * 4;
+                        for (let m = 0; m < strideSize; m++) {
+                            for (let n = 0; n < strideSize; n++) {
+                                let patIdx = (j*3*strideSize + k*strideSize + m) * (canvWidth * 4) + (i*3*strideSize + p*strideSize + n) * 4;
                                 patColData[patIdx] = 73;
                                 patColData[patIdx + 1] = 80;
                                 patColData[patIdx + 2] = 87;
@@ -73,7 +101,7 @@ function drawPImg()
         }
     }
 
-    ctxImg.putImageData(patData, 0, 0);
+    ctxt.putImageData(patData, 0, 0);
 }
 
 function resizeCanvas()
@@ -99,7 +127,7 @@ function resizeCanvas()
         document.querySelector('.spacer').style.minHeight = '0'; // Reset spacer if there's no free space
     }
 
-    drawPImg();
+    drawPImg(ctxImg, canvasImg, img, stride);
 }
 
 function shrinkStride()

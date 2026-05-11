@@ -77,6 +77,8 @@ function loadPage(page, pushState = true) {
             for (let i = 0; i < mailFields.length; i++){
               mailFields[i].innerHTML = user.join("") + "@" + domain.join("");
             }
+          } else if (page == "home"){
+            initGallery();
           }
           // Unfreeze height
           mainContainer.className = mainContainer.className.replace(" frozen", "");
