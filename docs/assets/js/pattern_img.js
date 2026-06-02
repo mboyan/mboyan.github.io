@@ -49,15 +49,15 @@ function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare = false)
     let roughHeight = Math.floor(canvHeight / (3 * strideSize));
 
     // Crop source image to a square
-    if (cropToSquare) {
-        console.log(roughWidth);
-        console.log(roughHeight);
-        // console.log(canvWidth);
-        // console.log(canvHeight);
-        // console.log(scaledHeight);
-        // console.log(imgColData.length);
-        // console.log(patColData.length);
-    }
+    // if (cropToSquare) {
+    //     console.log(roughWidth);
+    //     console.log(roughHeight);
+    //     // console.log(canvWidth);
+    //     // console.log(canvHeight);
+    //     // console.log(scaledHeight);
+    //     // console.log(imgColData.length);
+    //     // console.log(patColData.length);
+    // }
 
     // Fill default color
     for (let i = 0; i < patColData.length; i += 4){

@@ -17,6 +17,7 @@ backgroundImages.set("proj_hygroskin", "./assets/img/patterned/proj_hygroskin.jp
 backgroundImages.set("proj_eyesing", "./assets/img/patterned/proj_eyesing.png");
 backgroundImages.set("proj_wpf", "./assets/img/patterned/proj_wpf.png");
 backgroundImages.set("proj_aef", "./assets/img/patterned/proj_aef.png");
+backgroundImages.set("proj_ethereal", "./assets/img/patterned/proj_ethereal.png");
 backgroundImages.set("proj_hydra", "./assets/img/patterned/proj_hydra.jpg");
 backgroundImages.set("proj_website", "./assets/img/patterned/proj_website.JPG");
 
@@ -27,31 +28,31 @@ var hydras = [];
 let animating = false;
 
 function cleanupHydra() {
-    // Remove all canvases
-    var canvases = document.getElementsByClassName('hydra-canvas');
-    while (canvases.length > 0) {
-        const canvas = canvases[0];
-        const gl = canvas.getContext('webgl');
-        if (gl) {
-            const ext = gl.getExtension('WEBGL_lose_context');
-            if (ext) ext.loseContext();
-        }
-        canvas.remove();
-    }
-    // Clear the hydras array
-    while (hydras.length > 0) {
-        hydras.pop();
-    }
+  // Remove all canvases
+  var canvases = document.getElementsByClassName('hydra-canvas');
+  while (canvases.length > 0) {
+      const canvas = canvases[0];
+      const gl = canvas.getContext('webgl');
+      if (gl) {
+        const ext = gl.getExtension('WEBGL_lose_context');
+        if (ext) ext.loseContext();
+      }
+      canvas.remove();
+  }
+  // Clear the hydras array
+  while (hydras.length > 0) {
+      hydras.pop();
+  }
 }
 
-function loadPage(page, pushState = true) {
+function loadPage(page, pushState=true, project=null) {
   cleanupHydra();
   fetch(`/pages/${page}.html`)
     .then(r => r.text())
     .then(html => {
 
       if (animating) {
-        window.setTimeout(loadPage(page, pushState), 100);
+        window.setTimeout(loadPage(page, pushState, project), 100);
       }
       else {
         
@@ -82,10 +83,16 @@ function loadPage(page, pushState = true) {
           }
           // Unfreeze height
           mainContainer.className = mainContainer.className.replace(" frozen", "");
+          
           // Change background
-          resetImg(backgroundImages.get(page));
+          if (project != null){
+            loadProject(project);
+          }
+          else {
+            resetImg(backgroundImages.get(page));
+          }
         });
-        if (pushState) {
+        if (pushState && project == null) {
           history.pushState({ page }, "", `${page}`);
         }
 
@@ -96,7 +103,7 @@ function loadPage(page, pushState = true) {
 }
 
 function loadProject(proj, pushState = true) {
-  cleanupHydra();
+  // cleanupHydra();
   fetch(`/pages/${proj}.html`)
     .then(r => r.text())
     .then(html => {
@@ -126,8 +133,8 @@ window.addEventListener("popstate", (e) => {
     loadPage(e.state.page, false);
   }
   else if (e.state?.proj) {
-    loadPage("proj", false);
-    loadPage(e.state.proj, false);
+    // loadPage("proj", false);
+    loadPage("proj", false, e.state.proj);
   }
 });
 
@@ -152,8 +159,8 @@ function initSPA() {
   }
 
   if (page.startsWith("proj_")) {
-    loadPage("proj");
-    loadProject(page);
+    loadPage("proj", true, page);
+    // loadProject(page);
   } else {
     loadPage(page);
   }

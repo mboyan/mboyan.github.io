@@ -281,21 +281,48 @@ a:active {
 
 /* ===== Project impressions gallery  ===== */
 
-/* .gallery {
-  width: 100%;
-  height: 500px;
-  margin: 0;
+.gallery {
+  display: flex;
+  position: relative;
+  width: 680px;
+  height: 480px;
+  left: -100px;
+  right: -100px;
+  /* transform: scale(1.5, 1);
+  transform-origin: center; */
+  margin: 15px 0 20px 0;
   padding: 0;
-} */
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid #212529; */
+}
 
 #canvas-gallery {
-  /* position: relative; */
-  /* left: 0; */
-  width: 100%;
+  /* position: absolute; */
+  width: 480px;
   height: 480px;
+  left: 0;
   margin: 0;
   padding: 0;
   /* border: 2px solid #212529; */
+}
+
+.arrow {
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  fill: #495057;
+  transition-duration: 0.5s;
+  opacity: 10%;
+  cursor: pointer;
+  /* border: 2px solid #212529; */
+}
+
+.arrow:hover {
+  opacity: 100%;
+  
 }
 
 /* ===== Project filters ===== */

@@ -5,8 +5,17 @@
 <p>
     Founded by Boyan Mihaylov in Amsterdam, <i>TheKnowDough</i> fuses ventures in product design, computational science, architecture, generative visuals and sound.
 </p>
-<br>
-<hr>
+<!-- <br>
+<hr> -->
+<div class="gallery">
+    <svg class="arrow" width="100px" height="100px" onclick="changeFocusIndex(-1)">
+        <polygon points="50,100 0,50 50,0"/>
+    </svg>
+    <canvas id="canvas-gallery"></canvas>
+    <svg class="arrow" width="100px" height="100px" onclick="changeFocusIndex(1)">
+        <polygon points="100,50 50,100 50,0"/>
+    </svg>
+</div>
 <br>
 <p>
     <b>Nature carries an inherent capacity to compute.</b>
@@ -15,11 +24,7 @@
     The work of <i>TheKnowDough</i> is driven by a fascination with the emergence found in biological, chemical and physical systems. This serves both as an inspiration - translating natural principles to algorithm, form and function - and as an object of study - using computational modelling to understand nature better.
 </p>
 <br>
-<!-- <div class="gallery"><canvas class="canvas-gallery"></canvas></div>-->
-<canvas id="canvas-gallery"></canvas>
-<!-- <img src="./assets/img/pages/home_02.gif" class="page-img"> -->
-<!-- <br>
-<hr> -->
+<hr>
 <br>
 <p><b>Creative philosophy and ethics</b>:
 <ul>
