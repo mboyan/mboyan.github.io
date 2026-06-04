@@ -1,30 +1,35 @@
-const projImgDir = "./assets/img/projects/";
-const projImages = ["awwp_06.JPG", "diplo_01.JPG", "pavilion_04.jpg"];
+const projNames = ["proj_tree", "proj_diplo", "proj_pavilion", "proj_waam", "proj_aef"];
 
-let focusIdx = 0;
+let focusIdxA = 0;
+let focusIdxB = 0;
 
 // Initializing the canvas
 function initGallery()
 {
     let canvasGallery = document.getElementById("canvas-gallery");
-    // console.log(canvasGallery);
     let ctxGallery = canvasGallery.getContext("2d");
     let galleryImages = document.getElementsByClassName("gallery-image")
-    let galleryImg = galleryImages[focusIdx];
+    let galleryImgA = galleryImages[focusIdxA];
+    let galleryImgB = galleryImages[focusIdxB];
 
-    if (!galleryImg.complete || galleryImg.naturalWidth === 0) return;
+    if (!galleryImgA.complete || galleryImgA.naturalWidth === 0 || !galleryImgB.complete || galleryImgB.naturalWidth === 0 ) return;
 
     canvasGallery.width = 480;
     canvasGallery.height = 480;
 
-    // const aspectRatio = galleryImg.naturalHeight / galleryImg.naturalWidth;
-    // canvasGallery.height = canvasGallery.width * aspectRatio; // Maintain aspect ratio
-
-    drawPImg(ctxGallery, canvasGallery, galleryImg, 1, true);
+    drawPImg(ctxGallery, canvasGallery, galleryImgA, 1, true, galleryImgB);
 }
 
+// Change project in gallery
 function changeFocusIndex(increment)
 {
-    focusIdx = (focusIdx + increment + projImages.length) % projImages.length;
+    focusIdxA = focusIdxB;
+    focusIdxB = (focusIdxB + increment + projNames.length) % projNames.length;
     initGallery();
+}
+
+// Navigate to project page
+function navToProj()
+{
+    loadPage("proj", true, projNames[focusIdxB]);
 }

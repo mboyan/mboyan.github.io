@@ -3,6 +3,7 @@ let canvasImg = document.getElementById("canvas-bkg");
 let ctxImg = canvasImg.getContext("2d");
 let img = document.getElementById("patterned-img");
 var strideFuncInterval = null;
+var xFadeFuncInterval = null;
 
 // Create 3x3 stencil
 let stencil = [];
@@ -18,46 +19,81 @@ let blueStencil = [3, 1, 7];
 
 let stride = 1;
 
-function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare = false)
+const nFadeSteps = 100;
+let xFadeStepCt = 0;
+let shuffledIndices = null;
+
+function fisherYatesShuffle(arr) {
+  	for (let i = arr.length - 1; i > 0; i--) {
+    	const j = Math.floor(Math.random() * (i + 1));
+    	[arr[i], arr[j]] = [arr[j], arr[i]];
+  	}
+  	return arr;
+}
+
+function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare=false, inputImg2=null)
 {
+    // Determine whether to blend between two images
+    const xFadeImg = ((inputImg2 == null) ? false : true)
+
     const canvWidth = canv.clientWidth;
     const canvHeight = canv.clientHeight;
-    // const minDim = Math.min(canvWidth, canvHeight);
-    // let scaledHeight = (cropToSquare ? canvWidth : inputImg.height * canvWidth / inputImg.width);
-    const imgAspectRatio = inputImg.naturalHeight / inputImg.naturalWidth;
+    let imgAspectRatio = inputImg.naturalHeight / inputImg.naturalWidth;
     let scaledWidth = canvWidth / imgAspectRatio;
     let scaledHeight = imgAspectRatio * canvWidth;
+
+    // Create temporary canvas for reading image pixels
+    const canvasTemp = document.createElement('canvas');
+    canvasTemp.width = canvWidth;
+    canvasTemp.height = canvHeight;
+    const ctxTemp = canvasTemp.getContext('2d');
     
-    ctxt.clearRect(0, 0, canvWidth, scaledHeight);
+    // Crop source image
     if (cropToSquare) {
         if (imgAspectRatio < 1.0) {
             let excessX = Math.min(canvWidth - scaledWidth, 0.0) * 0.5;
-            ctxt.drawImage(inputImg, excessX, 0, scaledWidth, canvHeight);
+            ctxTemp.drawImage(inputImg, excessX, 0, scaledWidth, canvHeight);
         } else {
             let excessY = Math.min(canvHeight - scaledHeight, 0.0) * 0.5;
-            ctxt.drawImage(inputImg, 0, excessY, canvWidth, scaledHeight);
+            ctxTemp.drawImage(inputImg, 0, excessY, canvWidth, scaledHeight);
         }
     } else {
-        ctxt.drawImage(inputImg, 0, 0, canvWidth, scaledHeight);
+        ctxTemp.drawImage(inputImg, 0, 0, canvWidth, scaledHeight);
     }
 
-    const imgData = ctxt.getImageData(0, 0, canvWidth, canvHeight);
+    const imgData = ctxTemp.getImageData(0, 0, canvWidth, canvHeight);
     const imgColData = imgData.data;
     const patData = ctxt.createImageData(canvWidth, canvHeight);
     const patColData = patData.data;
     let roughWidth = Math.floor(canvWidth / (3 * strideSize));
     let roughHeight = Math.floor(canvHeight / (3 * strideSize));
 
-    // Crop source image to a square
-    // if (cropToSquare) {
-    //     console.log(roughWidth);
-    //     console.log(roughHeight);
-    //     // console.log(canvWidth);
-    //     // console.log(canvHeight);
-    //     // console.log(scaledHeight);
-    //     // console.log(imgColData.length);
-    //     // console.log(patColData.length);
-    // }
+    let imgData2 = imgData;
+    let imgColData2 = imgColData.slice();
+    const patData2 = ctxTemp.createImageData(canvWidth, canvHeight);
+    const patColData2 = patData2.data;
+
+    ctxTemp.clearRect(0, 0, canvWidth, canvHeight);
+
+    if (xFadeImg) {
+        imgAspectRatio = inputImg2.naturalHeight / inputImg2.naturalWidth;
+        scaledWidth = canvWidth / imgAspectRatio;
+        scaledHeight = imgAspectRatio * canvWidth;
+        if (cropToSquare) {
+            if (imgAspectRatio < 1.0) {
+                let excessX = Math.min(canvWidth - scaledWidth, 0.0) * 0.5;
+                ctxTemp.drawImage(inputImg2, excessX, 0, scaledWidth, canvHeight);
+            } else {
+                let excessY = Math.min(canvHeight - scaledHeight, 0.0) * 0.5;
+                ctxTemp.drawImage(inputImg2, 0, excessY, canvWidth, scaledHeight);
+            }
+        } else {
+            ctxTemp.drawImage(inputImg2, 0, 0, canvWidth, scaledHeight);
+        }
+
+        imgData2 = ctxTemp.getImageData(0, 0, canvWidth, canvHeight);
+        imgColData2 = imgData2.data;
+    }
 
     // Fill default color
     for (let i = 0; i < patColData.length; i += 4){
@@ -74,6 +110,8 @@ function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare = false)
         {
             let red, green, blue;
             let idx = j * 12 * strideSize * canvWidth + i * 12 * strideSize;
+
+            // Compute first image texture
             red = imgColData[idx];
             green = imgColData[idx + 1];
             blue = imgColData[idx + 2];
@@ -98,10 +136,55 @@ function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare = false)
                     }
                 }
             }
+
+            // Compute second image texture
+            if (xFadeImg) {
+
+                red = imgColData2[idx];
+                green = imgColData2[idx + 1];
+                blue = imgColData2[idx + 2];
+
+                stencilIndices = redStencil.slice(0, Math.ceil(red / 64));
+                stencilIndices = stencilIndices.concat(greenStencil.slice(0, Math.ceil(green / 64)));
+                stencilIndices = stencilIndices.concat(blueStencil.slice(0, Math.ceil(blue / 64)));
+                
+                for (let k = 0; k < 3; k++){
+                    for (let p = 0; p < 3; p++){
+                        let testIdx = k*3 + p;
+                        if (!stencilIndices.includes(testIdx)){
+                            for (let m = 0; m < strideSize; m++) {
+                                for (let n = 0; n < strideSize; n++) {
+                                    let patIdx = (j*3*strideSize + k*strideSize + m) * (canvWidth * 4) + (i*3*strideSize + p*strideSize + n) * 4;
+                                    patColData2[patIdx] = 73;
+                                    patColData2[patIdx + 1] = 80;
+                                    patColData2[patIdx + 2] = 87;
+                                    patColData2[patIdx + 3] = 255;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+            
         }
     }
 
-    ctxt.putImageData(patData, 0, 0);
+    // Animate transition
+    if (xFadeImg) {
+
+        // Shuffle pixel indices
+        shuffledIndices = Array.from({length: imgColData.length / 4}, (e, i) => i);
+        shuffledIndices = fisherYatesShuffle(shuffledIndices);
+
+        xFadeStepCt = 0;
+        xFadeFunction = () => xFadeImages(patData, patData2, shuffledIndices, ctxt);
+        if (xFadeFuncInterval) clearInterval(xFadeFuncInterval);
+        xFadeFuncInterval = setInterval(xFadeFunction, 5);
+    }
+    else {
+        ctxt.putImageData(patData, 0, 0);
+    }
 }
 
 function resizeCanvas()
@@ -139,6 +222,33 @@ function shrinkStride()
     else {
         stride = 1;
         clearInterval(strideFuncInterval);
+    }
+}
+
+function xFadeImages(patDataA, patDataB, shuffledIndices, ctxt)
+{
+    if (xFadeStepCt < nFadeSteps) {
+
+        let patColDataA = patDataA.data;
+        let patColDataB = patDataB.data;
+        let pixelLength = shuffledIndices.length;
+
+        let startIdx = pixelLength * xFadeStepCt / nFadeSteps;
+        let endIdx = pixelLength * (xFadeStepCt + 1) / nFadeSteps;
+
+        for (let i = startIdx; i < endIdx; i++) {
+            patColDataA[shuffledIndices[i] * 4] = patColDataB[shuffledIndices[i] * 4];
+            patColDataA[shuffledIndices[i] * 4 + 1] = patColDataB[shuffledIndices[i] * 4 + 1];
+            patColDataA[shuffledIndices[i] * 4 + 2] = patColDataB[shuffledIndices[i] * 4 + 2];
+            patColDataA[shuffledIndices[i] * 4 + 3] = patColDataB[shuffledIndices[i] * 4 + 3];
+        }
+        ctxt.putImageData(patDataA, 0, 0);
+
+        xFadeStepCt += 1;
+    }
+    else {
+        xFadeStepCt = 0;
+        clearInterval(xFadeFuncInterval);
     }
 }
 
