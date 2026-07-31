@@ -92,6 +92,7 @@ footer {
     flex: 1;
     min-height: 100px;
     max-height: 1000px;
+    /* border: 3px solid green; */
     /* transition-duration: 1s; */
 }
 
@@ -218,6 +219,7 @@ button {
 button.internal-link {
   font-family: inherit;
   font-size: inherit;
+  text-decoration: underline;
   background: none;
   border: 0;
   cursor: pointer;
@@ -238,7 +240,7 @@ button.internal-link {
   align-items: center;
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 250px;
+  padding-bottom: 100px;
   /* border: 3px solid green; */
   transition-duration: 1s;
 }
@@ -290,7 +292,7 @@ a:active {
   right: -100px;
   /* transform: scale(1.5, 1);
   transform-origin: center; */
-  margin: 15px 0 20px 0;
+  margin: 30px 0 20px 0;
   padding: 0;
   justify-self: center;
   justify-content: center;
@@ -302,7 +304,8 @@ a:active {
 #canvas-gallery {
   /* position: absolute; */
   width: 480px;
-  height: 480px;
+  /* height: 480px; */
+  aspect-ratio: 1 / 1;
   left: 0;
   margin: 0;
   padding: 0;
@@ -323,7 +326,6 @@ a:active {
 
 .arrow:hover {
   opacity: 100%;
-  
 }
 
 /* ===== Project filters ===== */
@@ -445,17 +447,17 @@ a:active {
 }
 
 /* ===== Standard page images ===== */
-figure {
+/* figure {
   margin: 0;
-}
+} */
 
 .page-img {
   max-width: 100%;
-  margin: 10px 0 20px 0;
+  margin: 20px 0 20px 0;
 }
 
 /* ===== Breakout images ===== */
-.image-breakout {
+.image-breakout-container {
   position: absolute;
   width: calc((100% - 580px - 10vw) / 2); /* or your desired width */
   max-width: 220px;
@@ -465,36 +467,68 @@ figure {
   cursor: pointer;
 }
 
-.image-breakout.left {
+.image-breakout-container.left {
   left: 5vw; /* push the image into the left void */
 }
 
-.image-breakout.right {
+.image-breakout-container.right {
   right: 5vw; /* push the image into the left void */
 }
 
-.image-breakout img {
+.image-breakout-container img {
+  position: relative;
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
 }
 
-.image-breakout.maximized {
+.image-breakout-container.maximized {
   position: fixed !important;
   top: 50% !important;
   left: 50% !important;
-  width: auto !important;
+  width: fit-content !important;
   max-width: calc(100% - 2vw) !important;
-  max-height: calc(100% - 2vw) !important;
+  max-height: calc(100% - 2vh) !important;
   transform: translate(-50%, -50%);
+  /* transition: 0.3s; */
   z-index: 1000; /* Ensure it’s above other content */
+}
+
+.image-breakout-container.maximized img {
+  /* height: 100vw; */
+  width: auto;
+  max-width: 98vw !important;
+  max-height: 98vh !important;
 }
 
 /* Add padding to the container where the image would be,
    so text doesn't overlap the image's original space. */
-.image-breakout + p {
+.image-breakout-container + p {
   padding-top: 20px;
 }
+
+.image-caption {
+  display: none;
+}
+
+.image-breakout-container.maximized .image-caption {
+  display: block;
+  position: relative !important;
+  margin: 0;
+  left: 50px;
+  bottom: 50px;
+  height: 0;
+  color: #59A399;
+  font-weight: bold;
+  z-index: 1001;
+}
+
+/* .image-breakout-container.maximized .image-caption {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  transform: translateY(-4px);
+} */
 
 .video-embed {
   width: 480px;
@@ -512,6 +546,21 @@ figure {
   }
   .overlay-text {
     width: 300px;
+  }
+  .gallery {
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    /* border: 2px solid #212529; */
+  }
+  #canvas-gallery {
+    width: 100%;
+    /* border: 2px solid #212529; */
+  }
+  .arrow {
+    width: 0;
   }
   #canvas-logo {
     width: 320px;
@@ -532,12 +581,12 @@ figure {
   .filter-btn {
     font-size: 11px;
   }
-  .image-breakout {
+  .image-breakout-container {
     position: static;
     left: 0;
     width: 100%;
     max-width: 100%;
-    /* margin-bottom: 10px; */
+    margin-top: 20px;
   }
   .video-embed {
     width: 320px;
@@ -626,6 +675,6 @@ figure {
 }
 
 /* ===== Fixed height element ===== */
-.frozen {
+/* .frozen {
   min-height: var(--fixed-height) !important;
-}
+} */

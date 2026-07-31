@@ -126,14 +126,14 @@ function removeClass(element, name) {
 }
 
 function addImgClickListeners() {
-    document.querySelectorAll('.image-breakout').forEach((image, idx) => {
+    document.querySelectorAll('.image-breakout-container').forEach((image, idx) => {
         image.addEventListener('click', () => {
             if (image.classList.contains("maximized")) {
                 image.classList.remove("maximized");
             }
             else {
                 // Remove for all others
-                document.querySelectorAll('.image-breakout').forEach((image2, idx2) => {
+                document.querySelectorAll('.image-breakout-container').forEach((image2, idx2) => {
                     if (idx2 != idx) {
                         image2.classList.remove("maximized");
                     }

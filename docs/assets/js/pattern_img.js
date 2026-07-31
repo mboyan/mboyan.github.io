@@ -189,6 +189,8 @@ function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare=false, inputImg
 
 function resizeCanvas()
 {
+    canvasImg.style.opacity = "0";
+
     if (!img.complete || img.naturalWidth === 0) return;
 
     const maxWidth = 2560;
@@ -197,9 +199,9 @@ function resizeCanvas()
     const aspectRatio = img.naturalHeight / img.naturalWidth;
     canvasImg.height = canvasImg.width * aspectRatio; // Maintain aspect ratio
 
-    const contentHeight = document.querySelector('.overlay-text-container').offsetHeight;
+    // if (canvasImg.width === 0 || canvasImg.height === 0) return;
 
-    if (canvasImg.width === 0 || canvasImg.height === 0) return;
+    const contentHeight = document.querySelector('.overlay-text-container').offsetHeight;
 
     // Calculate free space between content and bottom of the viewport
     const freeSpace = canvasImg.height - contentHeight;
@@ -209,6 +211,8 @@ function resizeCanvas()
     } else {
         document.querySelector('.spacer').style.minHeight = '0'; // Reset spacer if there's no free space
     }
+
+    canvasImg.style.opacity = "1";
 
     drawPImg(ctxImg, canvasImg, img, stride);
 }

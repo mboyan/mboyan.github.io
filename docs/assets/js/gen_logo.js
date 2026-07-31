@@ -360,23 +360,12 @@ function drawGenLogo1()
     // DRAW
     // ----------------
 
-    if (frameCt <= 100) {
-        // ctxLogo.fillStyle = rgb(255, 255, 255);
-        // ctxLogo.fillRect(0, 0, canvasLogo.width, canvasLogo.height);
-        ctxLogo.globalAlpha = frameCt / 100;
+    if (frameCt <= 50) {
+        ctxLogo.globalAlpha = frameCt / 50;
     }
 
     // Clear canvasLogo
     ctxLogo.clearRect(0, 0, canvasLogo.width, canvasLogo.height);
-
-    // ctxLogo.setTransform(
-    //     canvasLogo.clientWidth / canvasLogo.width,
-    //     0,
-    //     0,
-    //     canvasLogo.clientHeight / canvasLogo.height,
-    //     0,
-    //     0
-    // );
 
     ctxLogo.drawImage(logo, 0, 0, canvasLogo.width, canvasLogo.height);
     // console.log(canvasLogo.height);

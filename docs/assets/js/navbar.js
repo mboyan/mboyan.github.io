@@ -60,7 +60,7 @@ function loadPage(page, pushState=true, project=null) {
         let mainContainer = document.getElementsByClassName('main-frame-container')[0];
         let mainContainerHeight = mainContainer.getBoundingClientRect().height;
         document.documentElement.style.setProperty('--fixed-height', `${mainContainerHeight}px !important`);
-        mainContainer.className += " frozen"
+        // mainContainer.className += " frozen"
         
         // Change inner HTML
         mainFrame = document.getElementById('main-frame');

@@ -3,6 +3,24 @@ const projNames = ["proj_tree", "proj_diplo", "proj_pavilion", "proj_waam", "pro
 let focusIdxA = 0;
 let focusIdxB = 0;
 
+// Gallery swiping on mobile device
+var initialTouchX, initialTouchY, finalTouchX, finalTouchY;
+var swipeThreshold = 100;
+
+function handleTouch(startX, endX, onSwipeLeft, onSwipeRight) {
+    var horizontalDistance = finalTouchX - initialTouchX;
+    var verticalDistance = finalTouchY - initialTouchY;
+
+    if (Math.abs(horizontalDistance) > Math.abs(verticalDistance) &&
+      Math.abs(horizontalDistance) > swipeThreshold) {
+        if (finalTouchX - initialTouchX < 0) {
+            onSwipeLeft(); 
+        } else {
+            onSwipeRight(); 
+        }
+    }
+}
+
 // Initializing the canvas
 function initGallery()
 {
@@ -14,10 +32,23 @@ function initGallery()
 
     if (!galleryImgA.complete || galleryImgA.naturalWidth === 0 || !galleryImgB.complete || galleryImgB.naturalWidth === 0 ) return;
 
-    canvasGallery.width = 480;
-    canvasGallery.height = 480;
+    const galleryStyle = getComputedStyle(canvasGallery);
+    canvasGallery.width = parseFloat(galleryStyle.width);
+    canvasGallery.height = parseFloat(galleryStyle.height);
 
     drawPImg(ctxGallery, canvasGallery, galleryImgA, 1, true, galleryImgB);
+
+    // Add swipe listener
+    canvasGallery.addEventListener ('touchstart', function (event) {
+        initialTouchX = event.touches[0].clientX;
+        initialTouchY = event.touches[0].clientY;
+    });
+    canvasGallery.addEventListener ('touchend', function (event) {
+        finalTouchX = event.changedTouches[0].clientX;
+        finalTouchY = event.changedTouches[0].clientY;
+
+        handleTouch(initialTouchX, finalTouchX, swipeLeft, swipeRight);
+    });
 }
 
 // Change project in gallery
@@ -27,6 +58,14 @@ function changeFocusIndex(increment)
     focusIdxB = (focusIdxB + increment + projNames.length) % projNames.length;
     initGallery();
 }
+
+var swipeLeft = () => {
+    changeFocusIndex(-1);
+};
+
+var swipeRight = () => {
+    changeFocusIndex(1);
+};
 
 // Navigate to project page
 function navToProj()

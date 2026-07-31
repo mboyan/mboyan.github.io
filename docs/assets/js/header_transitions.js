@@ -40,7 +40,7 @@ let genLogoInterval = null;  // Logo drawing loop ID
 function animateHeight() {
 
     // Smooth step toward target
-    currHeight += (targetHeight - currHeight) * 0.1;
+    currHeight += (targetHeight - currHeight) * 0.5;
 
     // Apply heights
     canvasLogo.style.height = currHeight + "px";
