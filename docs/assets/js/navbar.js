@@ -139,11 +139,7 @@ window.addEventListener("popstate", (e) => {
 
 function getCurrentPage() {
   const path = window.location.pathname;
-  console.log("foof");
-  console.log(path);
   if (path === "/" || path === "") return "home";
-  console.log("oof");
-  console.log(path);
   return path.replace("/", "").replace(".html", "");
 }
 
@@ -161,15 +157,11 @@ function initSPA() {
     page = getCurrentPage();
   }
 
-  console.log(page);
-
   if (page.startsWith("proj_")) {
     loadPage("proj", true, page);
     // loadProject(page);
   } else if (!page.startsWith("assets")) {
     loadPage(page);
-  } else {
-    console.log("bar");
   }
 }
 
