@@ -515,12 +515,26 @@ a:active {
   display: block;
   position: relative !important;
   margin: 0;
-  left: 50px;
-  bottom: 50px;
   height: 0;
-  color: #59A399;
+  color: #212529;
+  /* background-color: #f8f9fa80; */
   font-weight: bold;
   z-index: 1001;
+}
+
+.image-breakout-container.maximized .image-caption.left {
+  left: 30px;
+  bottom: 60px;
+}
+
+.image-breakout-container.maximized .image-caption.right {
+  right: 30px;
+  bottom: 60px;
+  text-align: right;
+}
+
+.highlight {
+  background-color: #f8f9fa70;
 }
 
 /* .image-breakout-container.maximized .image-caption {
