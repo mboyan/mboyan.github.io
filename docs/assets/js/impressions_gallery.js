@@ -23,21 +23,27 @@ function handleTouch(startX, endX, onSwipeLeft, onSwipeRight) {
     }
 }
 
+let canvasGallery = null;
+let ctxGallery = null;
+let galleryImages = null;
+let galleryImgA = null;
+let galleryImgB = null;
 let galleryRetryCount = 0;
 const galleryRetryLimit = 200;
 
 // Initializing the gallery canvas
 function initGallery() {
-    const canvasGallery = document.getElementById("canvas-gallery");
-    const ctxGallery = canvasGallery.getContext("2d");
-    const galleryImages = document.getElementsByClassName("gallery-image");
-    const galleryImgA = galleryImages[focusIdxA];
-    const galleryImgB = galleryImages[focusIdxB];
-
+    canvasGallery = document.getElementById("canvas-gallery");
+    ctxGallery = canvasGallery.getContext("2d");
+    galleryImages = document.getElementsByClassName("gallery-image");
+    
     refreshGallery()
 }
 
 function refreshGallery() {
+    galleryImgA = galleryImages[focusIdxA];
+    galleryImgB = galleryImages[focusIdxB];
+    
     document.getElementById("debug").textContent = "Changed focus index to " + focusIdxB + ", attempt " + galleryRetryCount;
 
     if (!galleryImgA || !galleryImgB ||
