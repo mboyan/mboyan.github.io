@@ -569,12 +569,12 @@ a:active {
   #canvas-gallery {
     width: 83%;
     height: auto;
-    border: 2px solid #212529;
+    /* border: 2px solid #212529; */
   }
   .arrow {
     width: 10%;
     height: 10%;
-    border: 2px solid #212529;
+    /* border: 2px solid #212529; */
   }
   #canvas-logo {
     width: 320px;

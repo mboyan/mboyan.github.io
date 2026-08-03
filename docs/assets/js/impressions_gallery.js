@@ -1,4 +1,5 @@
 const projNames = ["proj_tree", "proj_diplo", "proj_pavilion", "proj_waam", "proj_aef"];
+const nGalleryProjects = projNames.length;
 
 let focusIdxA = 0;
 let focusIdxB = 0;
@@ -85,7 +86,7 @@ function initGallery() {
 function changeFocusIndex(increment)
 {
     focusIdxA = focusIdxB;
-    focusIdxB = (focusIdxB + increment + projNames.length) % projNames.length;
+    focusIdxB = (focusIdxB + increment + nGalleryProjects) % nGalleryProjects;
 
     // if (xFadeFuncInterval) {
     //     clearInterval(xFadeFuncInterval);
