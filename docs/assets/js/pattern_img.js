@@ -171,15 +171,12 @@ function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare=false, inputImg
     }
 
     // Animate transition
-    console.log("...");
-    console.log(xFadeImg);
+    document.getElementById("debug").textContent = "xFadeImg=" + xFadeImg + " for " + inputImg2.src;
     if (xFadeImg) {
 
         // Shuffle pixel indices
         shuffledIndices = Array.from({length: imgColData.length / 4}, (e, i) => i);
         shuffledIndices = fisherYatesShuffle(shuffledIndices);
-
-        document.getElementById("debug").textContent = inputImg2.src;
 
         xFadeStepCt = 0;
         xFadeFunction = () => xFadeImages(patData, patData2, shuffledIndices, ctxt);
