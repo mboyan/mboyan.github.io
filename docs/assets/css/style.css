@@ -564,7 +564,7 @@ a:active {
     /* right: -40px; */
     /* height: auto; */
     aspect-ratio: 1 / 1;
-    border: 2px solid #212529;
+    /* border: 2px solid #212529; */
   }
   #canvas-gallery {
     width: 83%;
