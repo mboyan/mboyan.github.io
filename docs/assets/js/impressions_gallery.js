@@ -23,7 +23,7 @@ function handleTouch(startX, endX, onSwipeLeft, onSwipeRight) {
 }
 
 let galleryRetryCount = 0;
-const galleryRetryLimit = 20;
+const galleryRetryLimit = 200;
 
 // Initializing the gallery canvas
 function initGallery() {
