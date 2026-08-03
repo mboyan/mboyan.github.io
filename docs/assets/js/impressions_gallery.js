@@ -53,7 +53,7 @@ function initGallery() {
     // canvasGallery.height = canvasGallery.clientHeight || galleryWidth;
     canvasGallery.width = parseFloat(galleryStyle.width);
     canvasGallery.height = parseFloat(galleryStyle.height);
-    
+
     drawPImg(ctxGallery, canvasGallery, galleryImgA, 1, true, galleryImgB);
 
     if (!canvasGallery.dataset.swipeListenersBound) {
