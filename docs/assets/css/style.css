@@ -557,8 +557,7 @@ a:active {
     width: 300px;
   }
   .gallery {
-    left: 0;
-    right: -40px;
+    left: -40px;
     width: calc(100% + 80px);
     height: auto;
     aspect-ratio: 1 / 1;
