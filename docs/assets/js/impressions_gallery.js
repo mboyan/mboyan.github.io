@@ -33,8 +33,10 @@ function initGallery() {
     const galleryImages = document.getElementsByClassName("gallery-image");
     const galleryImgA = galleryImages[focusIdxA];
     const galleryImgB = galleryImages[focusIdxB];
-    console.log(galleryImgA);
-    console.log(galleryImgB);
+    // console.log(galleryImgA);
+    // console.log(galleryImgB);
+
+    document.getElementById("debug").textContent = "Changed focus index to " + focusIdxB + ", attempt " + galleryRetryCount;
 
     if (!galleryImgA || !galleryImgB ||
         !galleryImgA.complete || galleryImgA.naturalWidth === 0 ||
@@ -87,8 +89,6 @@ function changeFocusIndex(increment)
 {
     focusIdxA = focusIdxB;
     focusIdxB = (focusIdxB + increment + nGalleryProjects) % nGalleryProjects;
-
-    document.getElementById("debug").textContent = "Changed focus index to " + focusIdxB;
 
     // if (xFadeFuncInterval) {
     //     clearInterval(xFadeFuncInterval);
