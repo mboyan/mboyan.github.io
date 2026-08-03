@@ -562,17 +562,17 @@ a:active {
     width: calc(100% + 80px);
     height: auto;
     aspect-ratio: 1 / 1;
-    /* border: 2px solid #212529; */
+    border: 2px solid #212529;
   }
   #canvas-gallery {
     width: 80%;
     height: auto;
-    /* border: 2px solid #212529; */
+    border: 2px solid #212529;
   }
   .arrow {
     width: 30px;
     height: 30px;
-    /* border: 2px solid #212529; */
+    border: 2px solid #212529;
   }
   #canvas-logo {
     width: 320px;
