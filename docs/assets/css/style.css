@@ -286,13 +286,15 @@ a:active {
 .gallery {
   display: flex;
   position: relative;
-  width: 680px;
-  height: 480px;
-  left: -100px;
-  right: -100px;
+  /* width: 680px;
+  height: 480px; */
+  width: 130%;
+  height: auto;
+  left: -15%;
+  /* right: -100px; */
   /* transform: scale(1.5, 1);
   transform-origin: center; */
-  margin: 30px 0 20px 0;
+  margin: 30px auto 20px auto;
   padding: 0;
   justify-self: center;
   justify-content: center;
@@ -313,8 +315,8 @@ a:active {
 }
 
 .arrow {
-  width: 100px;
-  height: 100px;
+  width: 15%;
+  height: 15%;
   margin: 0;
   padding: 0;
   fill: #495057;
@@ -557,21 +559,21 @@ a:active {
     width: 300px;
   }
   .gallery {
-    left: 0;
-    right: -40px;
-    width: calc(100% + 80px);
-    height: auto;
+    left: -10%;
+    width: 120%;
+    /* right: -40px; */
+    /* height: auto; */
     aspect-ratio: 1 / 1;
     border: 2px solid #212529;
   }
   #canvas-gallery {
-    width: 80%;
+    width: 83%;
     height: auto;
     border: 2px solid #212529;
   }
   .arrow {
-    width: 30px;
-    height: 30px;
+    width: 10%;
+    height: 10%;
     border: 2px solid #212529;
   }
   #canvas-logo {
@@ -690,8 +692,3 @@ a:active {
 .hydra-canvas {
   width: 100%;
 }
-
-/* ===== Fixed height element ===== */
-/* .frozen {
-  min-height: var(--fixed-height) !important;
-} */
