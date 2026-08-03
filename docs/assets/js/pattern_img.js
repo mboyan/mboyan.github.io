@@ -179,6 +179,8 @@ function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare=false, inputImg
         shuffledIndices = Array.from({length: imgColData.length / 4}, (e, i) => i);
         shuffledIndices = fisherYatesShuffle(shuffledIndices);
 
+        document.getElementById("debug").textContent = inputImg2.src;
+
         xFadeStepCt = 0;
         xFadeFunction = () => xFadeImages(patData, patData2, shuffledIndices, ctxt);
         if (xFadeFuncInterval) clearInterval(xFadeFuncInterval);
@@ -242,7 +244,7 @@ function xFadeImages(patDataA, patDataB, shuffledIndices, ctxt)
         let startIdx = Math.round(pixelLength * xFadeStepCt / nFadeSteps);
         let endIdx = Math.round(pixelLength * (xFadeStepCt + 1) / nFadeSteps);
 
-        document.getElementById("debug").textContent = "startIdx=" + startIdx + ", endIdx" + endIdx + ", xFadeStepCt=" + xFadeStepCt;
+        // document.getElementById("debug").textContent = "startIdx=" + startIdx + ", endIdx" + endIdx + ", xFadeStepCt=" + xFadeStepCt;
 
         for (let i = startIdx; i < endIdx; i++) {
             patColDataA[shuffledIndices[i] * 4] = patColDataB[shuffledIndices[i] * 4];
