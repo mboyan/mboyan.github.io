@@ -33,9 +33,11 @@ function initGallery() {
     const galleryImages = document.getElementsByClassName("gallery-image");
     const galleryImgA = galleryImages[focusIdxA];
     const galleryImgB = galleryImages[focusIdxB];
-    // console.log(galleryImgA);
-    // console.log(galleryImgB);
 
+    refreshGallery()
+}
+
+function refreshGallery() {
     document.getElementById("debug").textContent = "Changed focus index to " + focusIdxB + ", attempt " + galleryRetryCount;
 
     if (!galleryImgA || !galleryImgB ||
@@ -44,7 +46,7 @@ function initGallery() {
 
         if (galleryRetryCount < galleryRetryLimit) {
             galleryRetryCount += 1;
-            window.setTimeout(initGallery, 100);
+            window.setTimeout(refreshGallery, 100);
         }
         return;
     }
@@ -96,7 +98,7 @@ function changeFocusIndex(increment)
     // }
 
     // xFadeStepCt = 0;
-    initGallery();
+    refreshGallery();
 }
 
 var swipeLeft = () => {
