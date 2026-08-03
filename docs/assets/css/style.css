@@ -557,19 +557,23 @@ a:active {
     width: 300px;
   }
   .gallery {
-    left: 0;
-    right: 0;
-    width: 100%;
+    left: -40px;
+    right: -40px;
+    width: calc(100% + 80px);
     height: auto;
     aspect-ratio: 1 / 1;
     /* border: 2px solid #212529; */
   }
   #canvas-gallery {
-    width: 100%;
+    width: 80%;
+    height: auto;
     /* border: 2px solid #212529; */
   }
   .arrow {
-    width: 0;
+    width: 30px;
+    height: 30px;
+    touch-action: manipulation;
+    /* border: 2px solid #212529; */
   }
   #canvas-logo {
     width: 320px;
