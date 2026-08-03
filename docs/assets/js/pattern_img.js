@@ -171,6 +171,8 @@ function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare=false, inputImg
     }
 
     // Animate transition
+    console.log("...");
+    console.log(xFadeImg);
     if (xFadeImg) {
 
         // Shuffle pixel indices
@@ -237,10 +239,10 @@ function xFadeImages(patDataA, patDataB, shuffledIndices, ctxt)
         let patColDataB = patDataB.data;
         let pixelLength = shuffledIndices.length;
 
-        let startIdx = pixelLength * xFadeStepCt / nFadeSteps;
-        let endIdx = pixelLength * (xFadeStepCt + 1) / nFadeSteps;
+        let startIdx = Math.round(pixelLength * xFadeStepCt / nFadeSteps);
+        let endIdx = Math.round(pixelLength * (xFadeStepCt + 1) / nFadeSteps);
 
-        document.getElementById("debug").textContent = "startIdx=" + startIdx + ", endIdx" + endIdx + ", xFadeStepCt=" + xFadeStepCt;
+        // document.getElementById("debug").textContent = "startIdx=" + startIdx + ", endIdx" + endIdx + ", xFadeStepCt=" + xFadeStepCt;
 
         for (let i = startIdx; i < endIdx; i++) {
             patColDataA[shuffledIndices[i] * 4] = patColDataB[shuffledIndices[i] * 4];
