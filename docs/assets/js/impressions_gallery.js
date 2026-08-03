@@ -22,16 +22,29 @@ function handleTouch(startX, endX, onSwipeLeft, onSwipeRight) {
     }
 }
 
-// Initializing the canvas
-function initGallery()
-{
-    let canvasGallery = document.getElementById("canvas-gallery");
-    let ctxGallery = canvasGallery.getContext("2d");
-    let galleryImages = document.getElementsByClassName("gallery-image")
-    let galleryImgA = galleryImages[focusIdxA];
-    let galleryImgB = galleryImages[focusIdxB];
+// Initializing the gallery canvas
+let galleryRetryCount = 0;
+const galleryRetryLimit = 20;
 
-    if (!galleryImgA.complete || galleryImgA.naturalWidth === 0 || !galleryImgB.complete || galleryImgB.naturalWidth === 0 ) return;
+function initGallery() {
+    const canvasGallery = document.getElementById("canvas-gallery");
+    const ctxGallery = canvasGallery.getContext("2d");
+    const galleryImages = document.getElementsByClassName("gallery-image");
+    const galleryImgA = galleryImages[focusIdxA];
+    const galleryImgB = galleryImages[focusIdxB];
+
+    if (!galleryImgA || !galleryImgB ||
+        !galleryImgA.complete || galleryImgA.naturalWidth === 0 ||
+        !galleryImgB.complete || galleryImgB.naturalWidth === 0) {
+
+        if (galleryRetryCount < galleryRetryLimit) {
+            galleryRetryCount += 1;
+            window.setTimeout(initGallery, 100);
+        }
+        return;
+    }
+
+    galleryRetryCount = 0;
 
     const galleryStyle = getComputedStyle(canvasGallery);
     canvasGallery.width = parseFloat(galleryStyle.width);
@@ -39,24 +52,62 @@ function initGallery()
 
     drawPImg(ctxGallery, canvasGallery, galleryImgA, 1, true, galleryImgB);
 
-    // Add swipe listener
-    canvasGallery.addEventListener ('touchstart', function (event) {
-        if (!touchOn) {
-            initialTouchX = event.touches[0].clientX;
-            initialTouchY = event.touches[0].clientY;
-            touchOn = true;
-        }
-    });
-    canvasGallery.addEventListener ('touchend', function (event) {
-        if (touchOn) {
-            finalTouchX = event.changedTouches[0].clientX;
-            finalTouchY = event.changedTouches[0].clientY;
-            touchOn = false;
+    if (!canvasGallery.dataset.swipeListenersBound) {
+        canvasGallery.addEventListener("touchstart", function (event) {
+            if (!touchOn) {
+                initialTouchX = event.touches[0].clientX;
+                initialTouchY = event.touches[0].clientY;
+                touchOn = true;
+            }
+        });
 
-            handleTouch(initialTouchX, finalTouchX, swipeLeft, swipeRight);
-        }
-    });
+        canvasGallery.addEventListener("touchend", function (event) {
+            if (touchOn) {
+                finalTouchX = event.changedTouches[0].clientX;
+                finalTouchY = event.changedTouches[0].clientY;
+                touchOn = false;
+
+                handleTouch(initialTouchX, finalTouchX, swipeLeft, swipeRight);
+            }
+        });
+
+        canvasGallery.dataset.swipeListenersBound = "true";
+    }
 }
+// function initGallery()
+// {
+//     let canvasGallery = document.getElementById("canvas-gallery");
+//     let ctxGallery = canvasGallery.getContext("2d");
+//     let galleryImages = document.getElementsByClassName("gallery-image")
+//     let galleryImgA = galleryImages[focusIdxA];
+//     let galleryImgB = galleryImages[focusIdxB];
+
+//     if (!galleryImgA.complete || galleryImgA.naturalWidth === 0 || !galleryImgB.complete || galleryImgB.naturalWidth === 0 ) return;
+
+//     const galleryStyle = getComputedStyle(canvasGallery);
+//     canvasGallery.width = parseFloat(galleryStyle.width);
+//     canvasGallery.height = parseFloat(galleryStyle.height);
+
+//     drawPImg(ctxGallery, canvasGallery, galleryImgA, 1, true, galleryImgB);
+
+//     // Add swipe listener
+//     canvasGallery.addEventListener ('touchstart', function (event) {
+//         if (!touchOn) {
+//             initialTouchX = event.touches[0].clientX;
+//             initialTouchY = event.touches[0].clientY;
+//             touchOn = true;
+//         }
+//     });
+//     canvasGallery.addEventListener ('touchend', function (event) {
+//         if (touchOn) {
+//             finalTouchX = event.changedTouches[0].clientX;
+//             finalTouchY = event.changedTouches[0].clientY;
+//             touchOn = false;
+
+//             handleTouch(initialTouchX, finalTouchX, swipeLeft, swipeRight);
+//         }
+//     });
+// }
 
 // Change project in gallery
 function changeFocusIndex(increment)
