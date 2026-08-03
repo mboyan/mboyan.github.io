@@ -49,9 +49,11 @@ function initGallery() {
     galleryRetryCount = 0;
 
     const galleryStyle = getComputedStyle(canvasGallery);
-    canvasGallery.width = canvasGallery.clientWidth || parseFloat(galleryStyle.width);
-    canvasGallery.height = canvasGallery.clientHeight || galleryWidth;
-
+    // canvasGallery.width = canvasGallery.clientWidth || parseFloat(galleryStyle.width);
+    // canvasGallery.height = canvasGallery.clientHeight || galleryWidth;
+    canvasGallery.width = parseFloat(galleryStyle.width);
+    canvasGallery.height = parseFloat(galleryStyle.height);
+    
     drawPImg(ctxGallery, canvasGallery, galleryImgA, 1, true, galleryImgB);
 
     if (!canvasGallery.dataset.swipeListenersBound) {
