@@ -6,6 +6,7 @@ let focusIdxB = 0;
 // Gallery swiping on mobile device
 var initialTouchX, initialTouchY, finalTouchX, finalTouchY;
 var swipeThreshold = 100;
+var touchOn = false;
 
 function handleTouch(startX, endX, onSwipeLeft, onSwipeRight) {
     var horizontalDistance = finalTouchX - initialTouchX;
@@ -13,10 +14,10 @@ function handleTouch(startX, endX, onSwipeLeft, onSwipeRight) {
 
     if (Math.abs(horizontalDistance) > Math.abs(verticalDistance) &&
       Math.abs(horizontalDistance) > swipeThreshold) {
-        if (finalTouchX - initialTouchX < 0) {
+        if (horizontalDistance < 0) {
             onSwipeLeft(); 
         } else {
-            onSwipeRight(); 
+            onSwipeRight();
         }
     }
 }
@@ -40,14 +41,20 @@ function initGallery()
 
     // Add swipe listener
     canvasGallery.addEventListener ('touchstart', function (event) {
-        initialTouchX = event.touches[0].clientX;
-        initialTouchY = event.touches[0].clientY;
+        if (!touchOn) {
+            initialTouchX = event.touches[0].clientX;
+            initialTouchY = event.touches[0].clientY;
+            touchOn = true;
+        }
     });
     canvasGallery.addEventListener ('touchend', function (event) {
-        finalTouchX = event.changedTouches[0].clientX;
-        finalTouchY = event.changedTouches[0].clientY;
+        if (touchOn) {
+            finalTouchX = event.changedTouches[0].clientX;
+            finalTouchY = event.changedTouches[0].clientY;
+            touchOn = false;
 
-        handleTouch(initialTouchX, finalTouchX, swipeLeft, swipeRight);
+            handleTouch(initialTouchX, finalTouchX, swipeLeft, swipeRight);
+        }
     });
 }
 
@@ -60,11 +67,11 @@ function changeFocusIndex(increment)
 }
 
 var swipeLeft = () => {
-    changeFocusIndex(-1);
+    changeFocusIndex(1);
 };
 
 var swipeRight = () => {
-    changeFocusIndex(1);
+    changeFocusIndex(-1);
 };
 
 // Navigate to project page
