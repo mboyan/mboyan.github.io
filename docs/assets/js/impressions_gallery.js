@@ -41,10 +41,13 @@ function initGallery() {
 
         if (galleryRetryCount < galleryRetryLimit) {
             galleryRetryCount += 1;
+            document.getElementById("debug").textContent = "retry count = " + galleryRetryCount;
             window.setTimeout(initGallery, 100);
         }
         return;
     }
+
+    document.getElementById("debug").textContent = "initializing gallery";
 
     galleryRetryCount = 0;
 
