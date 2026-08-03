@@ -43,8 +43,8 @@ function initGallery() {
 function refreshGallery() {
     galleryImgA = galleryImages[focusIdxA];
     galleryImgB = galleryImages[focusIdxB];
-    
-    document.getElementById("debug").textContent = "Changed focus index to " + focusIdxB + ", attempt " + galleryRetryCount;
+
+    document.getElementById("debug").textContent = "Changed focus index to " + focusIdxB + ": " + galleryImages[focusIdxB].src + ", attempt " + galleryRetryCount;
 
     if (!galleryImgA || !galleryImgB ||
         !galleryImgA.complete || galleryImgA.naturalWidth === 0 ||
