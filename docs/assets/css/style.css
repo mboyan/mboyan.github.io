@@ -576,6 +576,9 @@ a:active {
     height: 10%;
     /* border: 2px solid #212529; */
   }
+  .arrow:hover {
+    opacity: 10%;
+  }
   #canvas-logo {
     width: 320px;
     height: 192px;
