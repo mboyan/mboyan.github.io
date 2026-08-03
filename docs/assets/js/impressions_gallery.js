@@ -54,6 +54,8 @@ function initGallery() {
     canvasGallery.width = parseFloat(galleryStyle.width);
     canvasGallery.height = parseFloat(galleryStyle.height);
 
+    document.getElementById("debug").textContent = galleryImgB.src;
+
     drawPImg(ctxGallery, canvasGallery, galleryImgA, 1, true, galleryImgB);
 
     if (!canvasGallery.dataset.swipeListenersBound) {

@@ -171,7 +171,6 @@ function drawPImg(ctxt, canv, inputImg, strideSize, cropToSquare=false, inputImg
     }
 
     // Animate transition
-    document.getElementById("debug").textContent = "xFadeImg=" + xFadeImg + " for " + inputImg2.src;
     if (xFadeImg) {
 
         // Shuffle pixel indices
