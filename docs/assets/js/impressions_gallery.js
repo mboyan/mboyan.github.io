@@ -109,11 +109,11 @@ function changeFocusIndex(increment)
 }
 
 var swipeLeft = () => {
-    // changeFocusIndex(1);
+    changeFocusIndex(1);
 };
 
 var swipeRight = () => {
-    // changeFocusIndex(-1);
+    changeFocusIndex(-1);
 };
 
 // Navigate to project page
