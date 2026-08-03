@@ -240,6 +240,8 @@ function xFadeImages(patDataA, patDataB, shuffledIndices, ctxt)
         let startIdx = pixelLength * xFadeStepCt / nFadeSteps;
         let endIdx = pixelLength * (xFadeStepCt + 1) / nFadeSteps;
 
+        document.getElementById("debug").textContent = "startIdx=" + startIdx + ", endIdx" + endIdx + ", xFadeStepCt=" + xFadeStepCt;
+
         for (let i = startIdx; i < endIdx; i++) {
             patColDataA[shuffledIndices[i] * 4] = patColDataB[shuffledIndices[i] * 4];
             patColDataA[shuffledIndices[i] * 4 + 1] = patColDataB[shuffledIndices[i] * 4 + 1];
