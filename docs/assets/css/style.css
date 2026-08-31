@@ -449,9 +449,9 @@ a:active {
 }
 
 /* ===== Standard page images ===== */
-/* figure {
+figure {
   margin: 0;
-} */
+}
 
 .page-img {
   max-width: 100%;
@@ -557,6 +557,7 @@ a:active {
   }
   .overlay-text {
     width: 300px;
+    padding: 0;
   }
   .gallery {
     left: -10%;

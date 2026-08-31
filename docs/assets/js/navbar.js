@@ -11,6 +11,7 @@ backgroundImages.set("proj_tree", "./assets/img/patterned/home.JPG");
 backgroundImages.set("proj_diplo", "./assets/img/patterned/proj.JPG");
 backgroundImages.set("proj_thesis", "./assets/img/patterned/proj_thesis.png");
 backgroundImages.set("proj_waam", "./assets/img/patterned/proj_waam.jpg");
+backgroundImages.set("proj_pavilion", "./assets/img/patterned/proj_pavilion.png");
 backgroundImages.set("proj_furniture", "./assets/img/patterned/sols.png");
 backgroundImages.set("proj_hygroscope", "./assets/img/patterned/proj_hygroscope.jpg");
 backgroundImages.set("proj_hygroskin", "./assets/img/patterned/proj_hygroskin.jpg");
