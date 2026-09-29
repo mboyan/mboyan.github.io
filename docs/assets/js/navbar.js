@@ -8,6 +8,7 @@ backgroundImages.set("legal", "./assets/img/patterned/contact.JPG");
 backgroundImages.set("privacy", "./assets/img/patterned/contact.JPG");
 
 backgroundImages.set("proj_tree", "./assets/img/patterned/home.JPG");
+backgroundImages.set("proj_phototropic", "./assets/img/patterned/proj_phototropic.png");
 backgroundImages.set("proj_diplo", "./assets/img/patterned/proj.JPG");
 backgroundImages.set("proj_thesis", "./assets/img/patterned/proj_thesis.png");
 backgroundImages.set("proj_waam", "./assets/img/patterned/proj_waam.jpg");
